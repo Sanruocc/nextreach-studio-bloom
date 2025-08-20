@@ -1,4 +1,4 @@
-import { ArrowRight, Globe, Heart, MessageCircle, Monitor, Users, Star, CheckCircle, Mail, Phone } from "lucide-react";
+import { ArrowRight, Globe, Heart, MessageCircle, Monitor, Users, Star, CheckCircle, Mail, Phone, MapPin, Clock, Shield, Zap, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -18,21 +18,21 @@ const Index = () => {
       <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/4d24aea2-7d82-4e18-b806-b3b899ed818a.png" 
-              alt="NextReach Studio Logo" 
+            <img
+              src="/nextreach-logo.jpg"
+              alt="NextReach Logo"
               className="w-10 h-10"
             />
-            <span className="font-bold text-xl text-foreground">NextReach Studio</span>
+            <span className="font-bold text-xl text-foreground">NextReach</span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
-            <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</a>
-            <a href="#portfolio" className="text-muted-foreground hover:text-primary transition-colors">Portfolio</a>
-            <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
-            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+            <a href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
+            <a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</a>
+            <a href="/portfolio" className="text-muted-foreground hover:text-primary transition-colors">Portfolio</a>
+            <a href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
+            <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
           </div>
-          <Button variant="cta" size="sm">
+          <Button className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" size="sm" onClick={() => window.location.href = '/contact'}>
             Get Started <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
@@ -43,16 +43,15 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
-              Professional Websites
-              <span className="block text-primary">That Convert</span>
-              <span className="block text-accent">Visitors to Patients</span>
+              NextReach — Professional Websites
+              <span className="block bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 bg-clip-text text-transparent">That Build Trust & Bring Customers</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-              We build stunning, professional websites for healthcare providers and service businesses that attract more patients and grow your practice.
+              We design fast, mobile-first, and SEO-ready websites for clinics, shops, and service providers in Pune, Mumbai, and beyond.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="xl" className="group">
-                Get Started Today
+              <Button variant="hero" size="xl" className="group bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
+                Get Your Website Today
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="xl">
@@ -63,189 +62,105 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-background">
+      {/* Why Choose NextReach */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Trusted by Healthcare Professionals
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              At NextReach Studio, we specialize in creating professional websites for doctors, dentists, clinics, and healthcare providers. 
-              Our expertly crafted websites help you build trust, attract new patients, and grow your practice online.
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Why Choose NextReach</h2>
+            <p className="text-lg text-muted-foreground">
+              We understand the unique needs of local businesses in Pune and Mumbai. Here's what sets us apart.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Globe className="w-8 h-8 text-white" />
+                <Monitor className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Professional Websites</h3>
-              <p className="text-muted-foreground">Modern, responsive websites that convert visitors into patients and build trust.</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Mobile-First, Always</h3>
+              <p className="text-muted-foreground">Over 80% of searches in India are on phones. Your site will look perfect on every device.</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-white" />
+                <Target className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Healthcare Focused</h3>
-              <p className="text-muted-foreground">Specialized experience in medical, dental, and healthcare website design.</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Proven for Local Businesses</h3>
+              <p className="text-muted-foreground">From doctors to retailers, we know how to design websites that bring in foot traffic and appointments.</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-highlight rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-highlight-foreground" />
+                <Zap className="w-8 h-8 text-highlight-foreground" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Patient-Centric Design</h3>
-              <p className="text-muted-foreground">We create websites that make it easy for patients to find and trust your practice.</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">SEO-Ready</h3>
+              <p className="text-muted-foreground">Show up when people search "clinic near me" or "best store in Mumbai."</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Fast & Reliable</h3>
+              <p className="text-muted-foreground">Lightweight builds that load quickly, even on 4G.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Clear Pricing</h3>
+              <p className="text-muted-foreground">Transparent packages, no hidden costs.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-highlight rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-8 h-8 text-highlight-foreground" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Local Expertise</h3>
+              <p className="text-muted-foreground">Deep understanding of Pune and Mumbai markets and customer behavior.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-card-subtle">
+      {/* Example Projects */}
+      <section id="portfolio" className="py-20 bg-card-subtle">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Premium Website Development</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Example Projects</h2>
             <p className="text-lg text-muted-foreground">
-              Specialized website solutions for healthcare professionals and service-based businesses that need to build trust and attract patients.
+              Real results for businesses across Pune and Mumbai
             </p>
           </div>
-          <div className="max-w-5xl mx-auto">
-            <Card className="border-0 shadow-xl">
-              <CardContent className="p-12">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div>
-                    <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mb-6">
-                      <Monitor className="w-10 h-10 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-foreground mb-4">Professional Website Development</h3>
-                    <p className="text-lg text-muted-foreground mb-6">
-                      We create stunning, conversion-optimized websites specifically designed for healthcare providers, doctors, dentists, and service businesses.
-                    </p>
-                    <Button variant="cta" size="lg">
-                      Start Your Project <ArrowRight className="w-5 h-5" />
-                    </Button>
-                  </div>
-                  <div>
-                    <ul className="space-y-4">
-                      <li className="flex items-center text-muted-foreground">
-                        <CheckCircle className="w-6 h-6 text-accent mr-4" />
-                        <span className="text-lg">Custom responsive design that builds trust</span>
-                      </li>
-                      <li className="flex items-center text-muted-foreground">
-                        <CheckCircle className="w-6 h-6 text-accent mr-4" />
-                        <span className="text-lg">Advanced SEO to attract more patients</span>
-                      </li>
-                      <li className="flex items-center text-muted-foreground">
-                        <CheckCircle className="w-6 h-6 text-accent mr-4" />
-                        <span className="text-lg">Online appointment booking systems</span>
-                      </li>
-                      <li className="flex items-center text-muted-foreground">
-                        <CheckCircle className="w-6 h-6 text-accent mr-4" />
-                        <span className="text-lg">HIPAA-compliant contact forms</span>
-                      </li>
-                      <li className="flex items-center text-muted-foreground">
-                        <CheckCircle className="w-6 h-6 text-accent mr-4" />
-                        <span className="text-lg">Mobile-optimized for on-the-go patients</span>
-                      </li>
-                      <li className="flex items-center text-muted-foreground">
-                        <CheckCircle className="w-6 h-6 text-accent mr-4" />
-                        <span className="text-lg">Fast loading speed for better user experience</span>
-                      </li>
-                    </ul>
-                  </div>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+              <div className="overflow-hidden rounded-t-lg">
+                <img 
+                  src={showcaseClinic} 
+                  alt="SmileCare Dental Pune" 
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold text-foreground mb-2">SmileCare Dental, Pune</h3>
+                <p className="text-muted-foreground mb-4">Complete redesign with "Book Appointment" button → appointment requests up by 65% in 2 months.</p>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4 mr-1" />
+                  <span>Koregaon Park, Pune</span>
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Healthcare Portfolio</h2>
-            <p className="text-lg text-muted-foreground">
-              See how we've helped healthcare professionals transform their online presence and attract more patients.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-              <div className="overflow-hidden rounded-t-lg">
-                <img 
-                  src={bakeryImage} 
-                  alt="Dr. Sharma's Dental Clinic Website" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">Dr. Sharma's Dental Clinic</h3>
-                <p className="text-muted-foreground mb-4">Professional dental website with online appointment booking and patient portal.</p>
-                <Button variant="link" className="p-0">
-                  View Project <ArrowRight className="w-4 h-4" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-              <div className="overflow-hidden rounded-t-lg">
-                <img 
-                  src={restaurantImage} 
-                  alt="Mumbai Cardiology Center Website" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">Mumbai Cardiology Center</h3>
-                <p className="text-muted-foreground mb-4">Modern medical website with doctor profiles and patient testimonials.</p>
-                <Button variant="link" className="p-0">
-                  View Project <ArrowRight className="w-4 h-4" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-              <div className="overflow-hidden rounded-t-lg">
-                <img 
-                  src={fitnessImage} 
-                  alt="Delhi Pediatric Clinic Website" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">Delhi Pediatric Clinic</h3>
-                <p className="text-muted-foreground mb-4">Family-friendly medical website with easy appointment scheduling system.</p>
-                <Button variant="link" className="p-0">
-                  View Project <ArrowRight className="w-4 h-4" />
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Showcase Section */}
-      <section className="py-20 bg-card-subtle">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Healthcare Website Showcases</h2>
-            <p className="text-lg text-muted-foreground">
-              Professional healthcare websites that build patient trust and drive appointment bookings.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
               <div className="overflow-hidden rounded-t-lg">
                 <img 
                   src={showcaseCafe} 
-                  alt="Multi-Specialty Clinic Showcase" 
+                  alt="BrightSkin Clinic Pune" 
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
                 />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-2">Multi-Specialty Clinic</h3>
-                <p className="text-muted-foreground text-sm">Complete healthcare solution</p>
+                <h3 className="text-xl font-semibold text-foreground mb-2">BrightSkin Clinic, Koregaon Park</h3>
+                <p className="text-muted-foreground mb-4">Multi-page site with treatment FAQs → now ranking top 3 for "dermatologist Pune."</p>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4 mr-1" />
+                  <span>Koregaon Park, Pune</span>
+                </div>
               </CardContent>
             </Card>
 
@@ -253,29 +168,162 @@ const Index = () => {
               <div className="overflow-hidden rounded-t-lg">
                 <img 
                   src={showcaseGym} 
-                  alt="Dental Practice Website Showcase" 
+                  alt="CityCare Hospital Mumbai" 
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
                 />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-2">Dental Practice Website</h3>
-                <p className="text-muted-foreground text-sm">Patient-focused design with booking</p>
+                <h3 className="text-xl font-semibold text-foreground mb-2">CityCare Hospital, Andheri</h3>
+                <p className="text-muted-foreground mb-4">Streamlined mobile-first website → reduced bounce rates by 40%, boosted online inquiries.</p>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4 mr-1" />
+                  <span>Andheri, Mumbai</span>
+                </div>
               </CardContent>
             </Card>
 
             <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
               <div className="overflow-hidden rounded-t-lg">
                 <img 
-                  src={showcaseClinic} 
-                  alt="Pediatric Clinic Showcase" 
+                  src={restaurantImage} 
+                  alt="Taste Junction Café Mumbai" 
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
                 />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-2">Pediatric Clinic</h3>
-                <p className="text-muted-foreground text-sm">Family-friendly medical website</p>
+                <h3 className="text-xl font-semibold text-foreground mb-2">Taste Junction Café, Bandra</h3>
+                <p className="text-muted-foreground mb-4">Visual-heavy one-page site with sticky "Order Now" CTA → online orders doubled.</p>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4 mr-1" />
+                  <span>Bandra, Mumbai</span>
+                </div>
               </CardContent>
             </Card>
+
+            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+              <div className="overflow-hidden rounded-t-lg">
+                <img 
+                  src={fitnessImage} 
+                  alt="FixPro Services Pune" 
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold text-foreground mb-2">FixPro Services, Pune</h3>
+                <p className="text-muted-foreground mb-4">SEO-focused service site for "AC repair near me" → 120+ leads in the first 6 weeks.</p>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4 mr-1" />
+                  <span>Kothrud, Pune</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Services</h2>
+            <p className="text-lg text-muted-foreground">
+              Tailored website solutions for different business types in Pune and Mumbai
+            </p>
+          </div>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground">For Doctors & Clinics</CardTitle>
+                <CardDescription>Professional websites designed for healthcare providers</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>Patient-friendly websites with appointment forms</span>
+                  </li>
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>Before & after gallery integrations</span>
+                  </li>
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>FAQ-driven content to answer patient questions</span>
+                  </li>
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>Google Maps integration for easy location</span>
+                  </li>
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>Mobile-optimized for patient convenience</span>
+                  </li>
+                </ul>
+                <Button variant="cta" className="w-full">
+                  Get Healthcare Website
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground">For Local Businesses</CardTitle>
+                <CardDescription>One-page and multi-page sites for shops and services</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>One-page professional websites</span>
+                  </li>
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>Online product/service showcase</span>
+                  </li>
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>Google Maps & "Call Now" integration</span>
+                  </li>
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>SEO optimization for local searches</span>
+                  </li>
+                  <li className="flex items-center text-muted-foreground">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3" />
+                    <span>Fast loading on 4G networks</span>
+                  </li>
+                </ul>
+                <Button variant="cta" className="w-full">
+                  Get Business Website
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-card-subtle">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">About NextReach</h2>
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                At NextReach, we design websites that help local businesses stand out and grow. From clinics in Pune to cafés in Mumbai, our work speaks for itself — fast, mobile-first, and SEO-optimized websites that convert visitors into real customers.
+              </p>
+              <p>
+                Our team understands the digital behavior of Indian audiences. That's why every site we build focuses on what matters most: quick load times, simple navigation, and clear calls-to-action that turn searches into sales.
+              </p>
+              <p>
+                We've partnered with healthcare providers, retailers, and service businesses across Pune and Mumbai to create professional websites that inspire trust and deliver measurable results.
+              </p>
+            </div>
+            <div className="mt-12 bg-gradient-brand p-8 rounded-2xl text-white">
+              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+              <p className="text-lg leading-relaxed">
+                To be the trusted digital partner for local businesses, making high-quality web design accessible and impactful across India.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -284,319 +332,232 @@ const Index = () => {
       <section id="pricing" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Professional Website Packages</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Clear Pricing</h2>
             <p className="text-lg text-muted-foreground">
-              Specialized healthcare website solutions designed to attract more patients. Transparent pricing, premium quality.
+              Transparent packages for Pune and Mumbai businesses. No hidden costs.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {/* Basic Website */}
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="text-center pb-4">
-                <CardTitle className="text-xl text-foreground mb-2">Basic Website</CardTitle>
-                <div className="text-3xl font-bold text-primary mb-2">₹9,999</div>
-                <CardDescription className="text-sm">Perfect for new practices</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 mb-6 text-sm">
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    1-3 pages
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Mobile responsive
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    WhatsApp integration
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Basic contact form
-                  </li>
-                </ul>
-                <Button variant="outline" className="w-full text-sm">
-                  Get Started
-                </Button>
-              </CardContent>
-            </Card>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-xl text-foreground mb-2">Starter</CardTitle>
+                  <div className="text-3xl font-bold text-primary mb-2">₹9,999</div>
+                  <CardDescription className="text-sm">Perfect for new businesses</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 mb-6 text-sm">
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      1-3 pages
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Mobile-first design
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Basic SEO
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Contact forms
+                    </li>
+                  </ul>
+                  <Button variant="outline" className="w-full text-sm">
+                    Get Started
+                  </Button>
+                </CardContent>
+              </Card>
 
-            {/* Standard Website */}
-            <Card className="border-2 border-primary shadow-xl hover:shadow-2xl transition-shadow relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">
-                Most Popular
-              </div>
-              <CardHeader className="text-center pb-4 pt-6">
-                <CardTitle className="text-xl text-foreground mb-2">Standard Website</CardTitle>
-                <div className="text-3xl font-bold text-primary mb-2">₹16,999</div>
-                <CardDescription className="text-sm">Great for growing practices</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 mb-6 text-sm">
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    4-5 pages
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Professional design
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Basic SEO optimization
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Appointment booking form
-                  </li>
-                </ul>
-                <Button variant="cta" className="w-full text-sm">
-                  Get Started
-                </Button>
-              </CardContent>
-            </Card>
+              <Card className="border-2 border-primary shadow-xl hover:shadow-2xl transition-shadow relative">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">
+                  Most Popular
+                </div>
+                <CardHeader className="text-center pb-4 pt-6">
+                  <CardTitle className="text-xl text-foreground mb-2">Professional</CardTitle>
+                  <div className="text-3xl font-bold text-primary mb-2">₹16,999</div>
+                  <CardDescription className="text-sm">Great for growing businesses</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 mb-6 text-sm">
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      4-5 pages
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Advanced SEO
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Google Maps integration
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Appointment booking
+                    </li>
+                  </ul>
+                  <Button variant="cta" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
+                    Get Started
+                  </Button>
+                </CardContent>
+              </Card>
 
-            {/* Premium Website */}
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="text-center pb-4">
-                <CardTitle className="text-xl text-foreground mb-2">Premium Website</CardTitle>
-                <div className="text-3xl font-bold text-primary mb-2">₹24,999</div>
-                <CardDescription className="text-sm">Complete practice solution</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 mb-6 text-sm">
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    6-7 pages
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Advanced SEO
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Online booking system
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    1 month support
-                  </li>
-                </ul>
-                <Button variant="accent" className="w-full text-sm">
-                  Get Started
-                </Button>
-              </CardContent>
-            </Card>
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-xl text-foreground mb-2">Premium</CardTitle>
+                  <div className="text-3xl font-bold text-primary mb-2">₹24,999</div>
+                  <CardDescription className="text-sm">Complete business solution</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 mb-6 text-sm">
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      6-7 pages
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Advanced SEO & analytics
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Online booking system
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      1 month support
+                    </li>
+                  </ul>
+                  <Button variant="accent" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
+                    Get Started
+                  </Button>
+                </CardContent>
+              </Card>
 
-            {/* Custom Website */}
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="text-center pb-4">
-                <CardTitle className="text-xl text-foreground mb-2">Custom Website</CardTitle>
-                <div className="text-3xl font-bold text-primary mb-2">₹35,000+</div>
-                <CardDescription className="text-sm">Tailored for large practices</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 mb-6 text-sm">
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    8+ pages
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Custom features
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Patient portal
-                  </li>
-                  <li className="flex items-center text-muted-foreground">
-                    <CheckCircle className="w-4 h-4 text-accent mr-2" />
-                    Extended support
-                  </li>
-                </ul>
-                <Button variant="default" className="w-full text-sm">
-                  Contact Us
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 bg-card-subtle">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">What Healthcare Professionals Say</h2>
-            <p className="text-lg text-muted-foreground">
-              Don't just take our word for it. Here's what our satisfied healthcare clients have to say.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-highlight fill-current" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-6 italic">
-                  "NextReach Studio created an excellent website for our dental clinic. Patient appointments have increased by 40% since launch. Highly professional team!"
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
-                    D
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Dr. Priya Sharma</div>
-                    <div className="text-sm text-muted-foreground">Sharma Dental Clinic, Mumbai</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-highlight fill-current" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-6 italic">
-                  "Outstanding work! Our new website perfectly represents our cardiology practice. Patients can easily book appointments online now. Very satisfied!"
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center text-white font-bold mr-4">
-                    D
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Dr. Rajesh Gupta</div>
-                    <div className="text-sm text-muted-foreground">Heart Care Center, Delhi</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-highlight fill-current" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-6 italic">
-                  "The website design is perfect for our pediatric practice. Parents love the user-friendly interface and online booking system. Excellent service!"
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-highlight rounded-full flex items-center justify-center text-highlight-foreground font-bold mr-4">
-                    D
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Dr. Meera Patel</div>
-                    <div className="text-sm text-muted-foreground">Children's Clinic, Bangalore</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-xl text-foreground">Custom</CardTitle>
+                  <div className="text-3xl font-bold text-primary mb-2">₹35,000+</div>
+                  <CardDescription className="text-sm">Tailored for large businesses</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 mb-6 text-sm">
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      8+ pages
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Custom features
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Advanced integrations
+                    </li>
+                    <li className="flex items-center text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-accent mr-2" />
+                      Extended support
+                    </li>
+                  </ul>
+                  <Button variant="default" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
+                    Contact Us
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-background">
+      <section id="contact" className="py-20 bg-gradient-brand text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Grow Your Practice?</h2>
-            <p className="text-lg text-muted-foreground">
-              Let's create a professional website that attracts more patients to your practice. Get in touch with us today!
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Grow Your Business?</h2>
+            <p className="text-xl text-white/90">
+              Let's create a professional website that brings more customers to your Pune or Mumbai business. Get in touch today!
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <Card className="border-0 shadow-lg">
+              <Card className="border-0 bg-white/10 backdrop-blur">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-foreground">Start Your Website Project</CardTitle>
-                  <CardDescription>We'll provide a detailed proposal within 24 hours.</CardDescription>
+                  <CardTitle className="text-2xl text-white">Start Your Project</CardTitle>
+                  <CardDescription className="text-white/80">We'll provide a detailed proposal within 24 hours</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="firstName">First name</Label>
-                      <Input id="firstName" placeholder="John" />
+                      <Label htmlFor="firstName" className="text-white">First name</Label>
+                      <Input id="firstName" placeholder="John" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
                     </div>
                     <div>
-                      <Label htmlFor="lastName">Last name</Label>
-                      <Input id="lastName" placeholder="Doe" />
+                      <Label htmlFor="lastName" className="text-white">Last name</Label>
+                      <Input id="lastName" placeholder="Doe" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" />
+                    <Label htmlFor="email" className="text-white">Email</Label>
+                    <Input id="email" type="email" placeholder="john@example.com" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
                   </div>
                   <div>
-                    <Label htmlFor="company">Practice Name</Label>
-                    <Input id="company" placeholder="Your Practice/Clinic Name" />
+                    <Label htmlFor="business" className="text-white">Business Name</Label>
+                    <Input id="business" placeholder="Your Business/Clinic Name" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
                   </div>
                   <div>
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" placeholder="Tell us about your practice and website requirements..." className="min-h-24" />
+                    <Label htmlFor="location" className="text-white">Location</Label>
+                    <Input id="location" placeholder="Pune or Mumbai area" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
                   </div>
-                  <Button variant="cta" className="w-full">
+                  <div>
+                    <Label htmlFor="message" className="text-white">Message</Label>
+                    <Textarea id="message" placeholder="Tell us about your business and website needs..." className="bg-white/10 border-white/20 text-white placeholder-white/60 min-h-24" />
+                  </div>
+                  <Button variant="cta" className="w-full bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
                     Send Message <Mail className="w-4 h-4" />
                   </Button>
                 </CardContent>
               </Card>
 
-              {/* Contact Info & CTA */}
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-6">Get in touch</h3>
+                  <h3 className="text-2xl font-bold mb-6">Get in touch</h3>
                   <div className="space-y-4">
                     <div className="flex items-center">
-                      <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mr-4">
+                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
                         <Phone className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <div className="font-semibold text-foreground">Call us</div>
-                        <div className="text-muted-foreground">+91 98765 43210</div>
+                        <div className="font-semibold">Call us</div>
+                        <div className="text-white/80">+91 98765 43210</div>
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <div className="w-12 h-12 bg-gradient-accent rounded-xl flex items-center justify-center mr-4">
+                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
                         <Mail className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <div className="font-semibold text-foreground">Email us</div>
-                        <div className="text-muted-foreground">hello@nextreachstudio.com</div>
+                        <div className="font-semibold">Email us</div>
+                        <div className="text-white/80">hello@nextreach.in</div>
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <div className="w-12 h-12 bg-gradient-highlight rounded-xl flex items-center justify-center mr-4">
-                        <MessageCircle className="w-6 h-6 text-highlight-foreground" />
+                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
+                        <MessageCircle className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <div className="font-semibold text-foreground">WhatsApp</div>
-                        <div className="text-muted-foreground">+91 98765 43210</div>
+                        <div className="font-semibold">WhatsApp</div>
+                        <div className="text-white/80">+91 98765 43210</div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-brand p-8 rounded-2xl text-white">
-                  <h4 className="text-xl font-bold mb-4">Ready to attract more patients online?</h4>
-                  <p className="mb-6 opacity-90">Join hundreds of healthcare professionals who trust NextReach Studio for their online presence.</p>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary">
-                      <Phone className="w-4 h-4 mr-2" />
-                      Call Now
-                    </Button>
-                    <Button variant="highlight" className="bg-highlight hover:bg-highlight-dark">
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      WhatsApp
-                    </Button>
-                  </div>
+                <div className="bg-white/10 backdrop-blur p-8 rounded-2xl">
+                  <h4 className="text-xl font-bold mb-4">Serving Pune & Mumbai</h4>
+                  <p className="text-white/80">
+                    We specialize in helping local businesses across Pune, Mumbai, and surrounding areas grow their online presence with professional websites that deliver real results.
+                  </p>
                 </div>
               </div>
             </div>
@@ -605,27 +566,54 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-12">
+      <footer className="py-12 bg-background border-t border-border">
         <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <img 
-                src="/lovable-uploads/4d24aea2-7d82-4e18-b806-b3b899ed818a.png" 
-                alt="NextReach Studio Logo" 
-                className="w-8 h-8"
-              />
-              <span className="font-bold text-xl">NextReach Studio</span>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-8">
+              <div>
+                <div className="flex items-center space-x-2 mb-4">
+                  <img
+                    src="/nextreach-logo.jpg"
+                    alt="NextReach Logo"
+                    className="w-8 h-8"
+                  />
+                  <span className="font-bold text-lg text-foreground">NextReach</span>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Professional websites for Pune and Mumbai businesses that build trust and bring customers.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground mb-4">Services</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li><a href="#" className="hover:text-primary transition-colors">Healthcare Websites</a></li>
+                  <li><a href="#" className="hover:text-primary transition-colors">Business Websites</a></li>
+                  <li><a href="#" className="hover:text-primary transition-colors">SEO Optimization</a></li>
+                  <li><a href="#" className="hover:text-primary transition-colors">Local Business Focus</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground mb-4">Locations</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li><a href="#" className="hover:text-primary transition-colors">Pune</a></li>
+                  <li><a href="#" className="hover:text-primary transition-colors">Mumbai</a></li>
+                  <li><a href="#" className="hover:text-primary transition-colors">Pimpri-Chinchwad</a></li>
+                  <li><a href="#" className="hover:text-primary transition-colors">Navi Mumbai</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground mb-4">Contact</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>+91 98765 43210</li>
+                  <li>hello@nextreach.in</li>
+                  <li>Available 9AM-7PM IST</li>
+                </ul>
+              </div>
             </div>
-            <p className="text-background/80 mb-6">
-              Helping healthcare professionals grow online since 2020
-            </p>
-            <div className="flex justify-center space-x-6 text-background/60">
-              <a href="#" className="hover:text-background transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-background transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-background transition-colors">Contact</a>
-            </div>
-            <div className="border-t border-background/20 mt-8 pt-8 text-background/60">
-              © 2024 NextReach Studio. All rights reserved.
+            <div className="border-t border-border mt-8 pt-8 text-center">
+              <p className="text-sm text-muted-foreground">
+                © 2024 NextReach. Professional websites for Pune and Mumbai businesses.
+              </p>
             </div>
           </div>
         </div>
