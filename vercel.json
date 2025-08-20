@@ -1,32 +1,10 @@
 {
-    "version": 2,
-    "builds": [
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "rewrites": [
         {
-            "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "dist"
-            }
-        }
-    ],
-    "routes": [
-        {
-            "src": "/sitemap.xml",
-            "dest": "/sitemap.xml",
-            "headers": {
-                "Content-Type": "application/xml"
-            }
-        },
-        {
-            "src": "/robots.txt",
-            "dest": "/robots.txt",
-            "headers": {
-                "Content-Type": "text/plain"
-            }
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
+            "source": "/((?!api/).*)",
+            "destination": "/index.html"
         }
     ],
     "headers": [
@@ -65,7 +43,7 @@
             ]
         },
         {
-            "source": "/(.*).js",
+            "source": "/(.*\\.(js|css|woff2|png|jpg|jpeg|gif|ico|svg))",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -74,20 +52,20 @@
             ]
         },
         {
-            "source": "/(.*).css",
+            "source": "/sitemap.xml",
             "headers": [
                 {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=31536000, immutable"
+                    "key": "Content-Type",
+                    "value": "application/xml"
                 }
             ]
         },
         {
-            "source": "/(.*).woff2",
+            "source": "/robots.txt",
             "headers": [
                 {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=31536000, immutable"
+                    "key": "Content-Type",
+                    "value": "text/plain"
                 }
             ]
         }
