@@ -1,9 +1,16 @@
-import { ArrowRight, Check, Star, Phone, Mail } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Check, Star, Phone, Mail, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import MobileNavigation from "@/components/MobileNavigation";
 
 const Pricing = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
   const plans = [
     {
       name: "Starter",
@@ -111,7 +118,15 @@ const Pricing = () => {
             <a href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
             <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
           </div>
-          <Button className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" size="sm">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+          >
+            <Menu className="w-6 h-6" />
+          </Button>
+          <Button className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" size="sm" onClick={() => window.location.href = '/contact'}>
             Get Started <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
@@ -128,10 +143,10 @@ const Pricing = () => {
               Simple, transparent pricing for businesses in Pune and Mumbai. No hidden fees, just results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
+              <Button size="lg" className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" onClick={() => window.location.href = '/contact'}>
                 Get Free Quote
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" onClick={() => window.location.href = 'tel:+919876543210'}>
                 Schedule Consultation
               </Button>
             </div>
@@ -172,6 +187,7 @@ const Pricing = () => {
                     className={`w-full ${plan.popular 
                       ? 'bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white' 
                       : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'}`}
+                    onClick={() => window.location.href = '/contact'}
                   >
                     Choose {plan.name}
                   </Button>
@@ -273,10 +289,10 @@ const Pricing = () => {
               Get a personalized quote for your Pune or Mumbai business. Free consultation included.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary" onClick={() => window.location.href = 'tel:+919876543210'}>
                 <Phone className="w-4 h-4 mr-2" /> Call: +91-9876543210
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary" onClick={() => window.location.href = '/contact'}>
                 <Mail className="w-4 h-4 mr-2" /> Email Quote
               </Button>
             </div>
@@ -302,6 +318,13 @@ const Pricing = () => {
           </div>
         </div>
       </footer>
+      
+      {/* Mobile Navigation */}
+      <MobileNavigation 
+        isOpen={isMobileMenuOpen}
+        onToggle={toggleMobileMenu}
+        onClose={closeMobileMenu}
+      />
     </div>
   );
 };

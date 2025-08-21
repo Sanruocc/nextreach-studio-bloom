@@ -1,21 +1,55 @@
-import { ArrowRight, Globe, Heart, MessageCircle, Monitor, Users, Star, CheckCircle, Mail, Phone, MapPin, Clock, Shield, Zap, Target } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, useInView } from "motion/react";
+import { ArrowRight, Globe, Heart, MessageCircle, Monitor, Users, Star, CheckCircle, Mail, Phone, MapPin, Clock, Shield, Zap, Target, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import bakeryImage from "@/assets/portfolio-bakery.jpg";
-import restaurantImage from "@/assets/portfolio-restaurant.jpg";
-import fitnessImage from "@/assets/portfolio-fitness.jpg";
-import showcaseCafe from "@/assets/showcase-cafe-laptop.jpg";
-import showcaseGym from "@/assets/showcase-gym-devices.jpg";
-import showcaseClinic from "@/assets/showcase-clinic-laptop.jpg";
+import ContactForm from "@/components/ContactForm";
+import MobileNavigation from "@/components/MobileNavigation";
+import { 
+  fadeInVariants, 
+  fadeInUpVariants, 
+  fadeInLeftVariants, 
+  fadeInRightVariants, 
+  staggerContainer, 
+  staggerItem, 
+  cardHoverVariants 
+} from "@/lib/motion";
+import dentalClinicImage from "@/assets/dental-clinic.jpg";
+import dermatologyClinicImage from "@/assets/dermatology-clinic.jpg";
+import hospitalImage from "@/assets/hospital.jpg";
+import cafeRestaurantImage from "@/assets/cafe-restaurant.jpg";
+import repairServicesImage from "@/assets/repair-services.jpg";
+import modernGymImage from "@/assets/modern-gym.jpg";
 
 const Index = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <motion.nav 
+        className={`border-b border-border sticky top-0 z-50 transition-all duration-300 ${
+          scrollY > 50 
+            ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-sm' 
+            : 'bg-transparent'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <img
@@ -32,88 +66,175 @@ const Index = () => {
             <a href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
             <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
           </div>
-          <Button className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" size="sm" onClick={() => window.location.href = '/contact'}>
-            Get Started <ArrowRight className="w-4 h-4" />
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+          >
+            <Menu className="w-6 h-6" />
           </Button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" size="sm" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              Get Started <ArrowRight className="w-4 h-4" />
+            </Button>
+          </motion.div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 bg-gradient-subtle">
+      <section className="py-20 lg:py-32 bg-gradient-subtle overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.h1 
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6"
+              variants={fadeInUpVariants}
+            >
               NextReach — Professional Websites
-              <span className="block bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 bg-clip-text text-transparent">That Build Trust & Bring Customers</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+              <motion.span 
+                className="block bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 bg-clip-text text-transparent"
+                variants={fadeInUpVariants}
+              >
+                That Build Trust & Bring Customers
+              </motion.span>
+            </motion.h1>
+            <motion.p 
+              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
+              variants={fadeInUpVariants}
+            >
               We design fast, mobile-first, and SEO-ready websites for clinics, shops, and service providers in Pune, Mumbai, and beyond.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="xl" className="group bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
-                Get Your Website Today
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" size="xl">
-                View Our Work
-              </Button>
-            </div>
-          </div>
+            </motion.p>
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              variants={fadeInUpVariants}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="hero" size="xl" className="group bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Get Your Website Today
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="outline" size="xl" onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}>
+                  View Our Work
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Why Choose NextReach */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={fadeInUpVariants}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Why Choose NextReach</h2>
             <p className="text-lg text-muted-foreground">
               We understand the unique needs of local businesses in Pune and Mumbai. Here's what sets us apart.
             </p>
-          </div>
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+          </motion.div>
+          <motion.div 
+            className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={staggerContainer}
+          >
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <Monitor className="w-8 h-8 text-white" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Mobile-First, Always</h3>
               <p className="text-muted-foreground">Over 80% of searches in India are on phones. Your site will look perfect on every device.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <Target className="w-8 h-8 text-white" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Proven for Local Businesses</h3>
               <p className="text-muted-foreground">From doctors to retailers, we know how to design websites that bring in foot traffic and appointments.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-highlight rounded-2xl flex items-center justify-center mx-auto mb-4">
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-gradient-highlight rounded-2xl flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <Zap className="w-8 h-8 text-highlight-foreground" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold text-foreground mb-2">SEO-Ready</h3>
               <p className="text-muted-foreground">Show up when people search "clinic near me" or "best store in Mumbai."</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <Clock className="w-8 h-8 text-white" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Fast & Reliable</h3>
               <p className="text-muted-foreground">Lightweight builds that load quickly, even on 4G.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <Shield className="w-8 h-8 text-white" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Clear Pricing</h3>
               <p className="text-muted-foreground">Transparent packages, no hidden costs.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-highlight rounded-2xl flex items-center justify-center mx-auto mb-4">
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              variants={staggerItem}
+            >
+              <motion.div 
+                className="w-16 h-16 bg-gradient-highlight rounded-2xl flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <MapPin className="w-8 h-8 text-highlight-foreground" />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Local Expertise</h3>
               <p className="text-muted-foreground">Deep understanding of Pune and Mumbai markets and customer behavior.</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -121,102 +242,192 @@ const Index = () => {
       {/* Example Projects */}
       <section id="portfolio" className="py-20 bg-card-subtle">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={fadeInUpVariants}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Example Projects</h2>
             <p className="text-lg text-muted-foreground">
               Real results for businesses across Pune and Mumbai
             </p>
-          </div>
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-              <div className="overflow-hidden rounded-t-lg">
-                <img 
-                  src={showcaseClinic} 
-                  alt="SmileCare Dental Pune" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">SmileCare Dental, Pune</h3>
-                <p className="text-muted-foreground mb-4">Complete redesign with "Book Appointment" button → appointment requests up by 65% in 2 months.</p>
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  <span>Koregaon Park, Pune</span>
-                </div>
-              </CardContent>
-            </Card>
+          </motion.div>
+          <motion.div 
+            className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
+                  <div className="overflow-hidden rounded-t-lg">
+                    <motion.img 
+                      src={dentalClinicImage} 
+                      alt="SmileCare Dental Pune" 
+                      className="w-full h-48 object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">SmileCare Dental, Pune</h3>
+                    <p className="text-muted-foreground mb-4">Complete redesign with "Book Appointment" button → appointment requests up by 65% in 2 months.</p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span>Koregaon Park, Pune</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
 
-            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-              <div className="overflow-hidden rounded-t-lg">
-                <img 
-                  src={showcaseCafe} 
-                  alt="BrightSkin Clinic Pune" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">BrightSkin Clinic, Koregaon Park</h3>
-                <p className="text-muted-foreground mb-4">Multi-page site with treatment FAQs → now ranking top 3 for "dermatologist Pune."</p>
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  <span>Koregaon Park, Pune</span>
-                </div>
-              </CardContent>
-            </Card>
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
+                  <div className="overflow-hidden rounded-t-lg">
+                    <motion.img 
+                      src={dermatologyClinicImage} 
+                      alt="BrightSkin Clinic Pune" 
+                      className="w-full h-48 object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">BrightSkin Clinic, Koregaon Park</h3>
+                    <p className="text-muted-foreground mb-4">Multi-page site with treatment FAQs → now ranking top 3 for "dermatologist Pune."</p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span>Koregaon Park, Pune</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
 
-            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-              <div className="overflow-hidden rounded-t-lg">
-                <img 
-                  src={showcaseGym} 
-                  alt="CityCare Hospital Mumbai" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">CityCare Hospital, Andheri</h3>
-                <p className="text-muted-foreground mb-4">Streamlined mobile-first website → reduced bounce rates by 40%, boosted online inquiries.</p>
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  <span>Andheri, Mumbai</span>
-                </div>
-              </CardContent>
-            </Card>
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
+                  <div className="overflow-hidden rounded-t-lg">
+                    <motion.img 
+                      src={hospitalImage} 
+                      alt="CityCare Hospital Mumbai" 
+                      className="w-full h-48 object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">CityCare Hospital, Andheri</h3>
+                    <p className="text-muted-foreground mb-4">Streamlined mobile-first website → reduced bounce rates by 40%, boosted online inquiries.</p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span>Andheri, Mumbai</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
 
-            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-              <div className="overflow-hidden rounded-t-lg">
-                <img 
-                  src={restaurantImage} 
-                  alt="Taste Junction Café Mumbai" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">Taste Junction Café, Bandra</h3>
-                <p className="text-muted-foreground mb-4">Visual-heavy one-page site with sticky "Order Now" CTA → online orders doubled.</p>
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  <span>Bandra, Mumbai</span>
-                </div>
-              </CardContent>
-            </Card>
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
+                  <div className="overflow-hidden rounded-t-lg">
+                    <motion.img 
+                      src={cafeRestaurantImage} 
+                      alt="Taste Junction Café Mumbai" 
+                      className="w-full h-48 object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Taste Junction Café, Bandra</h3>
+                    <p className="text-muted-foreground mb-4">Visual-heavy one-page site with sticky "Order Now" CTA → online orders doubled.</p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span>Bandra, Mumbai</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
 
-            <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-              <div className="overflow-hidden rounded-t-lg">
-                <img 
-                  src={fitnessImage} 
-                  alt="FixPro Services Pune" 
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">FixPro Services, Pune</h3>
-                <p className="text-muted-foreground mb-4">SEO-focused service site for "AC repair near me" → 120+ leads in the first 6 weeks.</p>
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  <span>Kothrud, Pune</span>
-                </div>
-              </CardContent>
-            </Card>
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
+                  <div className="overflow-hidden rounded-t-lg">
+                    <motion.img 
+                      src={repairServicesImage} 
+                      alt="FixPro Services Pune" 
+                      className="w-full h-48 object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">FixPro Services, Pune</h3>
+                    <p className="text-muted-foreground mb-4">SEO-focused service site for "AC repair near me" → 120+ leads in the first 6 weeks.</p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span>Kothrud, Pune</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
+                  <div className="overflow-hidden rounded-t-lg">
+                    <motion.img 
+                      src={modernGymImage} 
+                      alt="FitZone Gym Mumbai" 
+                      className="w-full h-48 object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">FitZone Gym, Powai</h3>
+                    <p className="text-muted-foreground mb-4">Modern fitness website with membership packages → increased sign-ups by 50% and reduced phone inquiries.</p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span>Powai, Mumbai</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -259,7 +470,7 @@ const Index = () => {
                     <span>Mobile-optimized for patient convenience</span>
                   </li>
                 </ul>
-                <Button variant="cta" className="w-full">
+                <Button variant="cta" className="w-full" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                   Get Healthcare Website
                 </Button>
               </CardContent>
@@ -293,7 +504,7 @@ const Index = () => {
                     <span>Fast loading on 4G networks</span>
                   </li>
                 </ul>
-                <Button variant="cta" className="w-full">
+                <Button variant="cta" className="w-full" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                   Get Business Website
                 </Button>
               </CardContent>
@@ -364,7 +575,7 @@ const Index = () => {
                       Contact forms
                     </li>
                   </ul>
-                  <Button variant="outline" className="w-full text-sm">
+                  <Button variant="outline" className="w-full text-sm" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                     Get Started
                   </Button>
                 </CardContent>
@@ -398,7 +609,7 @@ const Index = () => {
                       Appointment booking
                     </li>
                   </ul>
-                  <Button variant="cta" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
+                  <Button variant="cta" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                     Get Started
                   </Button>
                 </CardContent>
@@ -429,7 +640,7 @@ const Index = () => {
                       1 month support
                     </li>
                   </ul>
-                  <Button variant="accent" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
+                  <Button variant="accent" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                     Get Started
                   </Button>
                 </CardContent>
@@ -460,7 +671,7 @@ const Index = () => {
                       Extended support
                     </li>
                   </ul>
-                  <Button variant="default" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
+                  <Button variant="default" className="w-full text-sm bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                     Contact Us
                   </Button>
                 </CardContent>
@@ -486,36 +697,8 @@ const Index = () => {
                   <CardTitle className="text-2xl text-white">Start Your Project</CardTitle>
                   <CardDescription className="text-white/80">We'll provide a detailed proposal within 24 hours</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="firstName" className="text-white">First name</Label>
-                      <Input id="firstName" placeholder="John" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
-                    </div>
-                    <div>
-                      <Label htmlFor="lastName" className="text-white">Last name</Label>
-                      <Input id="lastName" placeholder="Doe" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
-                    </div>
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="text-white">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
-                  </div>
-                  <div>
-                    <Label htmlFor="business" className="text-white">Business Name</Label>
-                    <Input id="business" placeholder="Your Business/Clinic Name" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
-                  </div>
-                  <div>
-                    <Label htmlFor="location" className="text-white">Location</Label>
-                    <Input id="location" placeholder="Pune or Mumbai area" className="bg-white/10 border-white/20 text-white placeholder-white/60" />
-                  </div>
-                  <div>
-                    <Label htmlFor="message" className="text-white">Message</Label>
-                    <Textarea id="message" placeholder="Tell us about your business and website needs..." className="bg-white/10 border-white/20 text-white placeholder-white/60 min-h-24" />
-                  </div>
-                  <Button variant="cta" className="w-full bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white">
-                    Send Message <Mail className="w-4 h-4" />
-                  </Button>
+                <CardContent>
+                  <ContactForm compact={true} />
                 </CardContent>
               </Card>
 
@@ -618,6 +801,13 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      
+      {/* Mobile Navigation */}
+      <MobileNavigation 
+        isOpen={isMobileMenuOpen}
+        onToggle={toggleMobileMenu}
+        onClose={closeMobileMenu}
+      />
     </div>
   );
 };
