@@ -1,11 +1,19 @@
-import { ArrowRight, Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Phone, Mail, MapPin, Clock, MessageCircle, Send, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import ContactForm from "@/components/ContactForm";
+import MobileNavigation from "@/components/MobileNavigation";
 
 const Contact = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
   const contactInfo = [
     {
       icon: Phone,
@@ -71,7 +79,15 @@ const Contact = () => {
             <a href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
             <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
           </div>
-          <Button className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" size="sm">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+          >
+            <Menu className="w-6 h-6" />
+          </Button>
+          <Button className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" size="sm" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
             Get Started <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
@@ -118,115 +134,16 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div>
-              <Card className="border-0 shadow-lg">
+            <div id="contact-form">
+              <Card className="border-0 shadow-lg bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Send Us a Message</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-2xl text-white">Send Us a Message</CardTitle>
+                  <CardDescription className="text-white/90">
                     Fill out the form below and we'll get back to you within 2 hours.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="name">Full Name</Label>
-                        <Input 
-                          id="name" 
-                          placeholder="Your full name" 
-                          className="mt-1"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="business">Business Name</Label>
-                        <Input 
-                          id="business" 
-                          placeholder="Your business name" 
-                          className="mt-1"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input 
-                          id="email" 
-                          type="email" 
-                          placeholder="your@email.com" 
-                          className="mt-1"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input 
-                          id="phone" 
-                          type="tel" 
-                          placeholder="+91-XXXXXXXXXX" 
-                          className="mt-1"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="service">Service Needed</Label>
-                      <select 
-                        id="service" 
-                        className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background"
-                      >
-                        <option>Select a service</option>
-                        <option>Healthcare Website</option>
-                        <option>Restaurant Website</option>
-                        <option>E-commerce Store</option>
-                        <option>Service Business Website</option>
-                        <option>SEO Services</option>
-                        <option>Custom Solution</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="location">Location</Label>
-                      <select 
-                        id="location" 
-                        className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background"
-                      >
-                        <option>Select location</option>
-                        <option>Pune</option>
-                        <option>Mumbai</option>
-                        <option>Other Maharashtra</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="budget">Budget Range</Label>
-                      <select 
-                        id="budget" 
-                        className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background"
-                      >
-                        <option>Select budget</option>
-                        <option>₹15,000 - ₹25,000</option>
-                        <option>₹25,000 - ₹50,000</option>
-                        <option>₹50,000 - ₹75,000</option>
-                        <option>₹75,000+</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Project Details</Label>
-                      <Textarea 
-                        id="message" 
-                        placeholder="Tell us about your project, goals, and any specific requirements..." 
-                        className="mt-1 min-h-32"
-                      />
-                    </div>
-
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white"
-                    >
-                      <Send className="w-4 h-4 mr-2" /> Send Message
-                    </Button>
-                  </form>
+                  <ContactForm />
                 </CardContent>
               </Card>
             </div>
@@ -313,10 +230,10 @@ const Contact = () => {
               Join 150+ businesses in Pune and Mumbai who trust NextReach for their web design needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary" onClick={() => window.location.href = 'tel:+919876543210'}>
                 <Phone className="w-4 h-4 mr-2" /> Free Consultation
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Mail className="w-4 h-4 mr-2" /> Get Quote
               </Button>
             </div>
@@ -342,6 +259,13 @@ const Contact = () => {
           </div>
         </div>
       </footer>
+      
+      {/* Mobile Navigation */}
+      <MobileNavigation 
+        isOpen={isMobileMenuOpen}
+        onToggle={toggleMobileMenu}
+        onClose={closeMobileMenu}
+      />
     </div>
   );
 };
