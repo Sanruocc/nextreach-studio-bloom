@@ -17,12 +17,12 @@ import {
   staggerItem, 
   cardHoverVariants 
 } from "@/lib/motion";
-import bakeryImage from "@/assets/portfolio-bakery.jpg";
-import restaurantImage from "@/assets/portfolio-restaurant.jpg";
-import fitnessImage from "@/assets/portfolio-fitness.jpg";
-import showcaseCafe from "@/assets/showcase-cafe-laptop.jpg";
-import showcaseGym from "@/assets/showcase-gym-devices.jpg";
-import showcaseClinic from "@/assets/showcase-clinic-laptop.jpg";
+import dentalClinicImage from "@/assets/dental-clinic.jpg";
+import dermatologyClinicImage from "@/assets/dermatology-clinic.jpg";
+import hospitalImage from "@/assets/hospital.jpg";
+import cafeRestaurantImage from "@/assets/cafe-restaurant.jpg";
+import repairServicesImage from "@/assets/repair-services.jpg";
+import modernGymImage from "@/assets/modern-gym.jpg";
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -255,7 +255,7 @@ const Index = () => {
             </p>
           </motion.div>
           <motion.div 
-            className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8"
+            className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
@@ -270,7 +270,7 @@ const Index = () => {
                 <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
                   <div className="overflow-hidden rounded-t-lg">
                     <motion.img 
-                      src={showcaseClinic} 
+                      src={dentalClinicImage} 
                       alt="SmileCare Dental Pune" 
                       className="w-full h-48 object-cover"
                       whileHover={{ scale: 1.05 }}
@@ -298,7 +298,7 @@ const Index = () => {
                 <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
                   <div className="overflow-hidden rounded-t-lg">
                     <motion.img 
-                      src={showcaseCafe} 
+                      src={dermatologyClinicImage} 
                       alt="BrightSkin Clinic Pune" 
                       className="w-full h-48 object-cover"
                       whileHover={{ scale: 1.05 }}
@@ -326,7 +326,7 @@ const Index = () => {
                 <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
                   <div className="overflow-hidden rounded-t-lg">
                     <motion.img 
-                      src={showcaseGym} 
+                      src={hospitalImage} 
                       alt="CityCare Hospital Mumbai" 
                       className="w-full h-48 object-cover"
                       whileHover={{ scale: 1.05 }}
@@ -354,7 +354,7 @@ const Index = () => {
                 <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
                   <div className="overflow-hidden rounded-t-lg">
                     <motion.img 
-                      src={restaurantImage} 
+                      src={cafeRestaurantImage} 
                       alt="Taste Junction Café Mumbai" 
                       className="w-full h-48 object-cover"
                       whileHover={{ scale: 1.05 }}
@@ -382,7 +382,7 @@ const Index = () => {
                 <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
                   <div className="overflow-hidden rounded-t-lg">
                     <motion.img 
-                      src={fitnessImage} 
+                      src={repairServicesImage} 
                       alt="FixPro Services Pune" 
                       className="w-full h-48 object-cover"
                       whileHover={{ scale: 1.05 }}
@@ -395,6 +395,34 @@ const Index = () => {
                     <div className="flex items-center text-sm text-muted-foreground">
                       <MapPin className="w-4 h-4 mr-1" />
                       <span>Kothrud, Pune</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={staggerItem}>
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Card className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all">
+                  <div className="overflow-hidden rounded-t-lg">
+                    <motion.img 
+                      src={modernGymImage} 
+                      alt="FitZone Gym Mumbai" 
+                      className="w-full h-48 object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">FitZone Gym, Powai</h3>
+                    <p className="text-muted-foreground mb-4">Modern fitness website with membership packages → increased sign-ups by 50% and reduced phone inquiries.</p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span>Powai, Mumbai</span>
                     </div>
                   </CardContent>
                 </Card>
