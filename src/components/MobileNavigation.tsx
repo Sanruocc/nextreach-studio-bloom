@@ -202,7 +202,7 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
                 </motion.a>
 
                 <motion.a
-                  href="mailto:hello@nextreachstudio.com"
+                  href="mailto:sales@nextreachstudio.com"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.7 }}
@@ -211,7 +211,7 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
                   <Mail className="w-5 h-5 text-primary" />
                   <div>
                     <div className="font-medium text-foreground">Email Us</div>
-                    <div className="text-sm text-muted-foreground">hello@nextreachstudio.com</div>
+                    <div className="text-sm text-muted-foreground">sales@nextreachstudio.com</div>
                   </div>
                 </motion.a>
               </div>
