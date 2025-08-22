@@ -237,7 +237,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Example Projects */}
+      {/* Projects */}
       <section id="portfolio" className="py-24 bg-gradient-to-br from-background via-card-subtle to-background">
         <div className="container mx-auto px-4">
           <motion.div 
@@ -247,7 +247,7 @@ const Index = () => {
             viewport={{ once: true, margin: '-100px' }}
             variants={fadeInUpVariants}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Example Projects</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Projects</h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
               Real results for businesses across Pune and Mumbai
             </p>

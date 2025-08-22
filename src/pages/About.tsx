@@ -1,11 +1,17 @@
-import { ArrowRight, Target, Heart, Shield, Globe, Users, Star, Award, CheckCircle, MapPin, Clock, Zap } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Target, Heart, Shield, Globe, Users, Star, Award, CheckCircle, MapPin, Clock, Zap, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "motion/react";
 import { SEO } from "@/components/SEO";
+import MobileNavigation from "@/components/MobileNavigation";
 import Footer from "@/components/Footer";
 
 const About = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
   const fadeInUpVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -51,6 +57,14 @@ const About = () => {
              <a href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
              <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
            </div>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+          >
+            <Menu className="w-6 h-6" />
+          </Button>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button 
               className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" 
@@ -346,6 +360,13 @@ const About = () => {
 
       {/* Footer */}
       <Footer />
+      
+      {/* Mobile Navigation */}
+      <MobileNavigation 
+        isOpen={isMobileMenuOpen}
+        onToggle={toggleMobileMenu}
+        onClose={closeMobileMenu}
+      />
     </div>
   );
 };

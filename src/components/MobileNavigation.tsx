@@ -54,8 +54,6 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
   const navItems = [
     { href: "/", label: "Home", description: "Back to homepage" },
     { href: "/about", label: "About", description: "Learn about NextReach" },
-    { href: "/services", label: "Services", description: "Our web design services" },
-    { href: "/portfolio", label: "Portfolio", description: "View our work" },
     { href: "/pricing", label: "Pricing", description: "Transparent pricing" },
     { href: "/contact", label: "Contact", description: "Get in touch" },
   ];
@@ -64,7 +62,7 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
     closed: {
       x: "100%",
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 400,
         damping: 40
       }
@@ -72,7 +70,7 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
     open: {
       x: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 400,
         damping: 40
       }
@@ -105,7 +103,7 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: "easeOut"
+        ease: [0.04, 0.62, 0.23, 0.98] as const
       }
     })
   };
