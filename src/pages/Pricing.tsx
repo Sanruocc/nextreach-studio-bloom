@@ -3,7 +3,9 @@ import { ArrowRight, Check, Star, Phone, Mail, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SEO } from "@/components/SEO";
 import MobileNavigation from "@/components/MobileNavigation";
+import Footer from "@/components/Footer";
 
 const Pricing = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -99,6 +101,7 @@ const Pricing = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO pageKey="pricing" />
       {/* Navigation */}
       <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -110,14 +113,12 @@ const Pricing = () => {
             />
             <span className="font-bold text-xl text-foreground">NextReach</span>
           </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
-            <a href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
-            <a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</a>
-            <a href="/portfolio" className="text-muted-foreground hover:text-primary transition-colors">Portfolio</a>
-            <a href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
-            <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
-          </div>
+                     <div className="hidden md:flex items-center space-x-8">
+             <a href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
+             <a href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
+             <a href="/pricing" className="text-primary font-medium">Pricing</a>
+             <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+           </div>
           <Button 
             variant="ghost" 
             size="sm" 
@@ -301,23 +302,7 @@ const Pricing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-background border-t border-border">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <img
-                src="/nextreach-logo.jpg"
-                alt="NextReach Logo"
-                className="w-8 h-8"
-              />
-              <span className="font-bold text-lg text-foreground">NextReach</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Professional websites for Pune and Mumbai businesses that build trust and bring customers.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
       
       {/* Mobile Navigation */}
       <MobileNavigation 

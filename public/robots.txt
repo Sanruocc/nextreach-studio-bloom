@@ -23,8 +23,9 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# Block access to admin and private areas
-Disallow: /admin/
+# Block access to admin areas - CRITICAL FOR SECURITY
+Disallow: /admin*
+Disallow: /admin-*
 Disallow: /private/
 Disallow: /.env
 Disallow: /api/internal/
@@ -40,10 +41,8 @@ Allow: /images/
 Allow: /css/
 Allow: /js/
 
-# Block access to sensitive files
+# Block access to sensitive files but allow important ones
 Disallow: /*.json$
-Disallow: /*.xml$ 
-Disallow: /*.txt$
 Allow: /sitemap.xml
 Allow: /robots.txt
 

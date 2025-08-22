@@ -1,13 +1,3 @@
-import emailjs from '@emailjs/browser';
-
-// EmailJS configuration
-const EMAILJS_SERVICE_ID = 'service_nextreach';
-const EMAILJS_TEMPLATE_ID = 'template_nextreach';
-const EMAILJS_PUBLIC_KEY = 'your_public_key_here';
-
-// Initialize EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY);
-
 export interface ContactFormData {
   firstName: string;
   lastName: string;
@@ -17,45 +7,53 @@ export interface ContactFormData {
   service?: string;
   budget?: string;
   phone?: string;
-  message: string;
+  message?: string;
 }
 
 export const sendContactEmail = async (formData: ContactFormData): Promise<boolean> => {
   try {
-    // For now, we'll use a simple mailto approach until EmailJS is properly configured
-    // In a production environment, you would configure EmailJS with proper credentials
-    
-    const emailBody = `
-New Lead from NextReach Website
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
 
-Name: ${formData.firstName} ${formData.lastName}
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to send email');
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Contact API Error:', error);
+    
+    // Fallback to mailto if API fails
+    console.warn('API failed, falling back to mailto');
+    const subject = encodeURIComponent(`New Lead from NextReach Website`);
+    const body = encodeURIComponent(
+      `Name: ${formData.firstName} ${formData.lastName}
 Email: ${formData.email}
 Business: ${formData.business}
 Location: ${formData.location}
 ${formData.service ? `Service: ${formData.service}` : ''}
 ${formData.budget ? `Budget: ${formData.budget}` : ''}
-${formData.phone ? `Phone: ${formData.phone}` : ''}
+${formData.phone ? `Phone: +91${formData.phone}` : ''}
 
-Message:
-${formData.message}
-    `;
-
-    // Create mailto link
-    const mailtoLink = `mailto:sales@nextreachstudio.com?subject=New Lead from NextReach Website&body=${encodeURIComponent(emailBody)}`;
+Message: ${formData.message || 'No message provided'}`
+    );
+    window.location.href = `mailto:admin@nextreachstudio.com?subject=${subject}&body=${body}`;
     
-    // Open email client
-    window.open(mailtoLink);
-    
-    return true;
-  } catch (error) {
-    console.error('Error sending email:', error);
     return false;
   }
 };
 
-// Alternative implementation using fetch to a form service like Formspree
+// Alternative implementation using Formspree (free form service)
 export const sendContactEmailViaFormspree = async (formData: ContactFormData): Promise<boolean> => {
   try {
+    // You can replace this with your actual Formspree form ID
     const response = await fetch('https://formspree.io/f/your_form_id', {
       method: 'POST',
       headers: {
@@ -65,7 +63,7 @@ export const sendContactEmailViaFormspree = async (formData: ContactFormData): P
         ...formData,
         _replyto: formData.email,
         _subject: 'New Lead from NextReach Website',
-        _to: 'sales@nextreachstudio.com'
+        _to: 'admin@nextreachstudio.com'
       }),
     });
 
@@ -76,6 +74,33 @@ export const sendContactEmailViaFormspree = async (formData: ContactFormData): P
     }
   } catch (error) {
     console.error('Error sending email via Formspree:', error);
+    return false;
+  }
+};
+
+// Alternative implementation using a simple API endpoint
+export const sendContactEmailViaAPI = async (formData: ContactFormData): Promise<boolean> => {
+  try {
+    // You can replace this with your actual API endpoint
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formData,
+        to: 'admin@nextreachstudio.com',
+        subject: 'New Lead from NextReach Website'
+      }),
+    });
+
+    if (response.ok) {
+      return true;
+    } else {
+      throw new Error('API submission failed');
+    }
+  } catch (error) {
+    console.error('Error sending email via API:', error);
     return false;
   }
 };

@@ -53,7 +53,7 @@ export const BUSINESS_INFO = {
   name: 'NextReach Studio',
   description: 'Professional web design and development agency specializing in modern, performance-optimized websites for businesses in Pune, Mumbai, and beyond.',
   url: 'https://nextreachstudio.com',
-  logo: 'https://nextreachstudio.com/logo.png',
+  logo: 'https://nextreachstudio.com/nextreach-logo.jpg',
   email: 'hello@nextreachstudio.com',
   phone: '+91-XXXXXXXXXX',
   address: {
@@ -100,7 +100,7 @@ export const DEFAULT_SEO: SEOMetadata = {
   openGraph: {
     title: 'NextReach Studio - Professional Web Design & Development',
     description: 'Premium web design and development services for businesses in Pune and Mumbai. Mobile-first, SEO-optimized websites that drive results.',
-    image: `${BUSINESS_INFO.url}/og-image.jpg`,
+    image: `${BUSINESS_INFO.url}/nextreach-logo.jpg`,
     imageAlt: 'NextReach Studio - Professional Web Design Agency',
     url: BUSINESS_INFO.url,
     type: 'business.business',
@@ -111,7 +111,7 @@ export const DEFAULT_SEO: SEOMetadata = {
     card: 'summary_large_image',
     title: 'NextReach Studio - Professional Web Design & Development',
     description: 'Premium web design and development services for businesses in Pune and Mumbai.',
-    image: `${BUSINESS_INFO.url}/twitter-card.jpg`,
+    image: `${BUSINESS_INFO.url}/nextreach-logo.jpg`,
     imageAlt: 'NextReach Studio - Professional Web Design Agency',
     site: '@nextreachstudio',
     creator: '@nextreachstudio'
@@ -160,6 +160,12 @@ export const PAGE_SEO: Record<string, Partial<SEOMetadata>> = {
     title: 'Privacy Policy - NextReach Studio',
     description: 'NextReach Studio privacy policy. Learn how we protect your personal information and data when you use our website and services.',
     keywords: ['privacy policy', 'data protection', 'nextreach studio privacy'],
+    robots: 'index, nofollow'
+  },
+  terms: {
+    title: 'Terms of Service - NextReach Studio',
+    description: 'NextReach Studio terms of service. Clear, transparent terms that protect both you and us in our business relationship.',
+    keywords: ['terms of service', 'terms and conditions', 'nextreach studio terms'],
     robots: 'index, nofollow'
   }
 };
@@ -223,7 +229,7 @@ function createOrganizationSchema(): StructuredData {
       }
     ],
     serviceType: BUSINESS_INFO.services,
-    foundingDate: '2024',
+    foundingDate: '2025',
     numberOfEmployees: '5-10'
   };
 }

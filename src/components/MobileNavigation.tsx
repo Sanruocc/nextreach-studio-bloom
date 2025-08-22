@@ -245,7 +245,7 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
                 transition={{ delay: 0.9 }}
                 className="text-xs text-muted-foreground"
               >
-                © 2024 NextReach Studio. All rights reserved.
+                © 2025 NextReach Studio. All rights reserved.
               </motion.p>
             </div>
           </motion.div>
