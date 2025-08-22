@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { initializeMotionConfig } from "@/lib/motion-config";
 import { LoadingProvider, useLoading } from "@/contexts/LoadingContext";
 import LoadingScreen from "@/components/LoadingScreen";
+import { Analytics } from "@vercel/analytics/react";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Pricing from "./pages/Pricing";
@@ -67,6 +68,7 @@ const App = () => {
           <Toaster />
           <Sonner />
           <AppContent />
+          <Analytics />
         </TooltipProvider>
       </LoadingProvider>
     </QueryClientProvider>
