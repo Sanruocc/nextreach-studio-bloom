@@ -11,9 +11,9 @@ interface LoadingScreenProps {
   timeoutDuration?: number;
 }
 
-export const LoadingScreen = ({ 
-  variant = 'initial', 
-  showProgress = true, 
+export const LoadingScreen = ({
+  variant = 'initial',
+  showProgress = true,
   customMessage,
   onComplete,
   isVisible = true,
@@ -40,7 +40,7 @@ export const LoadingScreen = ({
   const handleComplete = useCallback(() => {
     cleanupTimers();
     setIsAnimating(false);
-    
+
     // Allow fade out animation to complete
     const fadeOutTimer = setTimeout(() => {
       onComplete?.();
@@ -82,7 +82,7 @@ export const LoadingScreen = ({
         const { progress: targetProgress, duration } = stages[stage];
         const startProgress = stage === 0 ? 0 : stages[stage - 1].progress;
         const increment = (targetProgress - startProgress) / (duration / 50);
-        
+
         progressIntervalRef.current = setInterval(() => {
           setProgress(prev => {
             const newProgress = Math.min(prev + increment, targetProgress);
@@ -90,7 +90,7 @@ export const LoadingScreen = ({
               clearInterval(progressIntervalRef.current!);
               stage++;
               setLoadingStage(stage);
-              
+
               if (stage < stages.length) {
                 setTimeout(simulateProgress, 300);
               } else {
@@ -120,13 +120,13 @@ export const LoadingScreen = ({
     return () => {
       cleanupTimers();
     };
-  }, [isVisible, timeoutDuration, handleComplete, cleanupTimers]);
+  }, [isVisible, timeoutDuration, handleComplete, cleanupTimers, handleTimeout]);
 
   if (!isVisible && !isAnimating) return null;
 
   const getMessage = () => {
     if (customMessage) return customMessage;
-    
+
     switch (variant) {
       case 'initial':
         return 'Initializing NextReach Studio';
@@ -141,11 +141,11 @@ export const LoadingScreen = ({
 
   const getStageMessage = () => {
     const messages = [
-      "Preparing workspace...",
-      "Loading assets...",
-      "Optimizing performance...",
-      "Finalizing setup...",
-      "Ready to launch!"
+      "Preparing AI workspace...",
+      "Loading intelligent agents...",
+      "Optimizing automation....",
+      "Finalizing AI setup...",
+      "Ready to automate!"
     ];
     return messages[Math.min(loadingStage, messages.length - 1)];
   };
@@ -216,13 +216,13 @@ export const LoadingScreen = ({
             {/* Enhanced Logo Animation */}
             <motion.div
               initial={{ scale: 0.5, opacity: 0, rotate: -180 }}
-              animate={{ 
-                scale: 1, 
-                opacity: 1, 
+              animate={{
+                scale: 1,
+                opacity: 1,
                 rotate: 0,
               }}
-              transition={{ 
-                duration: 1.2, 
+              transition={{
+                duration: 1.2,
                 ease: [0.34, 1.56, 0.64, 1],
                 delay: 0.1
               }}
@@ -241,7 +241,7 @@ export const LoadingScreen = ({
                 }}
                 className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/30 to-green-500/30 blur-xl"
               />
-              
+
               {/* Logo Container */}
               <div className="relative w-28 h-28 md:w-36 md:h-36">
                 {/* Multi-layered rings */}
@@ -255,7 +255,7 @@ export const LoadingScreen = ({
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                   className="absolute inset-1 rounded-full border-2 border-transparent border-b-blue-400/40 border-l-green-400/40"
                 />
-                
+
                 {/* Inner Logo */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -266,8 +266,8 @@ export const LoadingScreen = ({
                     alt="NextReach Studio Logo"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ 
-                      duration: 0.8, 
+                    transition={{
+                      duration: 0.8,
                       delay: 0.5,
                       type: "spring",
                       stiffness: 150,
@@ -283,8 +283,8 @@ export const LoadingScreen = ({
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ 
-                duration: 0.8, 
+              transition={{
+                duration: 0.8,
                 delay: 0.6,
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
@@ -294,7 +294,7 @@ export const LoadingScreen = ({
                 NextReach Studio
               </h1>
               <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 font-light">
-                Professional Web Design & Development
+                Custom AI Agents & Automation
               </p>
             </motion.div>
 
@@ -302,14 +302,14 @@ export const LoadingScreen = ({
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 delay: 1.0
               }}
               className="text-center space-y-4"
             >
               {/* Stage Message */}
-              <motion.p 
+              <motion.p
                 key={loadingStage}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -317,7 +317,7 @@ export const LoadingScreen = ({
               >
                 {getStageMessage()}
               </motion.p>
-              
+
               {/* Enhanced Progress Bar */}
               {showProgress && (
                 <div className="w-72 md:w-96 space-y-2">
@@ -326,15 +326,15 @@ export const LoadingScreen = ({
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${progress}%` }}
-                      transition={{ 
-                        duration: 0.5, 
+                      transition={{
+                        duration: 0.5,
                         ease: "easeOut"
                       }}
                       className="absolute inset-0 bg-gradient-to-r from-blue-500 via-green-500 to-blue-500 rounded-full"
                     />
                     {/* Progress glow */}
                     <motion.div
-                      animate={{ 
+                      animate={{
                         opacity: progress === 100 ? [0, 1, 0] : 0,
                         scale: progress === 100 ? [1, 1.5, 1] : 1,
                       }}
