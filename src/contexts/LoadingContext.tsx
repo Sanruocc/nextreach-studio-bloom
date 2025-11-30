@@ -16,17 +16,17 @@ interface LoadingProviderProps {
   timeoutDuration?: number;
 }
 
-export const LoadingProvider = ({ 
-  children, 
+export const LoadingProvider = ({
+  children,
   initialLoadingDuration = 2500,
-  timeoutDuration = 6000 
+  timeoutDuration = 6000
 }: LoadingProviderProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [loadingMessage, setLoadingMessage] = useState('Loading NextReach Studio');
+  const [loadingMessage, setLoadingMessage] = useState('Loading AI Automation Studio...');
 
   useEffect(() => {
     console.log('LoadingProvider: Starting initialization');
-    
+
     // Simple timeout-based loading
     const loadingTimer = setTimeout(() => {
       console.log('LoadingProvider: Timer completed, hiding loading screen');
