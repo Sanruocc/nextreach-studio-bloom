@@ -1406,29 +1406,15 @@ const AIAgents = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Card className="border-0 shadow-xl hover:shadow-2xl transition-all overflow-hidden group h-full">
-                  {/* Image Placeholder with Gradient */}
+                  {/* Image */}
                   <div className="relative h-64 bg-gradient-to-br from-blue-400 via-cyan-500 to-blue-600 overflow-hidden">
-                    {/* Animated overlay */}
-                    <motion.div
-                      className="absolute inset-0 bg-white/10"
-                      animate={{
-                        backgroundPosition: ['0% 0%', '100% 100%'],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: 'reverse',
-                      }}
+                    <img
+                      src="/ai-appointment-booking.png"
+                      alt="AI Appointment Booking Agent Interface"
+                      className="w-full h-full object-cover"
                     />
-                    {/* Icon */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: 'spring', stiffness: 300 }}
-                      >
-                        <Calendar className="w-24 h-24 text-white/80" />
-                      </motion.div>
-                    </div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20" />
                     {/* "Demo" Badge */}
                     <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                       <span className="text-xs font-semibold text-white">DEMO AVAILABLE</span>
@@ -1461,27 +1447,15 @@ const AIAgents = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Card className="border-0 shadow-xl hover:shadow-2xl transition-all overflow-hidden group h-full">
-                  {/* Image Placeholder */}
+                  {/* Image */}
                   <div className="relative h-64 bg-gradient-to-br from-purple-400 via-pink-500 to-purple-600 overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-white/10"
-                      animate={{
-                        backgroundPosition: ['0% 0%', '100% 100%'],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        repeatType: 'reverse',
-                      }}
+                    <img
+                      src="/data-extraction-ai.png"
+                      alt="Data Extraction & Classification AI Interface"
+                      className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: -5 }}
-                        transition={{ type: 'spring', stiffness: 300 }}
-                      >
-                        <FileText className="w-24 h-24 text-white/80" />
-                      </motion.div>
-                    </div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20" />
                     <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                       <span className="text-xs font-semibold text-white">DEMO AVAILABLE</span>
                     </div>
@@ -1513,27 +1487,15 @@ const AIAgents = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Card className="border-0 shadow-xl hover:shadow-2xl transition-all overflow-hidden group h-full">
-                  {/* Image Placeholder */}
+                  {/* Image */}
                   <div className="relative h-64 bg-gradient-to-br from-green-400 via-emerald-500 to-green-600 overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-white/10"
-                      animate={{
-                        backgroundPosition: ['0% 0%', '100% 100%'],
-                      }}
-                      transition={{
-                        duration: 3.5,
-                        repeat: Infinity,
-                        repeatType: 'reverse',
-                      }}
+                    <img
+                      src="/customer-support-chatbot.png"
+                      alt="Customer Support Chatbot Interface"
+                      className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: 'spring', stiffness: 300 }}
-                      >
-                        <MessageCircle className="w-24 h-24 text-white/80" />
-                      </motion.div>
-                    </div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/20" />
                     <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                       <span className="text-xs font-semibold text-white">DEMO AVAILABLE</span>
                     </div>
@@ -1565,27 +1527,15 @@ const AIAgents = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Card className="border-0 shadow-xl hover:shadow-2xl transition-all overflow-hidden group h-full">
-                  {/* Image Placeholder */}
+                  {/* Image */}
                   <div className="relative h-64 bg-gradient-to-br from-orange-400 via-red-500 to-orange-600 overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-white/10"
-                      animate={{
-                        backgroundPosition: ['0% 0%', '100% 100%'],
-                      }}
-                      transition={{
-                        duration: 4.5,
-                        repeat: Infinity,
-                        repeatType: 'reverse',
-                      }}
+                    <img
+                      src="/lead-qualification-crm.png"
+                      alt="Lead Qualification CRM Interface"
+                      className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: -5 }}
-                        transition={{ type: 'spring', stiffness: 300 }}
-                      >
-                        <Target className="w-24 h-24 text-white/80" />
-                      </motion.div>
-                    </div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-500/20" />
                     <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                       <span className="text-xs font-semibold text-white">DEMO AVAILABLE</span>
                     </div>
@@ -1617,27 +1567,15 @@ const AIAgents = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <Card className="border-0 shadow-xl hover:shadow-2xl transition-all overflow-hidden group h-full">
-                  {/* Image Placeholder */}
+                  {/* Image */}
                   <div className="relative h-64 bg-gradient-to-br from-indigo-400 via-blue-500 to-indigo-600 overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-white/10"
-                      animate={{
-                        backgroundPosition: ['0% 0%', '100% 100%'],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: 'reverse',
-                      }}
+                    <img
+                      src="/operations-ai-assistant.png"
+                      alt="Operations AI Assistant Interface"
+                      className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: 'spring', stiffness: 300 }}
-                      >
-                        <Settings className="w-24 h-24 text-white/80" />
-                      </motion.div>
-                    </div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-blue-500/20" />
                     <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                       <span className="text-xs font-semibold text-white">DEMO AVAILABLE</span>
                     </div>
