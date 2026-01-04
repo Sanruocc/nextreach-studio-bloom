@@ -33,10 +33,22 @@ const AIAgents = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
+    // Track WhatsApp conversion
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17705589248/MVCLCJ39v9wbEIC01_pB',
+      'value': 1.0,
+      'currency': 'INR'
+    });
     window.open('https://wa.me/919876543210?text=Hi%20NextReach%2C%20I%20want%20to%20learn%20more%20about%20AI%20Agents', '_blank');
   };
 
   const handleEmailClick = () => {
+    // Track email conversion
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17705589248/MVCLCJ39v9wbEIC01_pB',
+      'value': 1.0,
+      'currency': 'INR'
+    });
     window.location.href = 'mailto:admin@nextreachstudio.com?subject=AI%20Agents%20Consultation';
   };
 
