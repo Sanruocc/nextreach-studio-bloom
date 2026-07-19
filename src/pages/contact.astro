@@ -6,8 +6,8 @@ import Prose from "@/components/Prose.astro";
 ---
 
 <Layout
-  title="Contact Us"
-  description="Contact NextReach Studio. Send feedback, report issues, suggest new tools, or ask questions about our AI developer tools and resources."
+  title="Contact Us — Project Inquiry & Pricing Quote"
+  description="Start a custom software project with NextReach Studio. Request a quote for web app development, business automation, MVPs, or AI integrations."
 >
   <Nav />
   <main class="container-page relative">
@@ -15,90 +15,156 @@ import Prose from "@/components/Prose.astro";
 
     <header class="header-page animate-fade-in-up">
       <p class="header-page-pretitle">Contact</p>
-      <h1 class="header-page-title">Get in touch</h1>
+      <h1 class="header-page-title">Tell us what you need built</h1>
       <p class="header-page-subtitle">
-        Questions, feedback, tool ideas, or something broken? We'd love to hear from you.
+        Have a workflow to automate, a custom portal to build, or an MVP to launch? Let us know your goals, and we'll reply with clear next steps and pricing estimates.
       </p>
     </header>
 
-    <div class="card-premium-flat mb-8">
-      <form action="https://formspree.io/f/example" method="POST" class="space-y-5">
-        <div>
-          <label for="name" class="form-label-premium">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            class="form-input-premium"
-            placeholder="Your name"
-          />
-        </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Contact Form -->
+      <div class="lg:col-span-2 card-premium-flat">
+        <form action="https://formspree.io/f/example" method="POST" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="form-label-premium">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="form-input-premium"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label for="company" class="form-label-premium">Company Name / Website</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="form-input-premium"
+                placeholder="e.g. Acme Trading"
+              />
+            </div>
+          </div>
 
-        <div>
-          <label for="email" class="form-label-premium">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            class="form-input-premium"
-            placeholder="you@example.com"
-          />
-        </div>
+          <div>
+            <label for="email" class="form-label-premium">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="form-input-premium"
+              placeholder="you@company.com"
+            />
+          </div>
 
-        <div>
-          <label for="subject" class="form-label-premium">Subject</label>
-          <select
-            id="subject"
-            name="subject"
-            class="form-select-premium"
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="project-type" class="form-label-premium">Project Type</label>
+              <select
+                id="project-type"
+                name="project_type"
+                required
+                class="form-select-premium"
+              >
+                <option value="" disabled selected>Select a project type</option>
+                <option value="web-app">Custom Web Application</option>
+                <option value="automation">Business Automation / Internal Tool</option>
+                <option value="mvp">MVP / Prototype Development</option>
+                <option value="ai-integration">AI Systems Integration</option>
+                <option value="other">Other Software Development</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="budget" class="form-label-premium">Estimated Budget (USD)</label>
+              <select
+                id="budget"
+                name="budget"
+                required
+                class="form-select-premium"
+              >
+                <option value="" disabled selected>Select a budget range</option>
+                <option value="under-1k">Under $1,000</option>
+                <option value="1k-3k">$1,000 - $3,000</option>
+                <option value="3k-5k">$3,000 - $5,000</option>
+                <option value="over-5k">$5,000+</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="form-label-premium">Project Details / Requirements</label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              required
+              class="form-textarea-premium"
+              placeholder="Describe what business challenge you want to solve, what database features you need, or what flow you have in mind..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn-premium-primary w-full sm:w-auto"
           >
-            <option value="" disabled selected>Select a topic</option>
-            <option value="feedback">Feedback or suggestion</option>
-            <option value="bug">Bug report</option>
-            <option value="tool-idea">Tool idea</option>
-            <option value="content">Content correction</option>
-            <option value="other">Other</option>
-          </select>
+            Send Inquiry
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-4 h-4">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Quick Contact Info -->
+      <div class="space-y-6">
+        <div class="card-premium">
+          <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 font-display">Direct Chat</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+            Need a fast reply or want to share details on chat? Message us directly on WhatsApp.
+          </p>
+          <a
+            href="https://wa.me/919822379976?text=Hi%2C%20I%20have%20a%20software%20project%20inquiry%20for%20NextReach%20Studio."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-premium-secondary flex items-center justify-center gap-2 w-full text-center"
+          >
+            <span>💬 Chat on WhatsApp</span>
+          </a>
         </div>
 
-        <div>
-          <label for="message" class="form-label-premium">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            required
-            class="form-textarea-premium"
-            placeholder="What's on your mind?"
-          ></textarea>
+        <div class="card-premium">
+          <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 font-display">Studio Details</h3>
+          <ul class="space-y-3.5 text-xs text-zinc-400">
+            <li class="flex gap-2">
+              <span class="text-amber-500">📍</span>
+              <span>Based in Pune, Maharashtra, India</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-500">✉️</span>
+              <a href="mailto:hello@nextreachstudio.com" class="hover:text-amber-400 transition-colors">hello@nextreachstudio.com</a>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-amber-500">📱</span>
+              <a href="tel:+919822379976" class="hover:text-amber-400 transition-colors">+91 98223 79976</a>
+            </li>
+          </ul>
         </div>
-
-        <button
-          type="submit"
-          class="btn-premium-primary"
-        >
-          Send message
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-4 h-4">
-            <line x1="22" y1="2" x2="11" y2="13"/>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-        </button>
-      </form>
+      </div>
     </div>
 
     <Prose>
-      <h2>Other ways to reach us</h2>
-      <ul>
-        <li><strong>Email:</strong> <a href="mailto:hello@nextreachstudio.com">hello@nextreachstudio.com</a></li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/sanruocc" target="_blank" rel="noopener noreferrer">github.com/sanruocc</a></li>
-      </ul>
-
-      <h2>Response time</h2>
-      <p>
-        We aim to respond to all inquiries within 48 hours during business days. For bug reports, we typically acknowledge within 24 hours.
-      </p>
+      <h2>What happens next?</h2>
+      <ol>
+        <li><strong>Discovery:</strong> We will review your inquiry details within 24–48 business hours.</li>
+        <li><strong>clarifying Questions:</strong> If we need more information about your database structure or external APIs, we'll reach out via email or WhatsApp.</li>
+        <li><strong>Fixed Proposal:</strong> We will provide a clean scope proposal including an exact, one-time project cost and timeline.</li>
+      </ol>
     </Prose>
   </main>
   <Footer />

@@ -13,11 +13,11 @@ const { name, description, href, tags = [], badge, icon } = Astro.props;
 
 <a
   href={href}
-  class="card-premium-accent group"
+  class="card-cyber-accent group"
 >
   <div class="flex items-start gap-4">
     {icon && (
-      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-800/80 border border-white/5 text-amber-400 text-lg transition-transform duration-300 group-hover:scale-110">
+      <div class="icon-glow-wrapper shrink-0 w-10 h-10 rounded-lg text-lg">
         {icon}
       </div>
     )}

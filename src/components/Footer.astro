@@ -5,46 +5,49 @@ const currentYear = new Date().getFullYear();
 <footer class="border-t border-zinc-800/60 mt-24 py-12 px-6 sm:px-8">
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10">
+      <!-- Agency Profile column -->
       <div class="col-span-2 sm:col-span-1">
         <a href="/" class="flex items-center gap-2 mb-3 group" aria-label="NextReach Studio">
           <img src="/logo.png" alt="" width="24" height="24" class="opacity-80 group-hover:opacity-100 transition-opacity" />
-          <span class="text-sm font-medium text-zinc-300 group-hover:text-white transition-colors">NextReach Studio</span>
+          <span class="text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors font-display">NextReach Studio</span>
         </a>
-        <p class="text-xs text-zinc-500 leading-relaxed max-w-[180px]">
-          Tools, guides, and resources for AI builders and indie hackers.
+        <p class="text-xs text-zinc-500 leading-relaxed max-w-[200px]">
+          Practical custom web apps, business automation, and MVPs for startups, local businesses, and SMEs. Founder-led and transparent.
         </p>
       </div>
 
+      <!-- Services column -->
       <div>
-        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Content</h3>
+        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Services</h3>
         <ul class="space-y-2">
-          <li><a href="/blog" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Blog</a></li>
-          <li><a href="/guides" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Guides</a></li>
-          <li><a href="/resources" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Resources</a></li>
+          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Web App Development</a></li>
+          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Business Automation</a></li>
+          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">MVP Development</a></li>
+          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">AI Systems Integration</a></li>
         </ul>
       </div>
 
+      <!-- Agency Pages column -->
       <div>
-        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Tools</h3>
+        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Studio</h3>
         <ul class="space-y-2">
-          <li><a href="/tools/ai-token-calculator" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Token Calculator</a></li>
-          <li><a href="/tools/context-window-calculator" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Context Window</a></li>
-          <li><a href="/tools/llm-cost-calculator" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Cost Calculator</a></li>
-          <li><a href="/tools/vram-estimator" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">VRAM Estimator</a></li>
-          <li><a href="/tools/prompt-formatter" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Prompt Formatter</a></li>
-          <li><a href="/tools" class="text-xs text-amber-500 hover:text-amber-300 transition-colors font-medium">All tools →</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Site</h3>
-        <ul class="space-y-2">
-          <li><a href="/about" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">About</a></li>
-          <li><a href="/contact" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Contact</a></li>
+          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Our Services</a></li>
+          <li><a href="/portfolio" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Portfolio</a></li>
+          <li><a href="/about" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">About the Studio</a></li>
+          <li><a href="/contact" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Contact / Inquiry</a></li>
           <li><a href="/privacy" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Privacy Policy</a></li>
-          <li><a href="/terms" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Terms &amp; Conditions</a></li>
-          <li><a href="/rss.xml" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">RSS Feed</a></li>
-          <li><a href="/sitemap-index.xml" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Sitemap</a></li>
+          <li><a href="/terms" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Terms</a></li>
+        </ul>
+      </div>
+
+      <!-- Subtle AI Resources column -->
+      <div>
+        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">AI Developer Hub</h3>
+        <ul class="space-y-2">
+          <li><a href="/tools" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Developer Tools</a></li>
+          <li><a href="/blog" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Blog Articles</a></li>
+          <li><a href="/guides" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Guides &amp; Tutorials</a></li>
+          <li><a href="/resources" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Curated Resources</a></li>
         </ul>
       </div>
     </div>
@@ -53,7 +56,11 @@ const currentYear = new Date().getFullYear();
 
     <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="text-xs text-zinc-600">&copy; {currentYear} NextReach Studio. All rights reserved.</p>
-      <p class="text-xs text-zinc-600">Built for AI builders, indie hackers &amp; developers.</p>
+      <div class="flex gap-4">
+        <a href="/rss.xml" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">RSS Feed</a>
+        <a href="/sitemap-index.xml" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Sitemap</a>
+      </div>
     </div>
   </div>
 </footer>
+

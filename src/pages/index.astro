@@ -2,261 +2,377 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
-import ToolCard from "@/components/ToolCard.astro";
-import ResourceCard from "@/components/ResourceCard.astro";
 import { getCollection } from "astro:content";
 
+// Fetch latest blog posts and guides to showcase technical depth subtly near footer
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
 const latestPosts = allPosts
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 
-let allGuides: any[] = [];
+let latestGuides: any[] = [];
 try {
   const guides = await getCollection("guides", ({ data }) => !data.draft);
-  allGuides = guides
+  latestGuides = guides
     .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
     .slice(0, 3);
 } catch {}
-
-const featuredTools = [
-  {
-    name: "AI Token Calculator",
-    description: "Count tokens for any model before sending a prompt. Supports Claude, GPT-4, Llama, and 20+ other models.",
-    href: "/tools/ai-token-calculator",
-    icon: "⚡",
-    badge: "Free",
-  },
-  {
-    name: "LLM Cost Calculator",
-    description: "Calculate the exact cost of your LLM API calls. Compare providers and find the cheapest option for your use case.",
-    href: "/tools/llm-cost-calculator",
-    icon: "💰",
-    badge: "Free",
-  },
-  {
-    name: "Context Window Calculator",
-    description: "Visualize how much context you have left. Plan your prompts around token limits without guessing.",
-    href: "/tools/context-window-calculator",
-    icon: "📐",
-    badge: "Free",
-  },
-  {
-    name: "VRAM Estimator",
-    description: "Estimate GPU memory requirements for running local LLMs. Know before you download if your GPU can handle it.",
-    href: "/tools/vram-estimator",
-    icon: "🖥️",
-    badge: "Free",
-  },
-  {
-    name: "Prompt Formatter",
-    description: "Format, clean, and convert prompts between different model formats. Supports ChatML, Llama, Mistral, and more.",
-    href: "/tools/prompt-formatter",
-    icon: "✏️",
-    badge: "Free",
-  },
-];
 ---
 
 <Layout
-  title="Tools & Resources for AI Builders"
-  description="Practical tools, guides, and resources for AI builders, Claude Code users, indie hackers, and full-stack developers building with LLMs."
+  title="Affordable Custom Web App & MVP Development"
+  description="NextReach Studio is a founder-led software studio building affordable custom web apps, business automation tools, MVPs, and AI integrations for startups and SMEs."
 >
   <Nav />
 
   <main>
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="container-hero relative overflow-hidden">
       <!-- Ambient Spotlight Glow Overlay -->
       <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12 w-[600px] h-[350px] bg-amber-400/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
 
       <div class="text-center animate-fade-in-up relative z-10">
-        <p class="text-xs uppercase tracking-[0.15em] text-amber-500/80 mb-5 font-semibold">
-          For AI builders, developers &amp; indie hackers
+        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-5 font-bold">
+          Founder-Led Software Studio
         </p>
-        <h1 class="text-hero text-white mb-6 font-display font-bold">
-          Build smarter with&nbsp;<br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 glow-text">practical AI tools</span>
+        <h1 class="text-hero text-white mb-6 font-display font-bold text-balance-wide">
+          Affordable custom software <br class="hidden sm:inline" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 glow-text">built for your business</span>
         </h1>
         <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-body">
-          Free calculators, honest guides, and no-fluff tutorials for developers
-          working with Claude, Gemini, local LLMs, and MCP.
+          We build high-quality web applications, internal tools, MVPs, and business automation workflows for startups, local businesses, and SMEs. Directly talk to developers, with no agency overhead or ballooning retainer fees.
         </p>
+        
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="/tools"
-            id="hero-tools-cta"
+            href="/contact"
+            id="hero-contact-cta"
             class="btn-premium-primary"
           >
-            Explore Tools
+            Get a Free Quote
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
           <a
-            href="/guides"
-            id="hero-guides-cta"
+            href="/portfolio"
+            id="hero-portfolio-cta"
             class="btn-premium-secondary"
           >
-            Read Guides
+            View Our Work
           </a>
+        </div>
+
+        <!-- Tech Stack Row -->
+        <div class="mt-16 pt-8 border-t border-zinc-900/60 max-w-3xl mx-auto">
+          <p class="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-semibold font-display">Core Technologies We Use</p>
+          <div class="flex flex-wrap justify-center gap-2 max-w-xl mx-auto">
+            <span class="badge-premium-neutral">Next.js / React</span>
+            <span class="badge-premium-neutral">Flutter (Mobile)</span>
+            <span class="badge-premium-neutral">Go (Golang)</span>
+            <span class="badge-premium-neutral">Python</span>
+            <span class="badge-premium-neutral">PostgreSQL</span>
+            <span class="badge-premium-neutral">Tailwind CSS</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Featured Tools -->
-    <section class="py-16 px-6 sm:px-8 max-w-7xl mx-auto" id="tools" aria-labelledby="tools-heading">
-      <div class="mb-10">
-        <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-2">Developer Tools</p>
-        <div class="flex items-end justify-between gap-4">
-          <h2 id="tools-heading" class="font-display font-semibold text-3xl sm:text-4xl text-white tracking-[-0.01em]">
-            Free AI calculators
-          </h2>
-          <a href="/tools" class="text-sm text-amber-500 hover:text-amber-400 transition-colors hidden sm:block shrink-0">
-            All tools →
-          </a>
+    <!-- Services Summary -->
+    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto" id="services" aria-labelledby="services-heading">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="text-xs uppercase tracking-[0.12em] text-amber-500 mb-2 font-bold font-display">Services</p>
+        <h2 id="services-heading" class="font-display font-bold text-3xl sm:text-4xl text-white tracking-[-0.01em]">
+          Practical software solutions for your operations
+        </h2>
+        <p class="text-zinc-400 text-sm mt-3 leading-relaxed">
+          No jargon, no bloated scope. Just clear, high-quality development mapped to your needs.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Web Apps -->
+        <div class="card-cyber">
+          <div class="icon-glow-wrapper mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white text-base leading-snug mb-2 font-display">Web Applications</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
+            Customer portals, SaaS dashboards, administrative panels, and secure web applications designed for efficiency.
+          </p>
         </div>
+
+        <!-- Business Automation -->
+        <div class="card-cyber">
+          <div class="icon-glow-wrapper mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white text-base leading-snug mb-2 font-display">Business Automation</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
+            Replacing manual data entry, syncing APIs, building internal tracking systems, and integrating your tools.
+          </p>
+        </div>
+
+        <!-- MVP Prototyping -->
+        <div class="card-cyber">
+          <div class="icon-glow-wrapper mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4.5 16.5c-1.5 1.26-2 3.38-2 3.38s2.12-.5 3.38-2c1.26-1.5 2.12-3.38 2.12-3.38s-2.12.5-3.38 2z"/>
+              <path d="M12 12L4.5 19.5"/>
+              <path d="M9 15l2 2"/>
+              <path d="M19 9c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5C15 2 21 2 21 2s0 6-2 7z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white text-base leading-snug mb-2 font-display">MVP Development</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
+            Quick, reliable product launches for founders and local businesses wanting to validate an idea in the market.
+          </p>
+        </div>
+
+        <!-- AI System Integration -->
+        <div class="card-cyber">
+          <div class="icon-glow-wrapper mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2"/>
+              <rect x="9" y="9" width="6" height="6" rx="1"/>
+              <line x1="9" y1="1" x2="9" y2="4"/>
+              <line x1="15" y1="1" x2="15" y2="4"/>
+              <line x1="9" y1="20" x2="9" y2="23"/>
+              <line x1="15" y1="20" x2="15" y2="23"/>
+              <line x1="20" y1="9" x2="23" y2="9"/>
+              <line x1="20" y1="15" x2="23" y2="15"/>
+              <line x1="1" y1="9" x2="4" y2="9"/>
+              <line x1="1" y1="15" x2="4" y2="15"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-white text-base leading-snug mb-2 font-display">AI System Integration</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
+            Adding intelligent search, LLM API logic, semantic categorization, and workflow assistance to your existing software.
+          </p>
+        </div>
+
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {featuredTools.map((tool) => (
-          <ToolCard
-            name={tool.name}
-            description={tool.description}
-            href={tool.href}
-            icon={tool.icon}
-            badge={tool.badge}
-          />
-        ))}
-      </div>
-
-      <div class="mt-6 text-center sm:hidden">
-        <a href="/tools" class="text-sm text-amber-500 hover:text-amber-400 transition-colors">
-          View all tools →
+      <div class="text-center mt-10">
+        <a href="/services" class="text-sm text-amber-500 hover:text-amber-400 transition-colors font-medium">
+          Read details on our services page &rarr;
         </a>
       </div>
     </section>
 
-    <!-- Latest Guides -->
-    {allGuides.length > 0 && (
-      <section class="py-16 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-800/60" id="guides" aria-labelledby="guides-heading">
-        <div class="mb-10">
-          <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-2">In-Depth Guides</p>
-          <div class="flex items-end justify-between gap-4">
-            <h2 id="guides-heading" class="font-display font-semibold text-3xl sm:text-4xl text-white tracking-[-0.01em]">
-              Latest guides
-            </h2>
-            <a href="/guides" class="text-sm text-amber-500 hover:text-amber-400 transition-colors hidden sm:block shrink-0">
-              All guides →
-            </a>
-          </div>
-        </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {allGuides.map((guide) => (
-          <a
-            href={`/guides/${guide.id}`}
-            class="card-premium-interactive group"
-          >
-            <div class="flex items-center gap-2 mb-3">
-              <span class={`badge-premium-${guide.data.difficulty === 'beginner' ? 'beginner' : guide.data.difficulty === 'advanced' ? 'advanced' : 'intermediate'}`}>
-                {guide.data.difficulty}
-              </span>
-              {guide.data.readingTime && (
-                <span class="text-xs text-zinc-500 font-medium">{guide.data.readingTime}</span>
-              )}
-            </div>
-            <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug mb-2 font-display">
-              {guide.data.title}
-            </h3>
-            <p class="text-xs text-zinc-400 leading-relaxed line-clamp-3 transition-colors group-hover:text-zinc-350">{guide.data.description}</p>
-          </a>
-        ))}
-      </div>
-      </section>
-    )}
-
-    <!-- Latest Blog Posts -->
-    <section class="py-16 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-800/60" id="blog" aria-labelledby="blog-heading">
-      <div class="mb-10">
-        <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-2">From the Blog</p>
-        <div class="flex items-end justify-between gap-4">
-          <h2 id="blog-heading" class="font-display font-semibold text-3xl sm:text-4xl text-white tracking-[-0.01em]">
-            Latest articles
+    <!-- Why NextReach Studio -->
+    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="why-us" aria-labelledby="why-heading">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <div class="lg:sticky lg:top-24">
+          <p class="text-xs uppercase tracking-[0.12em] text-amber-500 mb-2 font-bold font-display">Why Work With Us</p>
+          <h2 id="why-heading" class="font-display font-bold text-3xl text-white tracking-[-0.01em] mb-4">
+            Direct, reliable custom software
           </h2>
-          <a href="/blog" class="text-sm text-amber-500 hover:text-amber-400 transition-colors hidden sm:block shrink-0">
-            All articles →
-          </a>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+            We are built specifically for startups and small-to-medium enterprises that need solid engineering without paying for a bloated agency team.
+          </p>
+          <a href="/contact" class="btn-premium-primary inline-flex">Get in Touch</a>
         </div>
-      </div>
 
-      <div class="space-y-4">
-        {latestPosts.length === 0 ? (
-          <div class="card-premium-flat text-center">
-            <p class="text-zinc-500 text-sm">Articles coming soon.</p>
-          </div>
-        ) : (
-          latestPosts.map((post) => (
-            <a
-              href={`/blog/${post.id}`}
-              class="card-premium-interactive group flex flex-col sm:flex-row sm:items-start gap-4"
-            >
-              <div class="flex-1 min-w-0">
-                <div class="flex flex-wrap items-center gap-2 mb-2">
-                  <time datetime={post.data.pubDate.toISOString()} class="text-xs text-zinc-500">
-                    {post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                  </time>
-                  {post.data.tags.slice(0, 2).map((tag) => (
-                    <span class="badge-premium-neutral">{tag}</span>
-                  ))}
-                </div>
-                <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm sm:text-base leading-snug mb-2 font-display">
-                  {post.data.title}
-                </h3>
-                <p class="text-xs text-zinc-400 leading-relaxed line-clamp-2 transition-colors group-hover:text-zinc-300">{post.data.description}</p>
-              </div>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 shrink-0 text-zinc-700 group-hover:text-amber-400 transition-all duration-300 group-hover:translate-x-1 mt-1 hidden sm:block">
-                <path d="M9 18l6-6-6-6"/>
+        <div class="lg:col-span-2 space-y-6">
+          
+          <!-- Communication -->
+          <div class="card-cyber flex gap-5 items-start">
+            <div class="icon-glow-wrapper shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <polyline points="17 11 19 13 23 9"/>
               </svg>
-            </a>
-          ))
-        )}
-      </div>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold text-white font-display mb-1">Direct Founder Communication</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed font-body">
+                You work directly with the developers leading the project. No account managers, no game of telephone, and absolute clarity on what is technically feasible.
+              </p>
+            </div>
+          </div>
 
-      <div class="mt-6 text-center sm:hidden">
-        <a href="/blog" class="text-sm text-amber-500 hover:text-amber-400 transition-colors">
-          All articles →
-        </a>
+          <!-- Pricing -->
+          <div class="card-cyber flex gap-5 items-start">
+            <div class="icon-glow-wrapper shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold text-white font-display mb-1">One-Time Scoped Pricing</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed font-body">
+                We design projects with clear, fixed deliverables. You pay a clear one-time project cost based on scope. No open-ended hourly fees or unexpected invoices.
+              </p>
+            </div>
+          </div>
+
+          <!-- Speed -->
+          <div class="card-cyber flex gap-5 items-start">
+            <div class="icon-glow-wrapper shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold text-white font-display mb-1">Fast Delivery Sprints</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed font-body">
+                We work in streamlined sprints, launching early versions for real-world validation rather than spending months planning in a vacuum.
+              </p>
+            </div>
+          </div>
+
+          <!-- Engineering -->
+          <div class="card-cyber flex gap-5 items-start">
+            <div class="icon-glow-wrapper shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold text-white font-display mb-1">Practical Engineering</h3>
+              <p class="text-xs text-zinc-400 leading-relaxed font-body">
+                We focus on tools that work: secure databases, responsive designs, rapid loading times, and clean documentation for easy support.
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <!-- Resource Directory Teaser -->
-    <section class="py-16 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-800/60" id="resources" aria-labelledby="resources-heading">
-      <div class="mb-10">
-        <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-2">Resource Directory</p>
-        <div class="flex items-end justify-between gap-4">
-          <h2 id="resources-heading" class="font-display font-semibold text-3xl sm:text-4xl text-white tracking-[-0.01em]">
-            Curated resources
-          </h2>
-          <a href="/resources" class="text-sm text-amber-500 hover:text-amber-400 transition-colors hidden sm:block shrink-0">
-            All resources →
-          </a>
-        </div>
+    <!-- Process Timeline -->
+    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="process" aria-labelledby="process-heading">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="text-xs uppercase tracking-[0.12em] text-amber-500 mb-2 font-bold font-display">Workflow</p>
+        <h2 id="process-heading" class="font-display font-bold text-3xl text-white tracking-[-0.01em]">
+          Our Simple 5-Step Process
+        </h2>
+        <p class="text-zinc-400 text-sm mt-3">
+          We keep the process transparent and deliverables crystal clear at each step.
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <ResourceCard
-          title="LLM API Providers Directory"
-          description="Every major LLM provider compared — pricing, rate limits, context windows, and ideal use cases."
-          href="/resources/llm-api-providers-directory"
-          category="API Providers"
-        />
-        <ResourceCard
-          title="The AI Developer Tools Stack"
-          description="What serious AI builders actually use — curated tools, libraries, and services organized by category."
-          href="/resources/ai-developer-tools-stack"
-          category="Developer Tools"
-        />
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+        
+        <!-- Process step 1 -->
+        <div class="card-cyber relative">
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">1</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">DISCOVERY</span>
+          </div>
+          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Understanding Goals</h3>
+          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+            We discuss your business problem, current constraints, and required user flow.
+          </p>
+        </div>
+
+        <!-- Process step 2 -->
+        <div class="card-cyber relative">
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">2</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">PROPOSAL</span>
+          </div>
+          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Fixed Cost Blueprint</h3>
+          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+            We deliver a precise breakdown of features, project timeline, and a one-time fixed price.
+          </p>
+        </div>
+
+        <!-- Process step 3 -->
+        <div class="card-cyber relative">
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">3</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">DEVELOPMENT</span>
+          </div>
+          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Bi-Weekly Sprints</h3>
+          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+            We build the core system, providing regular screen share walk-throughs and staging links.
+          </p>
+        </div>
+
+        <!-- Process step 4 -->
+        <div class="card-cyber relative">
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">4</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">TESTING & QA</span>
+          </div>
+          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Refinement & Polish</h3>
+          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+            We verify functionality, database safety, screen responsiveness, and load times.
+          </p>
+        </div>
+
+        <!-- Process step 5 -->
+        <div class="card-cyber relative">
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">5</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">HANDOVER</span>
+          </div>
+          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Full Control</h3>
+          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+            We hand over code, databases, setup instructions, and provide a support period to fix any issues.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Subtle Developer Resources Hub (Showcases tech depth) -->
+    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="ai-dev-hub">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div>
+          <p class="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-2 font-semibold font-display">Open Source & Community</p>
+          <h2 class="font-display font-bold text-2xl text-white tracking-[-0.01em] mb-4">
+            Our Technical Depth
+          </h2>
+          <p class="text-zinc-400 text-xs leading-relaxed mb-6 font-body">
+            We don't just build client apps. We actively build browser calculators, open-source libraries, and publish guides for AI developers, Claude Code users, and MCP builders.
+          </p>
+          <a href="/tools" class="text-sm text-amber-500 hover:text-amber-400 transition-colors font-medium">
+            Explore our developer tools &rarr;
+          </a>
+        </div>
+
+        <div class="lg:col-span-2 space-y-4">
+          <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 font-display">Latest from our Blog &amp; Guides</h3>
+          
+          <div class="space-y-3">
+            {latestPosts.map((post) => (
+              <a href={`/blog/${post.id}`} class="card-cyber hover:border-amber-400/25 flex justify-between items-center py-3.5 px-5 group">
+                <div>
+                  <span class="text-[10px] text-zinc-500 mr-3 font-mono">{post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                  <span class="text-xs font-medium text-zinc-200 group-hover:text-amber-300 transition-colors font-display">{post.data.title}</span>
+                </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-zinc-700 group-hover:text-amber-400 transition-all duration-300 group-hover:translate-x-0.5">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </a>
+            ))}
+
+            {latestGuides.slice(0, 1).map((guide: any) => (
+              <a href={`/guides/${guide.id}`} class="card-cyber hover:border-amber-400/25 flex justify-between items-center py-3.5 px-5 group">
+                <div>
+                  <span class="badge-premium-neutral text-[9px] mr-3 uppercase font-mono">{guide.data.difficulty}</span>
+                  <span class="text-xs font-medium text-zinc-200 group-hover:text-amber-300 transition-colors font-display">{guide.data.title}</span>
+                </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-zinc-700 group-hover:text-amber-400 transition-all duration-300 group-hover:translate-x-0.5">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   </main>

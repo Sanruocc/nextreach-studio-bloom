@@ -858,3 +858,69 @@ details[open] > summary + * {
 .safe-bottom {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+
+/* Custom Cyber Cards & Icons System */
+.card-cyber {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.003) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.02);
+  padding: 1.75rem;
+  transition: all var(--duration-slow) var(--ease-spring);
+  overflow: hidden;
+  display: block;
+}
+
+.card-cyber:hover {
+  border-color: rgba(251, 191, 36, 0.25);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.008) 100%);
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(251, 191, 36, 0.08);
+}
+
+.card-cyber-accent {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.03) 0%, rgba(255, 255, 255, 0.003) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(251, 191, 36, 0.05);
+  padding: 1.75rem;
+  transition: all var(--duration-slow) var(--ease-spring);
+  overflow: hidden;
+  display: block;
+}
+
+.card-cyber-accent:hover {
+  border-color: rgba(251, 191, 36, 0.45);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.06) 0%, rgba(255, 255, 255, 0.008) 100%);
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), 0 0 50px rgba(251, 191, 36, 0.15);
+}
+
+.icon-glow-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(251, 191, 36, 0.06);
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.08);
+  color: #fbbf24;
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.card-cyber:hover .icon-glow-wrapper,
+.card-cyber-accent:hover .icon-glow-wrapper {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.35);
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.2);
+  transform: scale(1.08) rotate(3deg);
+}
+
