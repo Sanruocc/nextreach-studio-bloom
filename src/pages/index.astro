@@ -28,10 +28,11 @@ try {
   <main>
     <!-- Hero Section -->
     <section class="container-hero relative overflow-hidden">
-      <!-- Ambient Spotlight Glow Overlay -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12 w-[600px] h-[350px] bg-amber-400/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+      <!-- Ambient Moving Mesh Spotlights -->
+      <div class="absolute top-0 left-1/2 w-[700px] h-[400px] bg-amber-400/8 rounded-full blur-[130px] pointer-events-none -z-10 animate-mesh-1" aria-hidden="true"></div>
+      <div class="absolute top-12 left-[40%] w-[500px] h-[300px] bg-yellow-500/5 rounded-full blur-[110px] pointer-events-none -z-10 animate-mesh-2" aria-hidden="true"></div>
 
-      <div class="text-center animate-fade-in-up relative z-10">
+      <div class="text-center stagger-parent relative z-10">
         <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-5 font-bold">
           Founder-Led Software Studio
         </p>
@@ -50,7 +51,7 @@ try {
             class="btn-premium-primary"
           >
             Get a Free Quote
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
@@ -65,7 +66,7 @@ try {
 
         <!-- Tech Stack Row -->
         <div class="mt-16 pt-8 border-t border-zinc-900/60 max-w-3xl mx-auto">
-          <p class="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-semibold font-display">Core Technologies We Use</p>
+          <p class="text-xs uppercase tracking-[0.18em] text-zinc-500 mb-4 font-semibold font-display">Core Technologies We Use</p>
           <div class="flex flex-wrap justify-center gap-2 max-w-xl mx-auto">
             <span class="badge-premium-neutral">Next.js / React</span>
             <span class="badge-premium-neutral">Flutter (Mobile)</span>
@@ -81,16 +82,16 @@ try {
     <!-- Services Summary -->
     <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto" id="services" aria-labelledby="services-heading">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <p class="text-xs uppercase tracking-[0.12em] text-amber-500 mb-2 font-bold font-display">Services</p>
-        <h2 id="services-heading" class="font-display font-bold text-3xl sm:text-4xl text-white tracking-[-0.01em]">
+        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Services</p>
+        <h2 id="services-heading" class="text-heading font-display font-bold text-white">
           Practical software solutions for your operations
         </h2>
-        <p class="text-zinc-400 text-sm mt-3 leading-relaxed">
+        <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed">
           No jargon, no bloated scope. Just clear, high-quality development mapped to your needs.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-parent">
         
         <!-- Web Apps -->
         <div class="card-cyber">
@@ -101,8 +102,8 @@ try {
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
             </svg>
           </div>
-          <h3 class="font-semibold text-white text-base leading-snug mb-2 font-display">Web Applications</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-2 font-display">Web Applications</h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
             Customer portals, SaaS dashboards, administrative panels, and secure web applications designed for efficiency.
           </p>
         </div>
@@ -115,8 +116,8 @@ try {
               <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
             </svg>
           </div>
-          <h3 class="font-semibold text-white text-base leading-snug mb-2 font-display">Business Automation</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-2 font-display">Business Automation</h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
             Replacing manual data entry, syncing APIs, building internal tracking systems, and integrating your tools.
           </p>
         </div>
@@ -131,8 +132,8 @@ try {
               <path d="M19 9c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5C15 2 21 2 21 2s0 6-2 7z"/>
             </svg>
           </div>
-          <h3 class="font-semibold text-white text-base leading-snug mb-2 font-display">MVP Development</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-2 font-display">MVP Development</h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
             Quick, reliable product launches for founders and local businesses wanting to validate an idea in the market.
           </p>
         </div>
@@ -153,8 +154,8 @@ try {
               <line x1="1" y1="15" x2="4" y2="15"/>
             </svg>
           </div>
-          <h3 class="font-semibold text-white text-base leading-snug mb-2 font-display">AI System Integration</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-2 font-display">AI System Integration</h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
             Adding intelligent search, LLM API logic, semantic categorization, and workflow assistance to your existing software.
           </p>
         </div>
@@ -172,11 +173,11 @@ try {
     <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="why-us" aria-labelledby="why-heading">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
         <div class="lg:sticky lg:top-24">
-          <p class="text-xs uppercase tracking-[0.12em] text-amber-500 mb-2 font-bold font-display">Why Work With Us</p>
-          <h2 id="why-heading" class="font-display font-bold text-3xl text-white tracking-[-0.01em] mb-4">
+          <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Why Work With Us</p>
+          <h2 id="why-heading" class="text-heading font-display font-bold text-white mb-4">
             Direct, reliable custom software
           </h2>
-          <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 font-body">
             We are built specifically for startups and small-to-medium enterprises that need solid engineering without paying for a bloated agency team.
           </p>
           <a href="/contact" class="btn-premium-primary inline-flex">Get in Touch</a>
@@ -194,8 +195,8 @@ try {
               </svg>
             </div>
             <div>
-              <h3 class="text-base font-semibold text-white font-display mb-1">Direct Founder Communication</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed font-body">
+              <h3 class="text-base sm:text-lg font-semibold text-white font-display mb-1">Direct Founder Communication</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
                 You work directly with the developers leading the project. No account managers, no game of telephone, and absolute clarity on what is technically feasible.
               </p>
             </div>
@@ -210,8 +211,8 @@ try {
               </svg>
             </div>
             <div>
-              <h3 class="text-base font-semibold text-white font-display mb-1">One-Time Scoped Pricing</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed font-body">
+              <h3 class="text-base sm:text-lg font-semibold text-white font-display mb-1">One-Time Scoped Pricing</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
                 We design projects with clear, fixed deliverables. You pay a clear one-time project cost based on scope. No open-ended hourly fees or unexpected invoices.
               </p>
             </div>
@@ -225,8 +226,8 @@ try {
               </svg>
             </div>
             <div>
-              <h3 class="text-base font-semibold text-white font-display mb-1">Fast Delivery Sprints</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed font-body">
+              <h3 class="text-base sm:text-lg font-semibold text-white font-display mb-1">Fast Delivery Sprints</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
                 We work in streamlined sprints, launching early versions for real-world validation rather than spending months planning in a vacuum.
               </p>
             </div>
@@ -240,8 +241,8 @@ try {
               </svg>
             </div>
             <div>
-              <h3 class="text-base font-semibold text-white font-display mb-1">Practical Engineering</h3>
-              <p class="text-xs text-zinc-400 leading-relaxed font-body">
+              <h3 class="text-base sm:text-lg font-semibold text-white font-display mb-1">Practical Engineering</h3>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
                 We focus on tools that work: secure databases, responsive designs, rapid loading times, and clean documentation for easy support.
               </p>
             </div>
@@ -254,25 +255,25 @@ try {
     <!-- Process Timeline -->
     <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="process" aria-labelledby="process-heading">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <p class="text-xs uppercase tracking-[0.12em] text-amber-500 mb-2 font-bold font-display">Workflow</p>
-        <h2 id="process-heading" class="font-display font-bold text-3xl text-white tracking-[-0.01em]">
+        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Workflow</p>
+        <h2 id="process-heading" class="text-heading font-display font-bold text-white">
           Our Simple 5-Step Process
         </h2>
-        <p class="text-zinc-400 text-sm mt-3">
+        <p class="text-zinc-400 text-sm sm:text-base mt-3 font-body leading-relaxed">
           We keep the process transparent and deliverables crystal clear at each step.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative stagger-parent">
         
         <!-- Process step 1 -->
         <div class="card-cyber relative">
           <div class="flex items-center gap-2.5 mb-3.5">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">1</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">DISCOVERY</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">DISCOVERY</span>
           </div>
-          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Understanding Goals</h3>
-          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Understanding Goals</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
             We discuss your business problem, current constraints, and required user flow.
           </p>
         </div>
@@ -281,10 +282,10 @@ try {
         <div class="card-cyber relative">
           <div class="flex items-center gap-2.5 mb-3.5">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">2</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">PROPOSAL</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">PROPOSAL</span>
           </div>
-          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Fixed Cost Blueprint</h3>
-          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Fixed Cost Blueprint</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
             We deliver a precise breakdown of features, project timeline, and a one-time fixed price.
           </p>
         </div>
@@ -293,10 +294,10 @@ try {
         <div class="card-cyber relative">
           <div class="flex items-center gap-2.5 mb-3.5">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">3</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">DEVELOPMENT</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">DEVELOPMENT</span>
           </div>
-          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Bi-Weekly Sprints</h3>
-          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Bi-Weekly Sprints</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
             We build the core system, providing regular screen share walk-throughs and staging links.
           </p>
         </div>
@@ -305,10 +306,10 @@ try {
         <div class="card-cyber relative">
           <div class="flex items-center gap-2.5 mb-3.5">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">4</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">TESTING & QA</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">TESTING & QA</span>
           </div>
-          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Refinement & Polish</h3>
-          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Refinement & Polish</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
             We verify functionality, database safety, screen responsiveness, and load times.
           </p>
         </div>
@@ -317,10 +318,10 @@ try {
         <div class="card-cyber relative">
           <div class="flex items-center gap-2.5 mb-3.5">
             <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">5</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider font-display">HANDOVER</span>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">HANDOVER</span>
           </div>
-          <h3 class="font-semibold text-white text-sm mb-1.5 font-display">Full Control</h3>
-          <p class="text-[11px] text-zinc-400 leading-relaxed font-body">
+          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Full Control</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-body">
             We hand over code, databases, setup instructions, and provide a support period to fix any issues.
           </p>
         </div>
@@ -332,11 +333,11 @@ try {
     <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="ai-dev-hub">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div>
-          <p class="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-2 font-semibold font-display">Open Source & Community</p>
-          <h2 class="font-display font-bold text-2xl text-white tracking-[-0.01em] mb-4">
+          <p class="text-xs uppercase tracking-[0.18em] text-zinc-500 mb-2 font-semibold font-display">Open Source & Community</p>
+          <h2 class="text-heading font-display font-bold text-white mb-4">
             Our Technical Depth
           </h2>
-          <p class="text-zinc-400 text-xs leading-relaxed mb-6 font-body">
+          <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6 font-body">
             We don't just build client apps. We actively build browser calculators, open-source libraries, and publish guides for AI developers, Claude Code users, and MCP builders.
           </p>
           <a href="/tools" class="text-sm text-amber-500 hover:text-amber-400 transition-colors font-medium">

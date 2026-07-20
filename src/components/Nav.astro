@@ -33,10 +33,10 @@ const isResourcesActive = resourceLinks.some(
           <li>
             <a
               href={href}
-              class={`px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 font-medium ${
+              class={`px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium border ${
                 isActive
-                  ? "text-white bg-white/5"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                  ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
+                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
               }`}
             >
               {label}
@@ -48,10 +48,10 @@ const isResourcesActive = resourceLinks.some(
       <!-- Resources Dropdown -->
       <li class="relative group">
         <button
-          class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 font-medium cursor-pointer ${
+          class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isResourcesActive
-              ? "text-white bg-white/5"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+              ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
+              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
           }`}
           aria-expanded="false"
           aria-haspopup="true"
@@ -85,10 +85,10 @@ const isResourcesActive = resourceLinks.some(
       <li>
         <a
           href="/contact"
-          class={`px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 font-medium ${
+          class={`px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium border ${
             currentPath === "/contact"
-              ? "text-white bg-white/5"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+              ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
+              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
           }`}
         >
           Contact
