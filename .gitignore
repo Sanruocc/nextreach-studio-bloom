@@ -38,3 +38,4 @@ Thumbs.db
 remotion/node_modules/
 remotion/dist/
 remotion/out/
+.vercel

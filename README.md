@@ -1,15 +1,15 @@
-# NextReach Studio Bloom
+# NextReach Studio
 
 NextReach Studio's site — interactive AI/LLM developer tools, guides, blog posts, and a curated resource directory.
 
-Built with **Astro 5**, **React 18**, **Tailwind CSS v3**, and **Supabase**.
+Built with **Astro 6**, **React 19**, **Tailwind CSS v4**, and **Supabase**.
 
 ## Tech stack
 
 | Layer | Choice |
 |---|---|
 | Framework | Astro (static output via `@astrojs/vercel`) |
-| UI | React 18, Tailwind CSS v3, `@tailwindcss/typography` |
+| UI | React 19, Tailwind CSS v4, `@tailwindcss/typography` |
 | Content | MDX via `@astrojs/mdx`, Astro content collections |
 | Chat API | Cerebras (`llama3.1-8b`) via serverless function |
 | Embeddable widget | Vanilla JS IIFE at `/widget.js` |

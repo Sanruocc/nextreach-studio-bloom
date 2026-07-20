@@ -3,7 +3,8 @@ const CACHE_NAME = 'nextreach-studio-v1';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',
-  '/placeholder.svg',
+  '/icon-192.svg',
+  '/icon-512.svg',
   '/robots.txt'
 ];
 
@@ -95,8 +96,8 @@ self.addEventListener('push', (event) => {
   const data = event.data?.json() || {};
   const options = {
     body: data.body || 'New notification from NextReach Studio',
-    icon: '/placeholder.svg',
-    badge: '/placeholder.svg',
+    icon: '/icon-192.svg',
+    badge: '/icon-192.svg',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),

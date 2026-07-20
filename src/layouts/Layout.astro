@@ -28,6 +28,19 @@ const siteTitle = title ? `${title} | NextReach Studio` : "NextReach Studio — 
 const siteDescription = description || "Practical tools, guides, and resources for AI builders, Claude Code users, indie hackers, and full-stack developers building with LLMs.";
 const ogImage = image ? (image.startsWith("http") ? image : `${siteURL}${image}`) : `${siteURL}/link-previews.png`;
 const canonical = canonicalURL || Astro.url.href;
+
+const breadcrumbItems = (() => {
+  const path = Astro.url.pathname.replace(/\/+$/, "") || "/";
+  const segments = path.split("/").filter(Boolean);
+  const items = [{ name: "Home", path: "/" }];
+  let current = "";
+  for (const seg of segments) {
+    current += "/" + seg;
+    const label = seg.replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    items.push({ name: label, path: current });
+  }
+  return items;
+})();
 ---
 
 <!doctype html>
@@ -45,9 +58,12 @@ const canonical = canonicalURL || Astro.url.href;
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" media="all" />
 
-    <!-- Icons -->
+    <!-- Icons & PWA -->
     <link rel="icon" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#121316" />
+    <meta name="robots" content="index, follow" />
 
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="NextReach Studio Blog" href="/rss.xml" />
@@ -77,6 +93,8 @@ const canonical = canonicalURL || Astro.url.href;
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={siteDescription} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:site" content="@nextreachstudio" />
+    <meta name="twitter:creator" content="@nextreachstudio" />
 
     <!-- Article-specific meta -->
     {type === "article" && pubDate && (
@@ -89,9 +107,38 @@ const canonical = canonicalURL || Astro.url.href;
       <meta property="article:tag" content={tag} />
     ))}
 
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbItems.map((item, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": item.name,
+        "item": `${siteURL}${item.path}`,
+      })),
+    })} />
+
     <!-- Security Headers (meta tags for docs/guidance; X-Frame-Options must be set via server header) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "NextReach Studio",
+      "url": siteURL,
+      "description": siteDescription,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${siteURL}/?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    })} />
 
     <!-- Structured Data: Organization -->
     <script type="application/ld+json" set:html={JSON.stringify({
