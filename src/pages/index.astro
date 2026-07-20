@@ -4,7 +4,6 @@ import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 import { getCollection } from "astro:content";
 
-// Fetch latest blog posts and guides to showcase technical depth subtly near footer
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
 const latestPosts = allPosts
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
@@ -20,316 +19,530 @@ try {
 ---
 
 <Layout
-  title="Affordable Custom Web App & MVP Development"
-  description="NextReach Studio is a founder-led software studio building affordable custom web apps, business automation tools, MVPs, and AI integrations for startups and SMEs."
+  title="Custom Web App & MVP Development Studio"
+  description="NextReach Studio builds production-ready web applications, AI automation systems, and internal tools under fixed-scope contracts. Direct senior developer access. Zero agency overhead."
 >
   <Nav />
 
   <main>
-    <!-- Hero Section -->
+    <!-- ==================== HERO ==================== -->
     <section class="container-hero relative overflow-hidden">
-      <!-- Ambient Moving Mesh Spotlights -->
       <div class="absolute top-0 left-1/2 w-[700px] h-[400px] bg-amber-400/8 rounded-full blur-[130px] pointer-events-none -z-10 animate-mesh-1" aria-hidden="true"></div>
       <div class="absolute top-12 left-[40%] w-[500px] h-[300px] bg-yellow-500/5 rounded-full blur-[110px] pointer-events-none -z-10 animate-mesh-2" aria-hidden="true"></div>
 
-      <div class="text-center stagger-parent relative z-10">
-        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-5 font-bold">
-          Founder-Led Software Studio
+      <div class="text-center relative z-10 mb-14 stagger-parent">
+        <p class="badge-premium-accent text-[10px] font-bold px-3 py-1 inline-flex mb-5">
+          Senior-Engineered Software Studio
         </p>
         <h1 class="text-hero text-white mb-6 font-display font-bold text-balance-wide">
-          Affordable custom software <br class="hidden sm:inline" />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 glow-text">built for your business</span>
+          Custom web apps, AI workflows, and internal tools —<br class="hidden sm:inline" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 glow-text">shipped in weeks, not quarters.</span>
         </h1>
         <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-body">
-          We build high-quality web applications, internal tools, MVPs, and business automation workflows for startups, local businesses, and SMEs. Directly talk to developers, with no agency overhead or ballooning retainer fees.
+          We build production-ready web applications, AI automation systems, and internal operational tools under fixed-scope contracts. Direct senior developer access. Zero agency overhead. Rapid sprint delivery.
         </p>
-        
+
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="/contact"
-            id="hero-contact-cta"
-            class="btn-premium-primary"
-          >
-            Get a Free Quote
+          <a href="/contact" class="btn-premium-primary">
+            Schedule a Technical Discovery Call
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
-          <a
-            href="/portfolio"
-            id="hero-portfolio-cta"
-            class="btn-premium-secondary"
-          >
-            View Our Work
+          <a href="/portfolio" class="btn-premium-secondary">
+            Explore Our Work & Stack
           </a>
         </div>
 
-        <!-- Tech Stack Row -->
-        <div class="mt-16 pt-8 border-t border-zinc-900/60 max-w-3xl mx-auto">
-          <p class="text-xs uppercase tracking-[0.18em] text-zinc-500 mb-4 font-semibold font-display">Core Technologies We Use</p>
-          <div class="flex flex-wrap justify-center gap-2 max-w-xl mx-auto">
-            <span class="badge-premium-neutral">Next.js / React</span>
-            <span class="badge-premium-neutral">Flutter (Mobile)</span>
-            <span class="badge-premium-neutral">Go (Golang)</span>
-            <span class="badge-premium-neutral">Python</span>
-            <span class="badge-premium-neutral">PostgreSQL</span>
-            <span class="badge-premium-neutral">Tailwind CSS</span>
+        <!-- Trust Bar -->
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-left">
+          <div class="dashboard-panel p-3.5">
+            <p class="text-xs font-semibold text-amber-400 font-display mb-0.5">Senior Developer Led</p>
+            <p class="text-[11px] text-zinc-500 leading-relaxed">Every project built directly by a senior engineer. No junior padding, no account manager handoffs.</p>
+          </div>
+          <div class="dashboard-panel p-3.5">
+            <p class="text-xs font-semibold text-amber-400 font-display mb-0.5">Fixed-Scope Clarity</p>
+            <p class="text-[11px] text-zinc-500 leading-relaxed">Precise, itemized proposal before work begins. Pay the agreed amount — never a dollar more.</p>
+          </div>
+          <div class="dashboard-panel p-3.5">
+            <p class="text-xs font-semibold text-amber-400 font-display mb-0.5">Rapid Sprint Execution</p>
+            <p class="text-[11px] text-zinc-500 leading-relaxed">Bi-weekly delivery sprints with staging previews. Production-ready code, not half-baked demos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Dashboard Frame -->
+      <div class="glass-dashboard relative p-4 sm:p-6 max-w-5xl mx-auto">
+        <div class="grid grid-cols-[auto_1fr_auto] gap-3 sm:gap-4">
+          <!-- Sidebar Nav -->
+          <div class="dashboard-panel p-2.5 w-14 sm:w-16 flex flex-col items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+              <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center opacity-60">
+              <svg class="w-3.5 h-3.5 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center opacity-60">
+              <svg class="w-3.5 h-3.5 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06"/></svg>
+            </div>
+          </div>
+
+          <!-- Main Analytics View -->
+          <div class="dashboard-panel p-3 sm:p-4 space-y-3 sm:space-y-4 min-w-0">
+            <!-- Metric Cards Row -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+              <div class="dashboard-stat-card">
+                <p class="text-[10px] text-zinc-500 font-mono mb-0.5">Active Users</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-base sm:text-lg font-bold text-white font-mono tracking-tight">2,847</span>
+                  <span class="text-[10px] text-emerald-400 font-mono">▲ 12%</span>
+                </div>
+              </div>
+              <div class="dashboard-stat-card">
+                <p class="text-[10px] text-zinc-500 font-mono mb-0.5">Monthly Revenue</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-base sm:text-lg font-bold text-white font-mono tracking-tight">$48.2k</span>
+                  <span class="text-[10px] text-emerald-400 font-mono">▲ 8.3%</span>
+                </div>
+              </div>
+              <div class="dashboard-stat-card">
+                <p class="text-[10px] text-zinc-500 font-mono mb-0.5">Active Projects</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-base sm:text-lg font-bold text-white font-mono tracking-tight">14</span>
+                  <span class="text-[10px] text-amber-400 font-mono">● 3 in dev</span>
+                </div>
+              </div>
+              <div class="dashboard-stat-card">
+                <p class="text-[10px] text-zinc-500 font-mono mb-0.5">Uptime SLA</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-base sm:text-lg font-bold text-white font-mono tracking-tight">99.97%</span>
+                  <span class="text-[10px] text-emerald-400 font-mono">● Live</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Line Chart -->
+            <div class="dashboard-panel p-3">
+              <div class="flex items-center justify-between mb-2.5">
+                <span class="text-[10px] text-zinc-400 font-semibold font-display">Platform Growth</span>
+                <div class="flex gap-2">
+                  <span class="text-[9px] text-zinc-600 font-mono">6mo</span>
+                  <span class="text-[9px] text-zinc-500 font-mono">3mo</span>
+                  <span class="text-[9px] text-zinc-500 font-mono">1mo</span>
+                </div>
+              </div>
+              <svg viewBox="0 0 300 64" class="w-full h-12 sm:h-16" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.01"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,56 Q15,52 30,54 Q45,56 60,40 Q75,24 90,30 Q105,36 120,24 Q135,12 150,18 Q165,24 180,14 Q195,6 210,10 Q225,14 240,8 Q255,2 270,12 Q285,22 300,16 L300,64 L0,64 Z" fill="url(#chartFill)"/>
+                <path d="M0,56 Q15,52 30,54 Q45,56 60,40 Q75,24 90,30 Q105,36 120,24 Q135,12 150,18 Q165,24 180,14 Q195,6 210,10 Q225,14 240,8 Q255,2 270,12 Q285,22 300,16" stroke="#fbbf24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="240" cy="8" r="3" fill="#fbbf24" stroke="#0a0a0a" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Activity Feed -->
+          <div class="dashboard-panel p-2.5 sm:p-3 w-28 sm:w-32 space-y-2.5">
+            <p class="text-[9px] text-zinc-500 font-semibold font-display uppercase tracking-wider">Activity</p>
+            <div class="space-y-2">
+              <div class="flex items-start gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0"></span>
+                <div class="min-w-0">
+                  <p class="text-[9px] text-zinc-400 truncate">Deploy complete</p>
+                  <p class="text-[8px] text-zinc-600 font-mono">2m ago</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1 shrink-0"></span>
+                <div class="min-w-0">
+                  <p class="text-[9px] text-zinc-400 truncate">Build running</p>
+                  <p class="text-[8px] text-zinc-600 font-mono">14m ago</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-zinc-500 mt-1 shrink-0"></span>
+                <div class="min-w-0">
+                  <p class="text-[9px] text-zinc-400 truncate">Review pending</p>
+                  <p class="text-[8px] text-zinc-600 font-mono">1h ago</p>
+                </div>
+              </div>
+            </div>
+            <div class="pt-1.5 border-t border-white/5">
+              <span class="status-pill status-pill--live text-[8px]">
+                <span class="w-1 h-1 rounded-full bg-emerald-400 inline-block"></span>
+                All systems nominal
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services Summary -->
+    <!-- ==================== SERVICES BENTO GRID ==================== -->
     <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto" id="services" aria-labelledby="services-heading">
-      <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="text-center max-w-3xl mx-auto mb-16 stagger-parent">
         <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Services</p>
         <h2 id="services-heading" class="text-heading font-display font-bold text-white">
-          Practical software solutions for your operations
+          Enterprise engineering discipline.<br />Startup speed and pricing.
         </h2>
-        <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed">
-          No jargon, no bloated scope. Just clear, high-quality development mapped to your needs.
+        <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed font-body">
+          No jargon, no bloated scope. Clear, high-quality development mapped to your needs.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-parent">
-        
-        <!-- Web Apps -->
-        <div class="card-cyber">
-          <div class="icon-glow-wrapper mb-4">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-parent">
+
+        <!-- Card 1: Web Applications -->
+        <div class="card-cyber flex flex-col gap-4 h-full">
+          <div class="flex items-start justify-between">
+            <div class="icon-glow-wrapper">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <span class="status-pill status-pill--live text-[9px]">● Active</span>
           </div>
-          <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-2 font-display">Web Applications</h3>
-          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-            Customer portals, SaaS dashboards, administrative panels, and secure web applications designed for efficiency.
-          </p>
+          <div>
+            <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-1.5 font-display">Web Applications &amp; SaaS Portals</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
+              Customer portals, SaaS dashboards, and admin panels — purpose-built for how your business actually runs.
+            </p>
+          </div>
+          <!-- Micro-widget: Analytics Bar Chart -->
+          <div class="dashboard-panel p-3 mt-auto">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-[9px] text-zinc-500 font-mono">Users</span>
+              <span class="text-[11px] text-zinc-200 font-semibold font-mono">2,847</span>
+              <span class="text-[9px] text-emerald-400 font-mono">▲ 23%</span>
+            </div>
+            <svg viewBox="0 0 180 24" class="w-full h-6">
+              <defs><linearGradient id="barGrad1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbbf24" stop-opacity="0.8"/><stop offset="100%" stop-color="#fbbf24" stop-opacity="0.05"/></linearGradient></defs>
+              <path d="M0,20 Q9,18 18,20 Q27,22 36,14 Q45,6 54,10 Q63,14 72,8 Q81,3 90,6 Q99,9 108,4 Q117,1 126,6 Q135,11 144,8 Q153,5 162,9 Q171,13 180,10 L180,24 L0,24 Z" fill="url(#barGrad1)"/>
+              <path d="M0,20 Q9,18 18,20 Q27,22 36,14 Q45,6 54,10 Q63,14 72,8 Q81,3 90,6 Q99,9 108,4 Q117,1 126,6 Q135,11 144,8 Q153,5 162,9 Q171,13 180,10" stroke="#fbbf24" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="flex gap-2 mt-1.5">
+              <span class="status-pill status-pill--live">● Live</span>
+              <span class="status-pill status-pill--idle">● Idle</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Business Automation -->
-        <div class="card-cyber">
-          <div class="icon-glow-wrapper mb-4">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        <!-- Card 2: AI Automations -->
+        <div class="card-cyber flex flex-col gap-4 h-full">
+          <div class="flex items-start justify-between">
+            <div class="icon-glow-wrapper">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <span class="status-pill status-pill--processing text-[9px]">● Processing</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-1.5 font-display">Business &amp; AI Automations</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
+              Eliminate manual data entry. Custom API syncers, document processors, and LLM-powered workflow agents that talk to your existing tools.
+            </p>
+          </div>
+          <!-- Micro-widget: Node Workflow -->
+          <div class="dashboard-panel p-3 mt-auto">
+            <svg viewBox="0 0 200 48" class="w-full h-10">
+              <line x1="28" y1="24" x2="72" y2="24" stroke="rgba(255,255,255,0.06)" stroke-width="2" stroke-dasharray="4 4"/>
+              <line x1="72" y1="24" x2="128" y2="24" stroke="#fbbf24" stroke-width="2" stroke-opacity="0.3"/>
+              <line x1="128" y1="24" x2="172" y2="24" stroke="rgba(255,255,255,0.06)" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect x="4" y="12" width="48" height="24" rx="8" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+              <text x="28" y="28" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace" font-weight="600">INPUT</text>
+              <circle cx="100" cy="24" r="14" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1.5"/>
+              <circle cx="100" cy="24" r="20" fill="#fbbf24" opacity="0.06"><animate attributeName="r" values="14;20;14" dur="2s" repeatCount="indefinite"/></circle>
+              <text x="100" y="28" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace" font-weight="600">LLM</text>
+              <rect x="148" y="12" width="48" height="24" rx="8" fill="rgba(52,211,153,0.06)" stroke="rgba(52,211,153,0.2)" stroke-width="1"/>
+              <text x="172" y="28" text-anchor="middle" fill="#34d399" font-size="8" font-family="monospace" font-weight="600">OUTPUT</text>
             </svg>
           </div>
-          <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-2 font-display">Business Automation</h3>
-          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-            Replacing manual data entry, syncing APIs, building internal tracking systems, and integrating your tools.
-          </p>
         </div>
 
-        <!-- MVP Prototyping -->
-        <div class="card-cyber">
-          <div class="icon-glow-wrapper mb-4">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4.5 16.5c-1.5 1.26-2 3.38-2 3.38s2.12-.5 3.38-2c1.26-1.5 2.12-3.38 2.12-3.38s-2.12.5-3.38 2z"/>
-              <path d="M12 12L4.5 19.5"/>
-              <path d="M9 15l2 2"/>
-              <path d="M19 9c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5C15 2 21 2 21 2s0 6-2 7z"/>
-            </svg>
+        <!-- Card 3: MVP -->
+        <div class="card-cyber flex flex-col gap-4 h-full">
+          <div class="flex items-start justify-between">
+            <div class="icon-glow-wrapper">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 3.38-2 3.38s2.12-.5 3.38-2c1.26-1.5 2.12-3.38 2.12-3.38s-2.12.5-3.38 2z"/><path d="M12 12L4.5 19.5"/><path d="M9 15l2 2"/><path d="M19 9c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5C15 2 21 2 21 2s0 6-2 7z"/></svg>
+            </div>
+            <span class="status-pill status-pill--live text-[9px]">● Traction</span>
           </div>
-          <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-2 font-display">MVP Development</h3>
-          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-            Quick, reliable product launches for founders and local businesses wanting to validate an idea in the market.
-          </p>
+          <div>
+            <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-1.5 font-display">Rapid MVP Engineering</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
+              Validate your idea with a functional, real-user-ready application — not a click-through prototype. Stripe billing, auth, and database included.
+            </p>
+          </div>
+          <!-- Micro-widget: Growth Metrics -->
+          <div class="dashboard-panel p-3 mt-auto space-y-2">
+            <div class="space-y-1">
+              <div class="flex justify-between text-[9px]"><span class="text-zinc-500">MoM Growth</span><span class="text-emerald-400 font-mono">42%</span></div>
+              <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                <div class="h-full w-[42%] rounded-full bg-gradient-to-r from-amber-400 to-yellow-400"></div>
+              </div>
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between text-[9px]"><span class="text-zinc-500">Active Users</span><span class="text-zinc-300 font-mono">847</span></div>
+              <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                <div class="h-full w-[68%] rounded-full bg-gradient-to-r from-amber-400 to-yellow-400"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center pt-0.5">
+              <span class="text-[7px] text-zinc-600 font-mono">Starting</span>
+              <div class="flex items-center flex-1 mx-1">
+                <div class="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.5)]"></div>
+                <div class="flex-1 h-px bg-white/5"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/10"></div>
+                <div class="flex-1 h-px bg-white/5"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-white/10"></div>
+              </div>
+              <span class="text-[7px] text-zinc-600 font-mono">Scale</span>
+            </div>
+          </div>
         </div>
 
-        <!-- AI System Integration -->
-        <div class="card-cyber">
-          <div class="icon-glow-wrapper mb-4">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="4" width="16" height="16" rx="2"/>
-              <rect x="9" y="9" width="6" height="6" rx="1"/>
-              <line x1="9" y1="1" x2="9" y2="4"/>
-              <line x1="15" y1="1" x2="15" y2="4"/>
-              <line x1="9" y1="20" x2="9" y2="23"/>
-              <line x1="15" y1="20" x2="15" y2="23"/>
-              <line x1="20" y1="9" x2="23" y2="9"/>
-              <line x1="20" y1="15" x2="23" y2="15"/>
-              <line x1="1" y1="9" x2="4" y2="9"/>
-              <line x1="1" y1="15" x2="4" y2="15"/>
-            </svg>
+        <!-- Card 4: Integrations -->
+        <div class="card-cyber flex flex-col gap-4 h-full">
+          <div class="flex items-start justify-between">
+            <div class="icon-glow-wrapper">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>
+            </div>
+            <span class="status-pill status-pill--live text-[9px]">● 99.97% uptime</span>
           </div>
-          <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-2 font-display">AI System Integration</h3>
-          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-            Adding intelligent search, LLM API logic, semantic categorization, and workflow assistance to your existing software.
-          </p>
+          <div>
+            <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-1.5 font-display">Systems Integration &amp; Custom APIs</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
+              Connect your stack. Sync siloed platforms, build internal APIs, automate data flow between legacy systems and modern interfaces.
+            </p>
+          </div>
+          <!-- Micro-widget: API Flow -->
+          <div class="dashboard-panel p-3 mt-auto space-y-2">
+            <svg viewBox="0 0 200 28" class="w-full h-7">
+              <rect x="2" y="4" width="36" height="20" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <text x="20" y="17" text-anchor="middle" fill="#d4d4d8" font-size="7" font-family="monospace">APP</text>
+              <line x1="38" y1="14" x2="80" y2="14" stroke="rgba(251,191,36,0.3)" stroke-width="1.5"/>
+              <polygon points="80,10 84,14 80,18" fill="rgba(251,191,36,0.3)"/>
+              <rect x="84" y="2" width="42" height="24" rx="20" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+              <text x="105" y="17" text-anchor="middle" fill="#fbbf24" font-size="6" font-family="monospace">POST</text>
+              <line x1="126" y1="14" x2="162" y2="14" stroke="rgba(52,211,153,0.3)" stroke-width="1.5"/>
+              <polygon points="162,10 166,14 162,18" fill="rgba(52,211,153,0.3)"/>
+              <rect x="166" y="4" width="32" height="20" rx="6" fill="rgba(52,211,153,0.06)" stroke="rgba(52,211,153,0.2)" stroke-width="1"/>
+              <text x="182" y="17" text-anchor="middle" fill="#34d399" font-size="7" font-family="monospace">DB</text>
+            </svg>
+            <div class="flex items-center gap-2 text-[8px] text-zinc-500">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
+              All Systems Operational
+              <span class="text-zinc-600">·</span>
+              <span class="font-mono text-zinc-600">42ms avg</span>
+            </div>
+          </div>
         </div>
 
       </div>
 
       <div class="text-center mt-10">
         <a href="/services" class="text-sm text-amber-500 hover:text-amber-400 transition-colors font-medium">
-          Read details on our services page &rarr;
+          Read full service details &rarr;
         </a>
       </div>
     </section>
 
-    <!-- Why NextReach Studio -->
-    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="why-us" aria-labelledby="why-heading">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-        <div class="lg:sticky lg:top-24">
-          <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Why Work With Us</p>
-          <h2 id="why-heading" class="text-heading font-display font-bold text-white mb-4">
-            Direct, reliable custom software
-          </h2>
-          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 font-body">
-            We are built specifically for startups and small-to-medium enterprises that need solid engineering without paying for a bloated agency team.
-          </p>
-          <a href="/contact" class="btn-premium-primary inline-flex">Get in Touch</a>
-        </div>
-
-        <div class="lg:col-span-2 space-y-6">
-          
-          <!-- Communication -->
-          <div class="card-cyber flex gap-5 items-start">
-            <div class="icon-glow-wrapper shrink-0">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <polyline points="17 11 19 13 23 9"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-base sm:text-lg font-semibold text-white font-display mb-1">Direct Founder Communication</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-                You work directly with the developers leading the project. No account managers, no game of telephone, and absolute clarity on what is technically feasible.
-              </p>
-            </div>
-          </div>
-
-          <!-- Pricing -->
-          <div class="card-cyber flex gap-5 items-start">
-            <div class="icon-glow-wrapper shrink-0">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="1" x2="12" y2="23"/>
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-base sm:text-lg font-semibold text-white font-display mb-1">One-Time Scoped Pricing</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-                We design projects with clear, fixed deliverables. You pay a clear one-time project cost based on scope. No open-ended hourly fees or unexpected invoices.
-              </p>
-            </div>
-          </div>
-
-          <!-- Speed -->
-          <div class="card-cyber flex gap-5 items-start">
-            <div class="icon-glow-wrapper shrink-0">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-base sm:text-lg font-semibold text-white font-display mb-1">Fast Delivery Sprints</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-                We work in streamlined sprints, launching early versions for real-world validation rather than spending months planning in a vacuum.
-              </p>
-            </div>
-          </div>
-
-          <!-- Engineering -->
-          <div class="card-cyber flex gap-5 items-start">
-            <div class="icon-glow-wrapper shrink-0">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-base sm:text-lg font-semibold text-white font-display mb-1">Practical Engineering</h3>
-              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-                We focus on tools that work: secure databases, responsive designs, rapid loading times, and clean documentation for easy support.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Process Timeline -->
+    <!-- ==================== PROCESS TIMELINE ==================== -->
     <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="process" aria-labelledby="process-heading">
-      <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="text-center max-w-3xl mx-auto mb-16 stagger-parent">
         <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Workflow</p>
         <h2 id="process-heading" class="text-heading font-display font-bold text-white">
-          Our Simple 5-Step Process
+          From discovery to handover in 5 clear steps
         </h2>
         <p class="text-zinc-400 text-sm sm:text-base mt-3 font-body leading-relaxed">
-          We keep the process transparent and deliverables crystal clear at each step.
+          Transparent milestones. Fixed pricing. No ambiguity.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative stagger-parent">
-        
-        <!-- Process step 1 -->
-        <div class="card-cyber relative">
-          <div class="flex items-center gap-2.5 mb-3.5">
-            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">1</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">DISCOVERY</span>
+      <div class="hidden md:flex items-start gap-0 stagger-parent">
+        <!-- Step 1 -->
+        <div class="flex-1 flex flex-col items-center text-center">
+          <div class="timeline-node">01</div>
+          <div class="h-8 w-0.5 bg-gradient-to-b from-amber-500/20 to-transparent mt-1"></div>
+          <div class="card-cyber p-4 mt-2 w-full">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Discovery</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">We discuss your business problem, constraints, and desired outcomes.</p>
           </div>
-          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Understanding Goals</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
-            We discuss your business problem, current constraints, and required user flow.
-          </p>
+          <div class="timeline-connector h-0.5 -mt-8 ml-[50%] w-full"></div>
         </div>
-
-        <!-- Process step 2 -->
-        <div class="card-cyber relative">
-          <div class="flex items-center gap-2.5 mb-3.5">
-            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">2</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">PROPOSAL</span>
+        <!-- Step 2 -->
+        <div class="flex-1 flex flex-col items-center text-center">
+          <div class="timeline-node">02</div>
+          <div class="h-8 w-0.5 bg-gradient-to-b from-amber-500/20 to-transparent mt-1"></div>
+          <div class="card-cyber p-4 mt-2 w-full">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Proposal</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">Precise feature breakdown, timeline, and one-time fixed price delivered.</p>
           </div>
-          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Fixed Cost Blueprint</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
-            We deliver a precise breakdown of features, project timeline, and a one-time fixed price.
-          </p>
+          <div class="timeline-connector h-0.5 -mt-8 ml-[50%] w-full"></div>
         </div>
-
-        <!-- Process step 3 -->
-        <div class="card-cyber relative">
-          <div class="flex items-center gap-2.5 mb-3.5">
-            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">3</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">DEVELOPMENT</span>
+        <!-- Step 3 -->
+        <div class="flex-1 flex flex-col items-center text-center">
+          <div class="timeline-node timeline-node--active">03</div>
+          <div class="h-8 w-0.5 bg-gradient-to-b from-amber-500/30 to-transparent mt-1"></div>
+          <div class="card-cyber-accent p-4 mt-2 w-full">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Development</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">Bi-weekly sprints with staging links and screen share walkthroughs.</p>
           </div>
-          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Bi-Weekly Sprints</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
-            We build the core system, providing regular screen share walk-throughs and staging links.
-          </p>
+          <div class="timeline-connector h-0.5 -mt-8 ml-[50%] w-full"></div>
         </div>
-
-        <!-- Process step 4 -->
-        <div class="card-cyber relative">
-          <div class="flex items-center gap-2.5 mb-3.5">
-            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">4</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">TESTING & QA</span>
+        <!-- Step 4 -->
+        <div class="flex-1 flex flex-col items-center text-center">
+          <div class="timeline-node">04</div>
+          <div class="h-8 w-0.5 bg-gradient-to-b from-amber-500/20 to-transparent mt-1"></div>
+          <div class="card-cyber p-4 mt-2 w-full">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Testing &amp; QA</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">Functionality, database safety, responsiveness, and load time verification.</p>
           </div>
-          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Refinement & Polish</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
-            We verify functionality, database safety, screen responsiveness, and load times.
-          </p>
+          <div class="timeline-connector h-0.5 -mt-8 ml-[50%] w-full"></div>
         </div>
-
-        <!-- Process step 5 -->
-        <div class="card-cyber relative">
-          <div class="flex items-center gap-2.5 mb-3.5">
-            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-bold">5</span>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display">HANDOVER</span>
+        <!-- Step 5 -->
+        <div class="flex-1 flex flex-col items-center text-center">
+          <div class="timeline-node">05</div>
+          <div class="h-8 w-0.5 bg-gradient-to-b from-amber-500/20 to-transparent mt-1"></div>
+          <div class="card-cyber p-4 mt-2 w-full">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Handover</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">Complete code, database, setup docs, and support period included.</p>
           </div>
-          <h3 class="font-semibold text-white text-sm sm:text-base mb-1.5 font-display">Full Control</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed font-body">
-            We hand over code, databases, setup instructions, and provide a support period to fix any issues.
-          </p>
         </div>
+      </div>
 
+      <!-- Mobile timeline (vertical stack) -->
+      <div class="flex md:hidden flex-col gap-4 stagger-parent">
+        <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center">
+            <div class="timeline-node w-9 h-9 text-xs">01</div>
+            <div class="flex-1 w-0.5 bg-gradient-to-b from-amber-500/20 to-transparent"></div>
+          </div>
+          <div class="card-cyber p-4 flex-1">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Discovery</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">We discuss your business problem, constraints, and desired outcomes.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center">
+            <div class="timeline-node w-9 h-9 text-xs">02</div>
+            <div class="flex-1 w-0.5 bg-gradient-to-b from-amber-500/20 to-transparent"></div>
+          </div>
+          <div class="card-cyber p-4 flex-1">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Proposal</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">Precise feature breakdown, timeline, and one-time fixed price delivered.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center">
+            <div class="timeline-node timeline-node--active w-9 h-9 text-xs">03</div>
+            <div class="flex-1 w-0.5 bg-gradient-to-b from-amber-500/30 to-transparent"></div>
+          </div>
+          <div class="card-cyber-accent p-4 flex-1">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Development</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">Bi-weekly sprints with staging links and screen share walkthroughs.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center">
+            <div class="timeline-node w-9 h-9 text-xs">04</div>
+            <div class="flex-1 w-0.5 bg-gradient-to-b from-amber-500/20 to-transparent"></div>
+          </div>
+          <div class="card-cyber p-4 flex-1">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Testing &amp; QA</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">Functionality, database safety, responsiveness, and load time verification.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center">
+            <div class="timeline-node w-9 h-9 text-xs">05</div>
+          </div>
+          <div class="card-cyber p-4 flex-1">
+            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-1">Handover</p>
+            <p class="text-xs text-zinc-500 leading-relaxed font-body">Complete code, database, setup docs, and support period included.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Subtle Developer Resources Hub (Showcases tech depth) -->
+    <!-- ==================== WHY NEXTREACH ==================== -->
+    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="why-us" aria-labelledby="why-heading">
+      <div class="text-center max-w-3xl mx-auto mb-16 stagger-parent">
+        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Why NextReach Studio</p>
+        <h2 id="why-heading" class="text-heading font-display font-bold text-white">
+          Enterprise engineering discipline.<br />Startup speed and pricing.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto stagger-parent">
+        <!-- Traditional Agency Bloat -->
+        <div class="comparison-card comparison-card--negative">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-4 h-4 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <h3 class="text-sm font-semibold text-zinc-400 font-display">Traditional Agency Bloat</h3>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex gap-2.5 text-xs text-zinc-500">
+              <span class="text-red-400/60 shrink-0 mt-0.5">✕</span>
+              Account managers who relay messages between you and the developers
+            </li>
+            <li class="flex gap-2.5 text-xs text-zinc-500">
+              <span class="text-red-400/60 shrink-0 mt-0.5">✕</span>
+              Weekly status meetings that substitute for actual progress
+            </li>
+            <li class="flex gap-2.5 text-xs text-zinc-500">
+              <span class="text-red-400/60 shrink-0 mt-0.5">✕</span>
+              Inflated hourly retainers that incentivize slow work
+            </li>
+            <li class="flex gap-2.5 text-xs text-zinc-500">
+              <span class="text-red-400/60 shrink-0 mt-0.5">✕</span>
+              "We'll scope it during the project" → surprise overruns
+            </li>
+          </ul>
+        </div>
+
+        <!-- The NextReach Model -->
+        <div class="comparison-card comparison-card--positive">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <h3 class="text-sm font-semibold text-amber-400 font-display">The NextReach Model</h3>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex gap-2.5 text-xs text-zinc-300">
+              <span class="text-emerald-400 shrink-0 mt-0.5">✓</span>
+              Direct access to the senior engineer building your system. You talk to the person writing the code.
+            </li>
+            <li class="flex gap-2.5 text-xs text-zinc-300">
+              <span class="text-emerald-400 shrink-0 mt-0.5">✓</span>
+              Fixed, transparent milestones with a written scope. No ambiguity, no scope creep.
+            </li>
+            <li class="flex gap-2.5 text-xs text-zinc-300">
+              <span class="text-emerald-400 shrink-0 mt-0.5">✓</span>
+              Bi-weekly production sprints. You see working software — not slide decks.
+            </li>
+            <li class="flex gap-2.5 text-xs text-zinc-300">
+              <span class="text-emerald-400 shrink-0 mt-0.5">✓</span>
+              One-time project pricing. You pay the agreed amount and own the finished product.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 stagger-parent">
+        <p class="text-zinc-400 text-sm sm:text-base mb-6 font-body">
+          Ready to ship your project?
+        </p>
+        <a href="/contact" class="btn-premium-primary">
+          Schedule a Technical Discovery Call
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== BLOG / RESOURCES FOOTER ==================== -->
     <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="ai-dev-hub">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div>
@@ -347,7 +560,7 @@ try {
 
         <div class="lg:col-span-2 space-y-4">
           <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 font-display">Latest from our Blog &amp; Guides</h3>
-          
+
           <div class="space-y-3">
             {latestPosts.map((post) => (
               <a href={`/blog/${post.id}`} class="card-cyber hover:border-amber-400/25 flex justify-between items-center py-3.5 px-5 group">
