@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import HeroShowcase from "@/components/HeroShowcase.astro";
+import BentoGrid from "@/components/BentoGrid.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
@@ -19,9 +21,52 @@ try {
 ---
 
 <Layout
-  title="Custom Web App & MVP Development Studio"
-  description="NextReach Studio builds production-ready web applications, AI automation systems, and internal tools under fixed-scope contracts. Direct senior developer access. Zero agency overhead."
+  title="Custom Web Apps, AI Automation & Rapid MVP Development Studio"
+  description="NextReach Studio builds custom web applications, AI workflow automation, and rapid MVPs in 2-4 week sprints. Fixed-scope contracts. Direct senior developer access. Zero agency overhead."
 >
+  <!-- Structured Data: Services offered -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Custom Web Applications & SaaS Portals",
+          "description": "Customer portals, SaaS dashboards, multi-tenant admin panels purpose-built for how your business runs."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "Business & AI Automation",
+          "description": "API syncers, document processors, and LLM-powered workflow agents that connect to your existing tools."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "Rapid MVP Engineering",
+          "description": "Functional, real-user-ready applications with Stripe billing, auth, and database — shipped in 2-4 week sprints."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Service",
+          "name": "Systems Integration & Custom APIs",
+          "description": "Connect your stack. Sync siloed platforms, build internal APIs, automate data flow between legacy and modern systems."
+        }
+      }
+    ]
+  })} />
   <Nav />
 
   <main>
@@ -180,7 +225,13 @@ try {
           </div>
         </div>
       </div>
+
+      <div class="mt-10 px-1 sm:px-4">
+        <HeroShowcase />
+      </div>
     </section>
+
+    <BentoGrid />
 
     <!-- ==================== SERVICES BENTO GRID ==================== -->
     <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto" id="services" aria-labelledby="services-heading">
