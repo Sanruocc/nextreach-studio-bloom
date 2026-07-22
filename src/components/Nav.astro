@@ -1,6 +1,29 @@
 ---
+const serviceLinks = [
+  { href: "/services", label: "Overview" },
+  { href: "/services/ai-agent-development-pune", label: "AI Agents" },
+  { href: "/services/ai-automation-pune", label: "AI Automation" },
+  { href: "/services/custom-software-development-pune", label: "Custom Software" },
+  { href: "/services/web-application-development-pune", label: "Web Apps" },
+  { href: "/services/mvp-development-pune", label: "MVP Development" },
+  { href: "/services/flutter-app-development-pune", label: "Mobile Apps" },
+  { href: "/services/api-integration-pune", label: "API Integration" },
+  { href: "/services/ai-consulting-pune", label: "AI Consulting" },
+];
+
+const industryLinks = [
+  { href: "/industries/manufacturing", label: "Manufacturing" },
+  { href: "/industries/logistics", label: "Logistics" },
+  { href: "/industries/education", label: "Education" },
+  { href: "/industries/real-estate", label: "Real Estate" },
+  { href: "/industries/healthcare", label: "Healthcare" },
+  { href: "/industries/retail", label: "Retail" },
+  { href: "/industries/restaurants", label: "Restaurants" },
+  { href: "/industries/construction", label: "Construction" },
+  { href: "/industries/pet-grooming", label: "Pet Grooming" },
+];
+
 const navLinks = [
-  { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/about", label: "About" },
 ];
@@ -13,7 +36,13 @@ const resourceLinks = [
 ];
 
 const currentPath = Astro.url.pathname;
+const isServicesActive = serviceLinks.some(
+  ({ href }) => currentPath === href || (href !== "/" && currentPath.startsWith(href))
+);
 const isResourcesActive = resourceLinks.some(
+  ({ href }) => currentPath === href || (href !== "/" && currentPath.startsWith(href))
+);
+const isIndustriesActive = industryLinks.some(
   ({ href }) => currentPath === href || (href !== "/" && currentPath.startsWith(href))
 );
 ---
@@ -27,6 +56,80 @@ const isResourcesActive = resourceLinks.some(
 
     <!-- Desktop Navigation -->
     <ul class="hidden md:flex items-center gap-1">
+      <!-- Services Dropdown -->
+      <li class="relative group">
+        <button
+          class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
+            isServicesActive
+              ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
+              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
+          }`}
+          aria-expanded="false"
+          aria-haspopup="true"
+        >
+          Services
+          <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-zinc-500 group-hover:text-zinc-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="absolute left-0 top-full pt-2 w-52 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+          <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
+            {serviceLinks.map(({ href, label }) => {
+              const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
+              return (
+                <a
+                  href={href}
+                  class={`block px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
+                    isSubActive
+                      ? "text-amber-400 bg-white/5 font-medium"
+                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {label}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </li>
+
+      <!-- Industries Dropdown -->
+      <li class="relative group">
+        <button
+          class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
+            isIndustriesActive
+              ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
+              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
+          }`}
+          aria-expanded="false"
+          aria-haspopup="true"
+        >
+          Industries
+          <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-zinc-500 group-hover:text-zinc-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="absolute left-0 top-full pt-2 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+          <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
+            {industryLinks.map(({ href, label }) => {
+              const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
+              return (
+                <a
+                  href={href}
+                  class={`block px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
+                    isSubActive
+                      ? "text-amber-400 bg-white/5 font-medium"
+                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {label}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </li>
+
       {navLinks.map(({ href, label }) => {
         const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
         return (
@@ -115,6 +218,52 @@ const isResourcesActive = resourceLinks.some(
     class="md:hidden border-t border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden"
   >
     <ul class="px-6 py-4 space-y-1.5">
+      <!-- Mobile Services Header -->
+      <li class="pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display">
+        Services
+      </li>
+
+      {serviceLinks.map(({ href, label }) => {
+        const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
+        return (
+          <li>
+            <a
+              href={href}
+              class={`block px-6 py-2 rounded-lg text-sm transition-all duration-200 ${
+                isActive
+                  ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-500 pl-5"
+                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 pl-6"
+              }`}
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })}
+
+      <!-- Mobile Industries Header -->
+      <li class="pt-3 pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display">
+        Industries
+      </li>
+
+      {industryLinks.map(({ href, label }) => {
+        const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
+        return (
+          <li>
+            <a
+              href={href}
+              class={`block px-6 py-2 rounded-lg text-sm transition-all duration-200 ${
+                isActive
+                  ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-500 pl-5"
+                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 pl-6"
+              }`}
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })}
+
       {navLinks.map(({ href, label }) => {
         const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
         return (
