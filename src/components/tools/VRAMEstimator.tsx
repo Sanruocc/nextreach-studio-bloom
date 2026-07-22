@@ -236,7 +236,7 @@ export default function VRAMEstimator() {
                   </div>
 
                   <div className="text-right w-12 font-mono shrink-0">
-                    <span className={`font-semibold ${canRun ? "text-zinc-300" : "text-zinc-655"}`}>
+                    <span className={`font-semibold ${canRun ? "text-zinc-300" : "text-zinc-500"}`}>
                       {usagePct.toFixed(0)}%
                     </span>
                   </div>
@@ -246,7 +246,7 @@ export default function VRAMEstimator() {
           </div>
         </div>
 
-        <p className="text-[11px] text-zinc-650 text-center leading-relaxed">
+        <p className="text-[11px] text-zinc-500 text-center leading-relaxed">
           Estimates calculate baseline runtime allocations and static KV bounds. Actual GPU memory behaviors vary based on PyTorch frameworks, context scaling, and compilation parameters.
         </p>
       </div>

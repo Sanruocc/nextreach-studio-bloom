@@ -56,5 +56,8 @@
   .metric-progress span { display: block; width: 76%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #d97706, #fbbf24); animation: metric-progress 2.4s ease-in-out infinite alternate; transform-origin: left; }
   .metric-labels { display: flex; justify-content: space-between; margin-top: .55rem; color: #71717a; font: .58rem var(--font-mono); }
   @keyframes metric-progress { from { transform: scaleX(.82); } to { transform: scaleX(1); } }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .status-dot--live { background: #34d399; box-shadow: 0 0 0 4px rgba(52,211,153,.12), 0 0 12px rgba(52,211,153,.8); animation: pulse-live 2s ease-in-out infinite; }
+  @keyframes pulse-live { 50% { opacity: .48; transform: scale(.82); } }
   @media (max-width: 700px) { .visual-bento { padding: 4rem 1.25rem; } .visual-bento__grid { grid-template-columns: 1fr; } .visual-bento__card, .visual-bento__card--wide { min-height: 360px; } }
 </style>

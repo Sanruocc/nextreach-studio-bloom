@@ -142,7 +142,7 @@ export default function ContextCalculator() {
           {tokenCounts.map((t) => {
             const isReserved = t.id === "reserved";
             return (
-              <div key={t.id} className={`card-premium-flat border-l-4 !border-l-${t.id === "system" ? "purple-500" : t.id === "history" ? "blue-500" : t.id === "documents" ? "emerald-500" : t.id === "query" ? "amber-500" : "red-500"} !p-4.5`}>
+              <div key={t.id} className={`card-premium-flat border-l-4 !p-4.5 ${t.id === "system" ? "!border-l-purple-500" : t.id === "history" ? "!border-l-blue-500" : t.id === "documents" ? "!border-l-emerald-500" : t.id === "query" ? "!border-l-amber-500" : "!border-l-red-500"}`}>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className={`h-2.5 w-2.5 rounded-full ${t.color}`} />

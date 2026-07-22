@@ -57,8 +57,9 @@ const isIndustriesActive = industryLinks.some(
     <!-- Desktop Navigation -->
     <ul class="hidden md:flex items-center gap-1">
       <!-- Services Dropdown -->
-      <li class="relative group">
+      <li class="relative group" data-dd>
         <button
+          data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isServicesActive
               ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
@@ -72,7 +73,7 @@ const isIndustriesActive = industryLinks.some(
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div class="absolute left-0 top-full pt-2 w-52 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+        <div data-dd-panel class="absolute left-0 top-full pt-2 w-52 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
           <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
             {serviceLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -94,8 +95,9 @@ const isIndustriesActive = industryLinks.some(
       </li>
 
       <!-- Industries Dropdown -->
-      <li class="relative group">
+      <li class="relative group" data-dd>
         <button
+          data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isIndustriesActive
               ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
@@ -109,7 +111,7 @@ const isIndustriesActive = industryLinks.some(
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div class="absolute left-0 top-full pt-2 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+        <div data-dd-panel class="absolute left-0 top-full pt-2 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
           <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
             {industryLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -149,8 +151,9 @@ const isIndustriesActive = industryLinks.some(
       })}
 
       <!-- Resources Dropdown -->
-      <li class="relative group">
+      <li class="relative group" data-dd>
         <button
+          data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isResourcesActive
               ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
@@ -164,7 +167,7 @@ const isIndustriesActive = industryLinks.some(
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div class="absolute left-0 top-full pt-2 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+        <div data-dd-panel class="absolute left-0 top-full pt-2 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
           <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl">
             {resourceLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -219,14 +222,17 @@ const isIndustriesActive = industryLinks.some(
   >
     <ul class="px-6 py-4 space-y-1.5">
       <!-- Mobile Services Header -->
-      <li class="pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display">
+      <li class="pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display" data-mh="services" style="cursor:pointer">
         Services
+        <svg data-mc="services" class="w-3.5 h-3.5 transition-transform duration-200 float-right" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+        </svg>
       </li>
 
       {serviceLinks.map(({ href, label }) => {
         const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
         return (
-          <li>
+          <li data-ml="services" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
             <a
               href={href}
               class={`block px-6 py-2 rounded-lg text-sm transition-all duration-200 ${
@@ -242,14 +248,17 @@ const isIndustriesActive = industryLinks.some(
       })}
 
       <!-- Mobile Industries Header -->
-      <li class="pt-3 pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display">
+      <li class="pt-3 pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display" data-mh="industries" style="cursor:pointer">
         Industries
+        <svg data-mc="industries" class="w-3.5 h-3.5 transition-transform duration-200 float-right" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+        </svg>
       </li>
 
       {industryLinks.map(({ href, label }) => {
         const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
         return (
-          <li>
+          <li data-ml="industries" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
             <a
               href={href}
               class={`block px-6 py-2 rounded-lg text-sm transition-all duration-200 ${
@@ -283,15 +292,17 @@ const isIndustriesActive = industryLinks.some(
       })}
 
       <!-- Mobile Resources Header -->
-      <li class="pt-3 pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display">
-        Resources & Tools
+      <li class="pt-3 pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display" data-mh="resources" style="cursor:pointer">
+        Resources
+        <svg data-mc="resources" class="w-3.5 h-3.5 transition-transform duration-200 float-right" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+        </svg>
       </li>
 
-      <!-- Mobile Resources List -->
       {resourceLinks.map(({ href, label }) => {
         const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
         return (
-          <li>
+          <li data-ml="resources" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
             <a
               href={href}
               class={`block px-6 py-2 rounded-lg text-sm transition-all duration-200 ${
@@ -323,30 +334,137 @@ const isIndustriesActive = industryLinks.some(
   </div>
 </nav>
 
-<script>
-  const toggleBtn = document.getElementById("mobile-menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("menu-icon");
+<script is:inline>
+  (function () {
+    "use strict";
 
-  if (toggleBtn && mobileMenu && menuIcon) {
-    toggleBtn.addEventListener("click", () => {
-      const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
-      toggleBtn.setAttribute("aria-expanded", String(!isExpanded));
+    function initNav() {
+      // === DESKTOP DROPDOWN CLICK TOGGLE ===
+      var containers = document.querySelectorAll("[data-dd]");
 
-      if (!isExpanded) {
-        // Open with transition
-        mobileMenu.classList.remove("max-h-0", "opacity-0");
-        mobileMenu.classList.add("max-h-[500px]", "opacity-100");
-        // Change to "X" (close) icon
-        menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
-      } else {
-        // Close with transition
-        mobileMenu.classList.remove("max-h-[500px]", "opacity-100");
-        mobileMenu.classList.add("max-h-0", "opacity-0");
-        // Change back to Hamburger icon
-        menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+      function ddClose() {
+        containers.forEach(function (c) {
+          var panel = c.querySelector("[data-dd-panel]");
+          if (panel) {
+            panel.style.removeProperty("opacity");
+            panel.style.removeProperty("pointer-events");
+          }
+          var btn = c.querySelector("[data-dd-btn]");
+          if (btn) btn.setAttribute("aria-expanded", "false");
+          var chevron = c.querySelector("button svg");
+          if (chevron) chevron.style.removeProperty("transform");
+        });
       }
-    });
-  }
+
+      containers.forEach(function (c) {
+        var btn = c.querySelector("[data-dd-btn]");
+        if (!btn) return;
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var panel = c.querySelector("[data-dd-panel]");
+          var chevron = c.querySelector("button svg");
+          var isOpen = panel && (panel.style.opacity === "1" || panel.style.pointerEvents === "auto");
+
+          ddClose();
+
+          if (!isOpen) {
+            if (panel) {
+              panel.style.setProperty("opacity", "1");
+              panel.style.setProperty("pointer-events", "auto");
+            }
+            btn.setAttribute("aria-expanded", "true");
+            if (chevron) chevron.style.setProperty("transform", "rotate(180deg)");
+          }
+        });
+      });
+
+      document.addEventListener("click", function (e) {
+        var hit = false;
+        containers.forEach(function (c) { if (c.contains(e.target)) hit = true; });
+        if (!hit) ddClose();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") ddClose();
+      });
+
+      // === MOBILE HAMBURGER ===
+      var toggleBtn = document.getElementById("mobile-menu-toggle");
+      var mobileMenu = document.getElementById("mobile-menu");
+      var menuIcon = document.getElementById("menu-icon");
+
+      function setMobileOpen(open) {
+        if (!toggleBtn || !mobileMenu || !menuIcon) return;
+        toggleBtn.setAttribute("aria-expanded", String(open));
+        if (open) {
+          mobileMenu.classList.remove("max-h-0", "opacity-0");
+          mobileMenu.classList.add("max-h-[700px]", "opacity-100");
+          menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
+        } else {
+          mobileMenu.classList.remove("max-h-[700px]", "opacity-100");
+          mobileMenu.classList.add("max-h-0", "opacity-0");
+          menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+        }
+      }
+
+      if (toggleBtn && mobileMenu && menuIcon) {
+        toggleBtn.addEventListener("click", function () {
+          setMobileOpen(toggleBtn.getAttribute("aria-expanded") !== "true");
+        });
+      }
+
+      if (mobileMenu) {
+        mobileMenu.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () { setMobileOpen(false); });
+        });
+      }
+
+      // === MOBILE COLLAPSIBLE SECTIONS ===
+      var mhEls = document.querySelectorAll("[data-mh]");
+
+      function closeAllMh() {
+        mhEls.forEach(function (el) {
+          var id = el.getAttribute("data-mh");
+          var items = document.querySelectorAll("[data-ml='" + id + "']");
+          items.forEach(function (item) {
+            item.classList.add("max-h-0", "opacity-0");
+            item.classList.remove("max-h-[500px]", "opacity-100");
+          });
+          var chevron = document.querySelector("[data-mc='" + id + "']");
+          if (chevron) chevron.classList.remove("rotate-180");
+        });
+      }
+
+      mhEls.forEach(function (el) {
+        el.addEventListener("click", function () {
+          var id = el.getAttribute("data-mh");
+          var firstItem = document.querySelector("[data-ml='" + id + "']");
+          var isOpen = firstItem && !firstItem.classList.contains("max-h-0");
+
+          closeAllMh();
+
+          if (!isOpen) {
+            var items = document.querySelectorAll("[data-ml='" + id + "']");
+            items.forEach(function (item) {
+              item.classList.remove("max-h-0", "opacity-0");
+              item.classList.add("max-h-[500px]", "opacity-100");
+            });
+            var chevron = document.querySelector("[data-mc='" + id + "']");
+            if (chevron) chevron.classList.add("rotate-180");
+          }
+        });
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { setMobileOpen(false); ddClose(); closeAllMh(); }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initNav);
+    } else {
+      initNav();
+    }
+  })();
 </script>
 
