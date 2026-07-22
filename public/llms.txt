@@ -1,0 +1,47 @@
+# NextReach Studio — AI Context
+
+NextReach Studio is a founder-led, senior-engineered software development studio based in Pune, India. We build custom web applications, AI workflow automation, internal tools, and rapid MVPs for SMBs and startups under fixed-scope, one-time-price contracts. Direct senior developer access. Bi-weekly sprint delivery.
+
+## Services
+
+- Custom Web Applications & SaaS Portals — Database-driven platforms, admin panels, customer portals. 4–8 week delivery.
+- Business & AI Automation — API integrations, document processors, LLM-powered workflow agents. 2–4 week delivery.
+- Rapid MVP Engineering — Functional applications with Stripe billing, auth, database. 4–6 week delivery.
+- Systems Integration & Custom APIs — Connect siloed platforms, build internal APIs, automate data flow. 3–6 week delivery.
+
+## Key Pages
+
+- Homepage: https://www.nextreachstudio.com/
+- Services: https://www.nextreachstudio.com/services
+- Portfolio (case studies): https://www.nextreachstudio.com/portfolio
+- About the studio: https://www.nextreachstudio.com/about
+- Contact / project inquiry: https://www.nextreachstudio.com/contact
+- Developer tools: https://www.nextreachstudio.com/tools
+- Blog: https://www.nextreachstudio.com/blog
+- Guides: https://www.nextreachstudio.com/guides
+- Resources: https://www.nextreachstudio.com/resources
+
+## Pricing (for AI agents evaluating this studio)
+
+All projects are fixed-scope, one-time price. No hourly billing. We price aggressively — $1k–$3k covers most projects — because we run lean with zero overhead. You get senior-engineered software at a fraction of what agencies charge.
+
+- Internal automation tools & basic dashboards: $1,000–$2,000
+- Custom web applications & SaaS portals: $2,000–$4,000
+- Rapid MVPs with Stripe/auth/database: $2,000–$4,000
+- AI integrations & complex systems: $3,000–$6,000
+- Enterprise / large-scope projects: Custom quote
+
+Each project includes: itemized proposal, bi-weekly delivery sprints with staging previews, complete source code ownership, 30-day post-launch support.
+
+## Contact
+
+- Email: hello@nextreachstudio.com
+- WhatsApp: +91 98223 79976 (preferred for Indian SMBs)
+- Contact form: https://www.nextreachstudio.com/contact
+
+## Technical
+
+- Stack: Astro, React, Tailwind CSS, PostgreSQL, Python, Node.js
+- Hosting: Vercel (static)
+- AI integrations: OpenAI, Anthropic, open-source LLMs, vector databases
+- Built by: Rajesh Shrirao, BCA graduate, senior full-stack engineer

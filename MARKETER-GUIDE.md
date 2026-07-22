@@ -197,6 +197,19 @@ The developer tools and blog content serve as an **SEO flywheel**:
 
 ---
 
+### AI Agent Readiness
+
+The site maximizes visibility to AI search engines (ChatGPT, Claude, Perplexity, Gemini) and autonomous buying agents:
+
+- **`/llms.txt`** — A context primer that tells LLM crawlers what the studio does, lists all key pages, and provides structured pricing. This is the first thing an AI agent reads when evaluating the site.
+- **`/pricing-for-agents.md`** — A full machine-readable dossier of all services, pricing ranges, timelines, portfolio, and tech stack. AI agents can parse this without rendering a single page.
+- **`/robots.txt`** — Explicitly allows 15 AI crawlers (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User, Claude-SearchBot, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Amazonbot, Meta-ExternalAgent, CCBot, cohere-ai, plus standard search bots).
+- **SEO schema**: BreadcrumbList, WebSite, Organization, Article, and ItemList JSON-LD on every relevant page.
+
+The net effect: when an AI agent or LLM searches for "custom software development" or compares studios, NextReach's info is trivially accessible without JS rendering or form fills.
+
+---
+
 ## Design & Brand Guidelines
 
 ### Aesthetic

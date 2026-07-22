@@ -43,6 +43,7 @@ Fetch: `getCollection("blog", ({ data }) => !data.draft)`, render: `const { Cont
 - **SEO**: Structured data (BreadcrumbList, WebSite, Organization, Article, ItemList) injected inline via `<script type="application/ld+json">` in pages, not in Layout.
 - **Fonts**: Plus Jakarta Sans (body), Cabinet Grotesk (headings), JetBrains Mono (code) — loaded with `media="print" onload="this.media='all'"` (non‑render‑blocking).
 - **PWA**: `/manifest.json`, `/sw.js`, `/robots.txt`, `/icon-192.svg`, `/icon-512.svg` in `public/`.
+- **AI agent files**: `/llms.txt` (AI context primer), `/pricing-for-agents.md` (machine-readable pricing & services), `/robots.txt` (15 AI crawlers explicitly allowed).
 - **Environment**: Copy `.env.example` to `.env`. Only `CEREBRAS_API_KEY` needed.
 
 ## Project Structure
@@ -56,6 +57,10 @@ src/
   styles/        — globals.css (Tailwind v4 + design system)
   utils/         — tokens.ts (token estimation)
 .agents/         — Project planning docs
+public/
+  llms.txt       — AI context file for LLM crawlers
+  pricing-for-agents.md — Machine-readable pricing & services for AI agents
+  robots.txt     — 15 AI crawlers explicitly allowed
 ```
 
 ## Existing Docs (check before asking)
@@ -63,6 +68,8 @@ src/
 - `.agents/homepage-revamp-plan.md` — Landing page redesign blueprint
 - `MARKETER-GUIDE.md` — Audience, positioning, competitive landscape
 - `skills-lock.json` — Registered agent skills (Tailwind 4 docs, web design guidelines)
+- `public/llms.txt` — AI context primer for LLM crawlers (services, pricing, key pages)
+- `public/pricing-for-agents.md` — Full machine-readable service/pricing dossier for autonomous agents
 
 ## OpenCode Config
 
