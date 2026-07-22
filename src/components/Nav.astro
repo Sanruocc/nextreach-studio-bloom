@@ -48,7 +48,7 @@ const isIndustriesActive = industryLinks.some(
 ---
 
 <nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0" aria-label="Main navigation">
-  <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio — Home">
       <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110" />
       <span class="text-white text-sm tracking-[0.08em] font-medium font-display">NextReach Studio</span>
@@ -59,6 +59,7 @@ const isIndustriesActive = industryLinks.some(
       <!-- Services Dropdown -->
       <li class="relative group" data-dd>
         <button
+          type="button"
           data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isServicesActive
@@ -68,12 +69,15 @@ const isIndustriesActive = industryLinks.some(
           aria-expanded="false"
           aria-haspopup="true"
         >
-          Services
-          <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-zinc-500 group-hover:text-zinc-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span>Services</span>
+          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-zinc-500 group-hover:text-zinc-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div data-dd-panel class="absolute left-0 top-full pt-2 w-52 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+        <div
+          data-dd-panel
+          class="absolute left-0 top-full pt-2 w-56 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
+        >
           <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
             {serviceLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -82,7 +86,7 @@ const isIndustriesActive = industryLinks.some(
                   href={href}
                   class={`block px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
                     isSubActive
-                      ? "text-amber-400 bg-white/5 font-medium"
+                      ? "text-amber-400 bg-amber-500/10 font-medium"
                       : "text-zinc-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
@@ -97,6 +101,7 @@ const isIndustriesActive = industryLinks.some(
       <!-- Industries Dropdown -->
       <li class="relative group" data-dd>
         <button
+          type="button"
           data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isIndustriesActive
@@ -106,12 +111,15 @@ const isIndustriesActive = industryLinks.some(
           aria-expanded="false"
           aria-haspopup="true"
         >
-          Industries
-          <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-zinc-500 group-hover:text-zinc-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span>Industries</span>
+          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-zinc-500 group-hover:text-zinc-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div data-dd-panel class="absolute left-0 top-full pt-2 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+        <div
+          data-dd-panel
+          class="absolute left-0 top-full pt-2 w-52 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
+        >
           <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
             {industryLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -120,7 +128,7 @@ const isIndustriesActive = industryLinks.some(
                   href={href}
                   class={`block px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
                     isSubActive
-                      ? "text-amber-400 bg-white/5 font-medium"
+                      ? "text-amber-400 bg-amber-500/10 font-medium"
                       : "text-zinc-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
@@ -153,6 +161,7 @@ const isIndustriesActive = industryLinks.some(
       <!-- Resources Dropdown -->
       <li class="relative group" data-dd>
         <button
+          type="button"
           data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isResourcesActive
@@ -162,12 +171,15 @@ const isIndustriesActive = industryLinks.some(
           aria-expanded="false"
           aria-haspopup="true"
         >
-          Resources
-          <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 text-zinc-500 group-hover:text-zinc-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span>Resources</span>
+          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-zinc-500 group-hover:text-zinc-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div data-dd-panel class="absolute left-0 top-full pt-2 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+        <div
+          data-dd-panel
+          class="absolute right-0 top-full pt-2 w-48 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
+        >
           <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl">
             {resourceLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -176,7 +188,7 @@ const isIndustriesActive = industryLinks.some(
                   href={href}
                   class={`block px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
                     isSubActive
-                      ? "text-amber-400 bg-white/5 font-medium"
+                      ? "text-amber-400 bg-amber-500/10 font-medium"
                       : "text-zinc-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
@@ -205,7 +217,8 @@ const isIndustriesActive = industryLinks.some(
     <!-- Mobile Hamburger Toggle -->
     <button
       id="mobile-menu-toggle"
-      class="md:hidden flex items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none"
+      type="button"
+      class="md:hidden flex items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none cursor-pointer"
       aria-expanded="false"
       aria-label="Toggle navigation menu"
     >
@@ -218,60 +231,102 @@ const isIndustriesActive = industryLinks.some(
   <!-- Mobile Dropdown Menu -->
   <div
     id="mobile-menu"
-    class="md:hidden border-t border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden"
+    class="hidden md:hidden border-t border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-2xl"
   >
-    <ul class="px-6 py-4 space-y-1.5">
+    <ul class="px-4 py-4 space-y-2">
       <!-- Mobile Services Header -->
-      <li class="pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display" data-mh="services" style="cursor:pointer">
-        Services
-        <svg data-mc="services" class="w-3.5 h-3.5 transition-transform duration-200 float-right" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-        </svg>
-      </li>
+      <li class="space-y-1">
+        <button
+          type="button"
+          data-mobile-toggle="services"
+          class={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
+            isServicesActive ? "text-amber-400 bg-amber-500/10" : "text-zinc-300 hover:text-white hover:bg-white/5"
+          }`}
+          aria-expanded={isServicesActive ? "true" : "false"}
+        >
+          <span class="flex items-center gap-2">
+            <span>Services</span>
+            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">9</span>
+          </span>
+          <svg
+            data-mobile-chevron="services"
+            class={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${isServicesActive ? "rotate-180" : ""}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
 
-      {serviceLinks.map(({ href, label }) => {
-        const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
-        return (
-          <li data-ml="services" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-            <a
-              href={href}
-              class={`block px-6 py-2 rounded-lg text-sm transition-all duration-200 ${
-                isActive
-                  ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-500 pl-5"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 pl-6"
-              }`}
-            >
-              {label}
-            </a>
-          </li>
-        );
-      })}
+        <div
+          data-mobile-submenu="services"
+          class={`pl-3 space-y-1 border-l-2 border-amber-500/20 ml-3 my-1 ${isServicesActive ? "" : "hidden"}`}
+        >
+          {serviceLinks.map(({ href, label }) => {
+            const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
+            return (
+              <a
+                href={href}
+                class={`block px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
+                  isActive
+                    ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-400 -ml-3.5 pl-3"
+                    : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                }`}
+              >
+                {label}
+              </a>
+            );
+          })}
+        </div>
+      </li>
 
       <!-- Mobile Industries Header -->
-      <li class="pt-3 pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display" data-mh="industries" style="cursor:pointer">
-        Industries
-        <svg data-mc="industries" class="w-3.5 h-3.5 transition-transform duration-200 float-right" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-        </svg>
-      </li>
+      <li class="space-y-1">
+        <button
+          type="button"
+          data-mobile-toggle="industries"
+          class={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
+            isIndustriesActive ? "text-amber-400 bg-amber-500/10" : "text-zinc-300 hover:text-white hover:bg-white/5"
+          }`}
+          aria-expanded={isIndustriesActive ? "true" : "false"}
+        >
+          <span class="flex items-center gap-2">
+            <span>Industries</span>
+            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">9</span>
+          </span>
+          <svg
+            data-mobile-chevron="industries"
+            class={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${isIndustriesActive ? "rotate-180" : ""}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
 
-      {industryLinks.map(({ href, label }) => {
-        const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
-        return (
-          <li data-ml="industries" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-            <a
-              href={href}
-              class={`block px-6 py-2 rounded-lg text-sm transition-all duration-200 ${
-                isActive
-                  ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-500 pl-5"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 pl-6"
-              }`}
-            >
-              {label}
-            </a>
-          </li>
-        );
-      })}
+        <div
+          data-mobile-submenu="industries"
+          class={`pl-3 space-y-1 border-l-2 border-amber-500/20 ml-3 my-1 ${isIndustriesActive ? "" : "hidden"}`}
+        >
+          {industryLinks.map(({ href, label }) => {
+            const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
+            return (
+              <a
+                href={href}
+                class={`block px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
+                  isActive
+                    ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-400 -ml-3.5 pl-3"
+                    : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                }`}
+              >
+                {label}
+              </a>
+            );
+          })}
+        </div>
+      </li>
 
       {navLinks.map(({ href, label }) => {
         const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -279,10 +334,10 @@ const isIndustriesActive = industryLinks.some(
           <li>
             <a
               href={href}
-              class={`block px-4 py-2.5 rounded-lg text-sm transition-all duration-200 ${
+              class={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 ${
                 isActive
-                  ? "text-white bg-white/5 font-semibold border-l-2 border-amber-400 pl-3"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 pl-4"
+                  ? "text-amber-400 bg-amber-500/10"
+                  : "text-zinc-300 hover:text-white hover:bg-white/5"
               }`}
             >
               {label}
@@ -292,39 +347,60 @@ const isIndustriesActive = industryLinks.some(
       })}
 
       <!-- Mobile Resources Header -->
-      <li class="pt-3 pb-1 px-4 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-display" data-mh="resources" style="cursor:pointer">
-        Resources
-        <svg data-mc="resources" class="w-3.5 h-3.5 transition-transform duration-200 float-right" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-        </svg>
+      <li class="space-y-1">
+        <button
+          type="button"
+          data-mobile-toggle="resources"
+          class={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
+            isResourcesActive ? "text-amber-400 bg-amber-500/10" : "text-zinc-300 hover:text-white hover:bg-white/5"
+          }`}
+          aria-expanded={isResourcesActive ? "true" : "false"}
+        >
+          <span class="flex items-center gap-2">
+            <span>Resources</span>
+            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">4</span>
+          </span>
+          <svg
+            data-mobile-chevron="resources"
+            class={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${isResourcesActive ? "rotate-180" : ""}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div
+          data-mobile-submenu="resources"
+          class={`pl-3 space-y-1 border-l-2 border-amber-500/20 ml-3 my-1 ${isResourcesActive ? "" : "hidden"}`}
+        >
+          {resourceLinks.map(({ href, label }) => {
+            const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
+            return (
+              <a
+                href={href}
+                class={`block px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
+                  isActive
+                    ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-400 -ml-3.5 pl-3"
+                    : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                }`}
+              >
+                {label}
+              </a>
+            );
+          })}
+        </div>
       </li>
 
-      {resourceLinks.map(({ href, label }) => {
-        const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
-        return (
-          <li data-ml="resources" class="overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-            <a
-              href={href}
-              class={`block px-6 py-2 rounded-lg text-sm transition-all duration-200 ${
-                isActive
-                  ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-500 pl-5"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 pl-6"
-              }`}
-            >
-              {label}
-            </a>
-          </li>
-        );
-      })}
-
       <!-- Mobile Contact Link -->
-      <li class="pt-3 mt-2 border-t border-zinc-900">
+      <li class="pt-2 mt-2 border-t border-zinc-800/60">
         <a
           href="/contact"
-          class={`block px-4 py-2.5 rounded-lg text-sm transition-all duration-200 ${
+          class={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 ${
             currentPath === "/contact"
-              ? "text-white bg-white/5 font-semibold border-l-2 border-amber-400 pl-3"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 pl-4"
+              ? "text-amber-400 bg-amber-500/10"
+              : "text-zinc-300 hover:text-white hover:bg-white/5"
           }`}
         >
           Contact
@@ -339,124 +415,121 @@ const isIndustriesActive = industryLinks.some(
     "use strict";
 
     function initNav() {
-      // === DESKTOP DROPDOWN CLICK TOGGLE ===
-      var containers = document.querySelectorAll("[data-dd]");
+      // === DESKTOP DROPDOWNS ===
+      var ddContainers = document.querySelectorAll("[data-dd]");
 
-      function ddClose() {
-        containers.forEach(function (c) {
-          var panel = c.querySelector("[data-dd-panel]");
-          if (panel) {
-            panel.style.removeProperty("opacity");
-            panel.style.removeProperty("pointer-events");
-          }
-          var btn = c.querySelector("[data-dd-btn]");
+      function closeAllDesktop() {
+        ddContainers.forEach(function (container) {
+          container.setAttribute("data-open", "false");
+          var btn = container.querySelector("[data-dd-btn]");
+          var panel = container.querySelector("[data-dd-panel]");
+          var chevron = container.querySelector("[data-dd-chevron]");
+
           if (btn) btn.setAttribute("aria-expanded", "false");
-          var chevron = c.querySelector("button svg");
-          if (chevron) chevron.style.removeProperty("transform");
+          if (panel) {
+            panel.classList.remove("!opacity-100", "!pointer-events-auto", "!translate-y-0");
+          }
+          if (chevron) {
+            chevron.classList.remove("!rotate-180");
+          }
         });
       }
 
-      containers.forEach(function (c) {
-        var btn = c.querySelector("[data-dd-btn]");
-        if (!btn) return;
+      ddContainers.forEach(function (container) {
+        var btn = container.querySelector("[data-dd-btn]");
+        var panel = container.querySelector("[data-dd-panel]");
+        var chevron = container.querySelector("[data-dd-chevron]");
+        if (!btn || !panel) return;
+
         btn.addEventListener("click", function (e) {
           e.stopPropagation();
-          var panel = c.querySelector("[data-dd-panel]");
-          var chevron = c.querySelector("button svg");
-          var isOpen = panel && (panel.style.opacity === "1" || panel.style.pointerEvents === "auto");
+          var isOpen = container.getAttribute("data-open") === "true";
 
-          ddClose();
+          closeAllDesktop();
 
           if (!isOpen) {
-            if (panel) {
-              panel.style.setProperty("opacity", "1");
-              panel.style.setProperty("pointer-events", "auto");
-            }
+            container.setAttribute("data-open", "true");
             btn.setAttribute("aria-expanded", "true");
-            if (chevron) chevron.style.setProperty("transform", "rotate(180deg)");
+            panel.classList.add("!opacity-100", "!pointer-events-auto", "!translate-y-0");
+            if (chevron) chevron.classList.add("!rotate-180");
           }
         });
       });
 
-      document.addEventListener("click", function (e) {
-        var hit = false;
-        containers.forEach(function (c) { if (c.contains(e.target)) hit = true; });
-        if (!hit) ddClose();
-      });
-
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") ddClose();
-      });
-
-      // === MOBILE HAMBURGER ===
+      // === MOBILE HAMBURGER & ACCORDION ===
       var toggleBtn = document.getElementById("mobile-menu-toggle");
       var mobileMenu = document.getElementById("mobile-menu");
       var menuIcon = document.getElementById("menu-icon");
 
       function setMobileOpen(open) {
-        if (!toggleBtn || !mobileMenu || !menuIcon) return;
+        if (!toggleBtn || !mobileMenu) return;
         toggleBtn.setAttribute("aria-expanded", String(open));
         if (open) {
-          mobileMenu.classList.remove("max-h-0", "opacity-0");
-          mobileMenu.classList.add("max-h-[700px]", "opacity-100");
-          menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
+          mobileMenu.classList.remove("hidden");
+          if (menuIcon) menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
         } else {
-          mobileMenu.classList.remove("max-h-[700px]", "opacity-100");
-          mobileMenu.classList.add("max-h-0", "opacity-0");
-          menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+          mobileMenu.classList.add("hidden");
+          if (menuIcon) menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
         }
       }
 
-      if (toggleBtn && mobileMenu && menuIcon) {
+      if (toggleBtn && mobileMenu) {
         toggleBtn.addEventListener("click", function () {
-          setMobileOpen(toggleBtn.getAttribute("aria-expanded") !== "true");
+          var isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+          setMobileOpen(!isOpen);
         });
-      }
 
-      if (mobileMenu) {
-        mobileMenu.querySelectorAll("a").forEach(function (a) {
-          a.addEventListener("click", function () { setMobileOpen(false); });
-        });
-      }
+        // Submenu Toggles inside Mobile Menu
+        var mobileToggles = mobileMenu.querySelectorAll("[data-mobile-toggle]");
+        mobileToggles.forEach(function (toggle) {
+          toggle.addEventListener("click", function () {
+            var sectionId = toggle.getAttribute("data-mobile-toggle");
+            var submenu = mobileMenu.querySelector('[data-mobile-submenu="' + sectionId + '"]');
+            var chevron = mobileMenu.querySelector('[data-mobile-chevron="' + sectionId + '"]');
 
-      // === MOBILE COLLAPSIBLE SECTIONS ===
-      var mhEls = document.querySelectorAll("[data-mh]");
+            if (!submenu) return;
+            var isSubmenuOpen = !submenu.classList.contains("hidden");
 
-      function closeAllMh() {
-        mhEls.forEach(function (el) {
-          var id = el.getAttribute("data-mh");
-          var items = document.querySelectorAll("[data-ml='" + id + "']");
-          items.forEach(function (item) {
-            item.classList.add("max-h-0", "opacity-0");
-            item.classList.remove("max-h-[500px]", "opacity-100");
-          });
-          var chevron = document.querySelector("[data-mc='" + id + "']");
-          if (chevron) chevron.classList.remove("rotate-180");
-        });
-      }
-
-      mhEls.forEach(function (el) {
-        el.addEventListener("click", function () {
-          var id = el.getAttribute("data-mh");
-          var firstItem = document.querySelector("[data-ml='" + id + "']");
-          var isOpen = firstItem && !firstItem.classList.contains("max-h-0");
-
-          closeAllMh();
-
-          if (!isOpen) {
-            var items = document.querySelectorAll("[data-ml='" + id + "']");
-            items.forEach(function (item) {
-              item.classList.remove("max-h-0", "opacity-0");
-              item.classList.add("max-h-[500px]", "opacity-100");
+            // Close all submenus
+            mobileMenu.querySelectorAll("[data-mobile-submenu]").forEach(function (s) {
+              s.classList.add("hidden");
             });
-            var chevron = document.querySelector("[data-mc='" + id + "']");
-            if (chevron) chevron.classList.add("rotate-180");
-          }
+            mobileMenu.querySelectorAll("[data-mobile-chevron]").forEach(function (c) {
+              c.classList.remove("rotate-180");
+            });
+            mobileMenu.querySelectorAll("[data-mobile-toggle]").forEach(function (t) {
+              t.setAttribute("aria-expanded", "false");
+            });
+
+            // Toggle selected submenu
+            if (!isSubmenuOpen) {
+              submenu.classList.remove("hidden");
+              toggle.setAttribute("aria-expanded", "true");
+              if (chevron) chevron.classList.add("rotate-180");
+            }
+          });
         });
+
+        // Close mobile menu when any navigation link inside is clicked
+        mobileMenu.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            setMobileOpen(false);
+          });
+        });
+      }
+
+      // === GLOBAL EVENT LISTENERS (Click Outside & Escape Key) ===
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest("[data-dd]")) {
+          closeAllDesktop();
+        }
       });
 
       document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") { setMobileOpen(false); ddClose(); closeAllMh(); }
+        if (e.key === "Escape") {
+          closeAllDesktop();
+          setMobileOpen(false);
+        }
       });
     }
 
@@ -467,4 +540,3 @@ const isIndustriesActive = industryLinks.some(
     }
   })();
 </script>
-
