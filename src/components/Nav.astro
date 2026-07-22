@@ -47,7 +47,7 @@ const isIndustriesActive = industryLinks.some(
 );
 ---
 
-<nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0" aria-label="Main navigation">
+<nav class="fixed w-full top-0 z-50 glass-panel !rounded-none !overflow-visible border-b border-t-0 border-x-0" aria-label="Main navigation">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio — Home">
       <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110" />
@@ -57,7 +57,7 @@ const isIndustriesActive = industryLinks.some(
     <!-- Desktop Navigation -->
     <ul class="hidden md:flex items-center gap-1">
       <!-- Services Dropdown -->
-      <li class="relative group" data-dd>
+      <li class="relative group" data-dd data-open="false">
         <button
           type="button"
           data-dd-btn
@@ -99,7 +99,7 @@ const isIndustriesActive = industryLinks.some(
       </li>
 
       <!-- Industries Dropdown -->
-      <li class="relative group" data-dd>
+      <li class="relative group" data-dd data-open="false">
         <button
           type="button"
           data-dd-btn
@@ -159,7 +159,7 @@ const isIndustriesActive = industryLinks.some(
       })}
 
       <!-- Resources Dropdown -->
-      <li class="relative group" data-dd>
+      <li class="relative group" data-dd data-open="false">
         <button
           type="button"
           data-dd-btn
@@ -410,6 +410,24 @@ const isIndustriesActive = industryLinks.some(
   </div>
 </nav>
 
+<style>
+  /* Explicitly prevent fixed <nav> from clipping absolute desktop dropdown panels */
+  nav {
+    overflow: visible !important;
+  }
+
+  /* Desktop Dropdown Open State when toggled via click or active state */
+  [data-dd][data-open="true"] [data-dd-panel] {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+  }
+
+  [data-dd][data-open="true"] [data-dd-chevron] {
+    transform: rotate(180deg) !important;
+  }
+</style>
+
 <script is:inline>
   (function () {
     "use strict";
@@ -422,23 +440,13 @@ const isIndustriesActive = industryLinks.some(
         ddContainers.forEach(function (container) {
           container.setAttribute("data-open", "false");
           var btn = container.querySelector("[data-dd-btn]");
-          var panel = container.querySelector("[data-dd-panel]");
-          var chevron = container.querySelector("[data-dd-chevron]");
-
           if (btn) btn.setAttribute("aria-expanded", "false");
-          if (panel) {
-            panel.classList.remove("!opacity-100", "!pointer-events-auto", "!translate-y-0");
-          }
-          if (chevron) {
-            chevron.classList.remove("!rotate-180");
-          }
         });
       }
 
       ddContainers.forEach(function (container) {
         var btn = container.querySelector("[data-dd-btn]");
         var panel = container.querySelector("[data-dd-panel]");
-        var chevron = container.querySelector("[data-dd-chevron]");
         if (!btn || !panel) return;
 
         btn.addEventListener("click", function (e) {
@@ -450,8 +458,6 @@ const isIndustriesActive = industryLinks.some(
           if (!isOpen) {
             container.setAttribute("data-open", "true");
             btn.setAttribute("aria-expanded", "true");
-            panel.classList.add("!opacity-100", "!pointer-events-auto", "!translate-y-0");
-            if (chevron) chevron.classList.add("!rotate-180");
           }
         });
       });
