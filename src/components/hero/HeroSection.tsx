@@ -1,88 +1,115 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Tilt } from "@/components/unlumen-ui/tilt";
-import { GlowingBadge } from "@/components/unlumen-ui/glowing-badge";
-import { ClippedCircle } from "@/components/unlumen-ui/clipped-circle";
 import { GlowButton } from "@/components/unlumen-ui/glow";
+import { OrbitingSkills } from "@/components/unlumen-ui/orbiting-skills";
+import { GlowingBadge } from "@/components/unlumen-ui/glowing-badge";
+import { Tilt } from "@/components/unlumen-ui/tilt";
 import MagneticButton from "@/components/smoothui/magnetic-button";
 
-function useIsMobile() {
-  const [mobile, setMobile] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    setMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return mobile;
-}
+const items = [
+  {
+    label: "AI Agents",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06"/></svg>,
+  },
+  {
+    label: "Web Apps",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>,
+  },
+  {
+    label: "Automation",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>,
+  },
+  {
+    label: "Mobile",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
+  },
+  {
+    label: "MVP",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><path d="M4.5 16.5c-1.5 1.26-2 3.38-2 3.38s2.12-.5 3.38-2c1.26-1.5 2.12-3.38 2.12-3.38s-2.12.5-3.38 2z"/><path d="M12 12L4.5 19.5"/><path d="M19 9c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5C15 2 21 2 21 2s0 6-2 7z"/></svg>,
+  },
+  {
+    label: "APIs",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>,
+  },
+  {
+    label: "AI Consulting",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>,
+  },
+];
 
 export default function HeroSection() {
-  const isMobile = useIsMobile();
-
-  const easeOut = [0.25, 0.46, 0.45, 0.94] as const;
-
   return (
-    <section className="container-hero relative overflow-hidden">
-      {/* ClippedCircle cursor-following spotlight */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <ClippedCircle
-          circleClassName="bg-amber-400/10"
-          circleSize={500}
-        />
-      </div>
-
-      {/* Ambient glow orbs */}
+    <section className="container-hero relative min-h-[90dvh] flex flex-col items-center justify-center overflow-hidden">
       <div
-        className="absolute top-0 left-1/2 w-[700px] h-[400px] rounded-full blur-[130px] pointer-events-none -z-10 animate-mesh-1"
+        className="absolute top-1/3 left-1/2 w-[600px] h-[400px] -translate-x-1/2 rounded-full blur-[130px] pointer-events-none -z-10 animate-mesh-1"
         style={{ background: "rgba(251,191,36,0.08)" }}
         aria-hidden="true"
       />
-      <div
-        className="absolute top-12 left-[40%] w-[500px] h-[300px] rounded-full blur-[110px] pointer-events-none -z-10 animate-mesh-2"
-        style={{ background: "rgba(234,179,8,0.05)" }}
-        aria-hidden="true"
-      />
 
-      <div className="text-center relative z-10 mb-14">
+      <div className="text-center relative z-10 flex flex-col items-center gap-5 sm:gap-6 w-full max-w-4xl px-4">
         <motion.p
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: easeOut as any }}
-          className="badge-premium-accent text-[10px] font-bold px-3 py-1 inline-flex mb-5"
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as any }}
         >
-          AI Engineering Studio
+          <GlowingBadge variant="warning" dot pulse>
+            AI Engineering Studio
+          </GlowingBadge>
         </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.5, ease: easeOut as any }}
-          className="text-hero text-white mb-6 font-display font-bold text-balance-wide"
-        >
-          AI agents, business automations, web and mobile apps —<br className="hidden sm:inline" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 glow-text">
-            shipped in weeks, not quarters.
-          </span>
-        </motion.h1>
+        <Tilt rotationFactor={8} springOptions={{ stiffness: 300, damping: 20 }}>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as any }}
+            className="text-hero text-white font-display font-bold text-balance-wide max-w-3xl"
+          >
+            Ship production software in
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 animate-gradient">
+              weeks, not quarters.
+            </span>
+          </motion.h1>
+        </Tilt>
 
         <motion.p
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5, ease: easeOut as any }}
-          className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-body"
+          transition={{ delay: 0.2, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as any }}
+          className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-lg font-body"
         >
-          We build custom AI agents, business automations, web applications, and mobile apps under fixed-scope contracts. Direct senior developer access. Zero agency overhead. Rapid sprint delivery.
+          Custom AI agents, web apps, automations & mobile — under fixed-scope contracts.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.35, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as any }}
+          className="my-4 sm:my-6"
+        >
+          <OrbitingSkills
+            items={items}
+            radius={110}
+            duration={22}
+            showPath={false}
+            followCursor
+          >
+            <img
+              src="/logo.png"
+              alt="NextReach Studio"
+              width={80}
+              height={80}
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-full"
+            />
+          </OrbitingSkills>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5, ease: easeOut as any }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ delay: 0.5, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as any }}
+          className="flex flex-col items-center gap-3"
         >
           <a href="/contact">
             <GlowButton
@@ -95,218 +122,39 @@ export default function HeroSection() {
               wrapperClassName="inline-flex"
             >
               <span className="flex items-center gap-2">
-                Schedule a Technical Discovery Call
+                Schedule a Discovery Call
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </span>
             </GlowButton>
           </a>
-
-          <MagneticButton
-            asChild
-            variant="outline"
-            strength={0.25}
-            radius={120}
-            className="!rounded-xl !border-zinc-700 !text-zinc-300 !bg-transparent !text-sm !px-6 !py-3 !font-medium hover:!border-zinc-500 hover:!text-white hover:!bg-white/5"
-          >
-            <a href="/portfolio">Explore Our Work & Stack</a>
+          <MagneticButton asChild strength={0.2} radius={80} className="!bg-transparent !text-zinc-500 !text-xs !font-medium hover:!text-zinc-300 !p-0 !h-auto !border-none !shadow-none">
+            <a href="/portfolio">
+              Explore our work &rarr;
+            </a>
           </MagneticButton>
         </motion.div>
-
-        {/* Trust Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5, ease: easeOut as any }}
-          className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-left"
-        >
-          <div className="dashboard-panel p-3.5">
-            <p className="text-xs font-semibold text-amber-400 font-display mb-0.5">Senior Developer Led</p>
-            <p className="text-[11px] text-zinc-500 leading-relaxed">Every project built directly by a senior engineer. No junior padding, no account manager handoffs.</p>
-          </div>
-          <div className="dashboard-panel p-3.5">
-            <p className="text-xs font-semibold text-amber-400 font-display mb-0.5">Fixed-Scope Clarity</p>
-            <p className="text-[11px] text-zinc-500 leading-relaxed">Precise, itemized proposal before work begins. Pay the agreed amount — never a dollar more.</p>
-          </div>
-          <div className="dashboard-panel p-3.5">
-            <p className="text-xs font-semibold text-amber-400 font-display mb-0.5">Rapid Sprint Execution</p>
-            <p className="text-[11px] text-zinc-500 leading-relaxed">Bi-weekly delivery sprints with staging previews. Production-ready code, not half-baked demos.</p>
-          </div>
-        </motion.div>
       </div>
 
-      {/* Dashboard Mockup with Tilt */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.6, ease: easeOut as any }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <Tilt
-          rotationFactor={isMobile ? 0 : 4}
-          springOptions={{ stiffness: 180, damping: 20 }}
-          className="glass-dashboard relative p-4 sm:p-6 max-w-5xl mx-auto"
+        <motion.svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          className="w-5 h-5 text-zinc-600"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="grid grid-cols-[auto_1fr_auto] gap-3 sm:gap-4">
-            {/* Sidebar Nav */}
-            <div className="dashboard-panel p-2.5 w-14 sm:w-16 flex flex-col items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
-                <svg className="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-              </div>
-              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center opacity-60">
-                <svg className="w-3.5 h-3.5 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-              </div>
-              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center opacity-60">
-                <svg className="w-3.5 h-3.5 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06"/></svg>
-              </div>
-            </div>
-
-            {/* Main Analytics View */}
-            <div className="dashboard-panel p-3 sm:p-4 space-y-3 sm:space-y-4 min-w-0">
-              {/* Metric Cards Row */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
-                <div className="dashboard-stat-card">
-                  <p className="text-[10px] text-zinc-500 font-mono mb-0.5">Active Users</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-base sm:text-lg font-bold text-white font-mono tracking-tight">2,847</span>
-                    <span className="text-[10px] text-emerald-400 font-mono">▲ 12%</span>
-                  </div>
-                </div>
-                <div className="dashboard-stat-card">
-                  <p className="text-[10px] text-zinc-500 font-mono mb-0.5">Monthly Revenue</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-base sm:text-lg font-bold text-white font-mono tracking-tight">$48.2k</span>
-                    <span className="text-[10px] text-emerald-400 font-mono">▲ 8.3%</span>
-                  </div>
-                </div>
-                <div className="dashboard-stat-card">
-                  <p className="text-[10px] text-zinc-500 font-mono mb-0.5">Active Projects</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-base sm:text-lg font-bold text-white font-mono tracking-tight">14</span>
-                    <span className="text-[10px] text-amber-400 font-mono">● 3 in dev</span>
-                  </div>
-                </div>
-                <div className="dashboard-stat-card">
-                  <p className="text-[10px] text-zinc-500 font-mono mb-0.5">Uptime SLA</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-base sm:text-lg font-bold text-white font-mono tracking-tight">99.97%</span>
-                    <span className="text-[10px] text-emerald-400 font-mono">● Live</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Line Chart */}
-              <div className="dashboard-panel p-3">
-                <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-[10px] text-zinc-400 font-semibold font-display">Platform Growth</span>
-                  <div className="flex gap-2">
-                    <span className="text-[9px] text-zinc-600 font-mono">6mo</span>
-                    <span className="text-[9px] text-zinc-500 font-mono">3mo</span>
-                    <span className="text-[9px] text-zinc-500 font-mono">1mo</span>
-                  </div>
-                </div>
-                <svg viewBox="0 0 300 64" className="w-full h-12 sm:h-16" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#fbbf24" stopOpacity={0.35} />
-                      <stop offset="100%" stopColor="#fbbf24" stopOpacity={0.01} />
-                    </linearGradient>
-                  </defs>
-                  <path d="M0,56 Q15,52 30,54 Q45,56 60,40 Q75,24 90,30 Q105,36 120,24 Q135,12 150,18 Q165,24 180,14 Q195,6 210,10 Q225,14 240,8 Q255,2 270,12 Q285,22 300,16 L300,64 L0,64 Z" fill="url(#chartFill)" />
-                  <path d="M0,56 Q15,52 30,54 Q45,56 60,40 Q75,24 90,30 Q105,36 120,24 Q135,12 150,18 Q165,24 180,14 Q195,6 210,10 Q225,14 240,8 Q255,2 270,12 Q285,22 300,16" stroke="#fbbf24" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                  <circle cx="240" cy="8" r="3" fill="#fbbf24" stroke="#0a0a0a" strokeWidth="1.5" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Activity Feed */}
-            <div className="dashboard-panel p-2.5 sm:p-3 w-28 sm:w-32 space-y-2.5">
-              <p className="text-[9px] text-zinc-500 font-semibold font-display uppercase tracking-wider">Activity</p>
-              <div className="space-y-2">
-                <div className="flex items-start gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0"></span>
-                  <div className="min-w-0">
-                    <p className="text-[9px] text-zinc-400 truncate">Deploy complete</p>
-                    <p className="text-[8px] text-zinc-600 font-mono">2m ago</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1 shrink-0"></span>
-                  <div className="min-w-0">
-                    <p className="text-[9px] text-zinc-400 truncate">Build running</p>
-                    <p className="text-[8px] text-zinc-600 font-mono">14m ago</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-500 mt-1 shrink-0"></span>
-                  <div className="min-w-0">
-                    <p className="text-[9px] text-zinc-400 truncate">Review pending</p>
-                    <p className="text-[8px] text-zinc-600 font-mono">1h ago</p>
-                  </div>
-                </div>
-              </div>
-              <div className="pt-1.5 border-t border-white/5">
-                <GlowingBadge variant="success" pulse>
-                  <span className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-emerald-400 inline-block" />
-                    All systems nominal
-                  </span>
-                </GlowingBadge>
-              </div>
-            </div>
-          </div>
-        </Tilt>
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </motion.svg>
       </motion.div>
-
-      {/* HeroShowcase */}
-      <div className="mt-10 px-1 sm:px-4">
-        <HeroShowcaseComponent />
-      </div>
     </section>
-  );
-}
-
-/* Inline HeroShowcase adapted from the existing Astro component */
-function HeroShowcaseComponent() {
-  const isMobile = useIsMobile();
-
-  return (
-    <Tilt
-      rotationFactor={isMobile ? 0 : 3}
-      springOptions={{ stiffness: 150, damping: 18 }}
-      className="hero-showcase-inline"
-    >
-      <div className="hero-showcase-inner">
-        <div className="hero-showcase-glow" aria-hidden="true" />
-        <div className="hero-showcase-frame gradient-border">
-          <div className="hero-showcase-chrome" aria-hidden="true">
-            <span /><span /><span />
-            <div className="hero-showcase-chrome-line" />
-            <span className="hero-showcase-chrome-dot" />
-          </div>
-          <div className="hero-showcase-media">
-            <img
-              src="/assets/hero-dashboard-preview.webp"
-              alt="NextReach Studio — dark analytics dashboard with amber and blue performance charts showing system metrics"
-              width={1600}
-              height={900}
-              loading="eager"
-              fetchPriority="high"
-            />
-            <div className="hero-showcase-scrim" aria-hidden="true" />
-            <div className="hero-showcase-badge-wrapper">
-              <GlowingBadge variant="success" pulse>
-                Production System Active
-              </GlowingBadge>
-            </div>
-            <div className="hero-showcase-metric">
-              <span className="hero-showcase-metric-label">Delivery velocity</span>
-              <strong>+42.8%</strong>
-              <span className="hero-showcase-metric-trend">↗ this sprint</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Tilt>
   );
 }
